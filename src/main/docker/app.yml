@@ -1,0 +1,20 @@
+version: '2'
+services:
+    happybourbackend-app:
+        image: happybourbackend
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://happybourbackend-mysql:3306/happybourbackend?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_CACHE_MEMCACHED_SERVERS=happybourbackend-memcached:11211
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    happybourbackend-mysql:
+        extends:
+            file: mysql.yml
+            service: happybourbackend-mysql
+    happybourbackend-memcached:
+        extends:
+            file: memcached.yml
+            service: happybourbackend-memcached

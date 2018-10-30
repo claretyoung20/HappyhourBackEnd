@@ -1,0 +1,6 @@
+version: '2'
+services:
+    happybourbackend-memcached:
+        image: memcached:1.5.8-alpine
+        ports:
+            - "11211:11211"
