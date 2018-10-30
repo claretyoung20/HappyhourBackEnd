@@ -598,32 +598,32 @@
                     <contextDirectory>${project.build.directory}</contextDirectory>
                 </configuration>
             </plugin>
-            <plugin>
-                <!--
-                    Plugin that provides API-first development using openapi-generator to
-                    generate Spring-MVC endpoint stubs at compile time from an OpenAPI definition file
-                -->
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/swagger/api.yml</inputSpec>
-                            <generatorName>spring</generatorName>
-                            <apiPackage>com.happyhour.myapp.web.api</apiPackage>
-                            <modelPackage>com.happyhour.myapp.web.api.model</modelPackage>
-                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
-                            <configOptions>
-                                <delegatePattern>true</delegatePattern>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--&lt;!&ndash;-->
+                    <!--Plugin that provides API-first development using openapi-generator to-->
+                    <!--generate Spring-MVC endpoint stubs at compile time from an OpenAPI definition file-->
+                <!--&ndash;&gt;-->
+                <!--<groupId>org.openapitools</groupId>-->
+                <!--<artifactId>openapi-generator-maven-plugin</artifactId>-->
+                <!--<version>${openapi-generator-maven-plugin.version}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<inputSpec>${project.basedir}/src/main/resources/swagger/api.yml</inputSpec>-->
+                            <!--<generatorName>spring</generatorName>-->
+                            <!--<apiPackage>com.happyhour.myapp.web.api</apiPackage>-->
+                            <!--<modelPackage>com.happyhour.myapp.web.api.model</modelPackage>-->
+                            <!--<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>-->
+                            <!--<configOptions>-->
+                                <!--<delegatePattern>true</delegatePattern>-->
+                            <!--</configOptions>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
             <!-- jhipster-needle-maven-add-plugin -->
         </plugins>
         <pluginManagement>
