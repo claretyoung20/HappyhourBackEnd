@@ -1,0 +1,35 @@
+
+{
+    "happybourBackEndApp": {
+        "customer" : {
+            "home": {
+                "title": "Customers",
+                "createLabel": "Thêm mới một Customer",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Customer"
+            },
+            "created": "Một Customer mới được tạo với định danh {{ param }}",
+            "updated": "Một Customer cập nhật với định danh {{ param }}",
+            "deleted": "Một Customer đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer"
+            },
+            "address": "Address",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "dateOfBirth": "Date Of Birth",
+            "email": "Email",
+            "firstName": "First Name",
+            "imgUrl": "Img Url",
+            "lastName": "Last Name",
+            "password": "Password",
+            "phoneNumber": "Phone Number",
+            "resetDate": "Reset Date",
+            "reset_Key": "Reset Key",
+            "status": "Status",
+            "restaurant": "Restaurant"
+        }
+    }
+}

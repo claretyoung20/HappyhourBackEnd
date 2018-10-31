@@ -1,0 +1,35 @@
+
+{
+    "happybourBackEndApp": {
+        "customer" : {
+            "home": {
+                "title": "Customers",
+                "createLabel": "Create a new Customer",
+                "createOrEditLabel": "Create or edit a Customer"
+            },
+            "created": "A new Customer is created with identifier {{ param }}",
+            "updated": "A Customer is updated with identifier {{ param }}",
+            "deleted": "A Customer is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer"
+            },
+            "address": "Address",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "dateOfBirth": "Date Of Birth",
+            "email": "Email",
+            "firstName": "First Name",
+            "imgUrl": "Img Url",
+            "lastName": "Last Name",
+            "password": "Password",
+            "phoneNumber": "Phone Number",
+            "resetDate": "Reset Date",
+            "reset_Key": "Reset Key",
+            "status": "Status",
+            "restaurant": "Restaurant"
+        }
+    }
+}
