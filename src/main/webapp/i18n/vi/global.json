@@ -9,6 +9,7 @@
                 "main": "Thực thể",
                 "restaurant": "Restaurant",
                 "customer": "Customer",
+                "staff": "Staff",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

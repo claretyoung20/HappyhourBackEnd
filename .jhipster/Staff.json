@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "staff"
+        },
+        {
+            "relationshipName": "restaurant",
+            "otherEntityName": "restaurant",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "y"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "staffCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20181031221556",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "staff",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
