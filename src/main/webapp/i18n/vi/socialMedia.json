@@ -1,0 +1,24 @@
+
+{
+    "happybourBackEndApp": {
+        "socialMedia" : {
+            "home": {
+                "title": "Social Medias",
+                "createLabel": "Thêm mới một Social Media",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Social Media"
+            },
+            "created": "Một Social Media mới được tạo với định danh {{ param }}",
+            "updated": "Một Social Media cập nhật với định danh {{ param }}",
+            "deleted": "Một Social Media đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Social Media {{ id }}?"
+            },
+            "detail": {
+                "title": "Social Media"
+            },
+            "name": "Name",
+            "link": "Link",
+            "restaurant": "Restaurant"
+        }
+    }
+}

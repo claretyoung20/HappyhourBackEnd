@@ -13,6 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -42,6 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO save(CustomerDTO customerDTO) {
         log.debug("Request to save Customer : {}", customerDTO);
+        customerDTO.setDateUpdated(Instant.now());
         Customer customer = customerMapper.toEntity(customerDTO);
         customer = customerRepository.save(customer);
         return customerMapper.toDto(customer);

@@ -5,6 +5,7 @@ import com.happyhour.myapp.HappybourBackEndApp;
 import com.happyhour.myapp.domain.Staff;
 import com.happyhour.myapp.repository.StaffRepository;
 import com.happyhour.myapp.service.StaffService;
+import com.happyhour.myapp.service.UserService;
 import com.happyhour.myapp.service.dto.StaffDTO;
 import com.happyhour.myapp.service.mapper.StaffMapper;
 import com.happyhour.myapp.web.rest.errors.ExceptionTranslator;
@@ -46,6 +47,9 @@ public class StaffResourceIntTest {
     private static final String UPDATED_STAFF_CODE = "BBBBBBBBBB";
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private StaffRepository staffRepository;
 
     @Autowired
@@ -73,7 +77,7 @@ public class StaffResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final StaffResource staffResource = new StaffResource(staffService);
+        final StaffResource staffResource = new StaffResource(staffService, userService);
         this.restStaffMockMvc = MockMvcBuilders.standaloneSetup(staffResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

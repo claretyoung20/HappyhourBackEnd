@@ -10,6 +10,9 @@
                 "restaurant": "Restaurant",
                 "customer": "Customer",
                 "staff": "Staff",
+                "timeManager": "Time Manager",
+                "socialMedia": "Social Media",
+                "address": "Address",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

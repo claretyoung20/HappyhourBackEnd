@@ -1,0 +1,25 @@
+
+{
+    "happybourBackEndApp": {
+        "address" : {
+            "home": {
+                "title": "Addresses",
+                "createLabel": "Create a new Address",
+                "createOrEditLabel": "Create or edit a Address"
+            },
+            "created": "A new Address is created with identifier {{ param }}",
+            "updated": "A Address is updated with identifier {{ param }}",
+            "deleted": "A Address is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Address {{ id }}?"
+            },
+            "detail": {
+                "title": "Address"
+            },
+            "city": "City",
+            "street": "Street",
+            "country": "Country",
+            "restaurant": "Restaurant"
+        }
+    }
+}

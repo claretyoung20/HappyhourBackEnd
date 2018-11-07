@@ -8,8 +8,14 @@
     <include file="config/liquibase/changelog/20181031213716_added_entity_Restaurant.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181031215414_added_entity_Customer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181031221556_added_entity_Staff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181103094013_added_entity_TimeManager.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181103094343_added_entity_SocialMedia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181103094638_added_entity_Address.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20181031215414_added_entity_constraints_Customer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181031221556_added_entity_constraints_Staff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181103094013_added_entity_constraints_TimeManager.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181103094343_added_entity_constraints_SocialMedia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181103094638_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

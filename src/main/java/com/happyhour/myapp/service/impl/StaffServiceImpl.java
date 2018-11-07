@@ -76,6 +76,13 @@ public class StaffServiceImpl implements StaffService {
             .map(staffMapper::toDto);
     }
 
+    @Override
+    public Optional<StaffDTO> findByUserId(Long id) {
+        log.debug("Request to get Staff by user id : {}", id);
+        return staffRepository.findByUserId(id)
+            .map(staffMapper::toDto);
+    }
+
     /**
      * Delete the staff by id.
      *

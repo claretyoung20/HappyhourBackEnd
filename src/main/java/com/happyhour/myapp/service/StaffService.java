@@ -37,6 +37,8 @@ public interface StaffService {
      */
     Optional<StaffDTO> findOne(Long id);
 
+    Optional<StaffDTO> findByUserId(Long id);
+
     /**
      * Delete the "id" staff.
      *

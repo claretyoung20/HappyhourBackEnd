@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="timeManager">
+            <h2><span jhiTranslate="happybourBackEndApp.timeManager.detail.title">Time Manager</span> {{timeManager.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.timeManager.day">Day</span></dt>
+                <dd>
+                    <span>{{timeManager.day}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.timeManager.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{timeManager.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.timeManager.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{timeManager.endTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.timeManager.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="timeManager.restaurantId">
+                        <a [routerLink]="['/restaurant', timeManager.restaurantId, 'view']">{{timeManager.restaurantId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/time-manager', timeManager.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
