@@ -1,0 +1,30 @@
+
+{
+    "happybourBackEndApp": {
+        "coupon" : {
+            "home": {
+                "title": "Coupons",
+                "createLabel": "Thêm mới một Coupon",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Coupon"
+            },
+            "created": "Một Coupon mới được tạo với định danh {{ param }}",
+            "updated": "Một Coupon cập nhật với định danh {{ param }}",
+            "deleted": "Một Coupon đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Coupon {{ id }}?"
+            },
+            "detail": {
+                "title": "Coupon"
+            },
+            "code": "Code",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "endDate": "End Date",
+            "isActive": "Is Active",
+            "noPerUser": "No Per User",
+            "price": "Price",
+            "startFromDate": "Start From Date",
+            "restaurant": "Restaurant"
+        }
+    }
+}

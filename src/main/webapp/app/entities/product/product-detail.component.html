@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="product">
+            <h2><span jhiTranslate="happybourBackEndApp.product.detail.title">Product</span> {{product.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.product.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{product.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.description">Description</span></dt>
+                <dd>
+                    <span>{{product.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.name">Name</span></dt>
+                <dd>
+                    <span>{{product.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.price">Price</span></dt>
+                <dd>
+                    <span>{{product.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{product.updatedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.isAvailable">Is Available</span></dt>
+                <dd>
+                    <span>{{product.isAvailable}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="product.restaurantId">
+                        <a [routerLink]="['/restaurant', product.restaurantId, 'view']">{{product.restaurantId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="product.categoryId">
+                        <a [routerLink]="['/category', product.categoryId, 'view']">{{product.categoryId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.productType">Product Type</span></dt>
+                <dd>
+                    <div *ngIf="product.productTypeId">
+                        <a [routerLink]="['/product-type', product.productTypeId, 'view']">{{product.productTypeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product', product.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

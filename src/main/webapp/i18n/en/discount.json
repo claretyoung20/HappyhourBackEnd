@@ -1,0 +1,26 @@
+
+{
+    "happybourBackEndApp": {
+        "discount" : {
+            "home": {
+                "title": "Discounts",
+                "createLabel": "Create a new Discount",
+                "createOrEditLabel": "Create or edit a Discount"
+            },
+            "created": "A new Discount is created with identifier {{ param }}",
+            "updated": "A Discount is updated with identifier {{ param }}",
+            "deleted": "A Discount is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Discount {{ id }}?"
+            },
+            "detail": {
+                "title": "Discount"
+            },
+            "amount": "Amount",
+            "endDate": "End Date",
+            "startDate": "Start Date",
+            "percentage": "Percentage",
+            "product": "Product"
+        }
+    }
+}

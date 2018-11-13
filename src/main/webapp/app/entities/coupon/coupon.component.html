@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="happybourBackEndApp.coupon.home.title">Coupons</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-coupon" [routerLink]="['/coupon/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="happybourBackEndApp.coupon.home.createLabel">
+            Create new Coupon
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="coupons">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="code"><span jhiTranslate="happybourBackEndApp.coupon.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.coupon.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.coupon.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="happybourBackEndApp.coupon.endDate">End Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="isActive"><span jhiTranslate="happybourBackEndApp.coupon.isActive">Is Active</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="noPerUser"><span jhiTranslate="happybourBackEndApp.coupon.noPerUser">No Per User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="price"><span jhiTranslate="happybourBackEndApp.coupon.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="startFromDate"><span jhiTranslate="happybourBackEndApp.coupon.startFromDate">Start From Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.coupon.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let coupon of coupons ;trackBy: trackId">
+                <td><a [routerLink]="['/coupon', coupon.id, 'view' ]">{{coupon.id}}</a></td>
+                <td>{{coupon.code}}</td>
+                <td>{{coupon.dateCreated | date:'medium'}}</td>
+                <td>{{coupon.dateUpdated | date:'medium'}}</td>
+                <td>{{coupon.endDate | date:'mediumDate'}}</td>
+                <td>{{coupon.isActive}}</td>
+                <td>{{coupon.noPerUser}}</td>
+                <td>{{coupon.price}}</td>
+                <td>{{coupon.startFromDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="coupon.restaurantId">
+                        <a [routerLink]="['../restaurant', coupon.restaurantId , 'view' ]" >{{coupon.restaurantId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/coupon', coupon.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/coupon', coupon.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'coupon/'+ coupon.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="coupons && coupons.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

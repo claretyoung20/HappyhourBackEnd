@@ -1,0 +1,30 @@
+
+{
+    "happybourBackEndApp": {
+        "happyOrder" : {
+            "home": {
+                "title": "Happy Orders",
+                "createLabel": "Thêm mới một Happy Order",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Happy Order"
+            },
+            "created": "Một Happy Order mới được tạo với định danh {{ param }}",
+            "updated": "Một Happy Order cập nhật với định danh {{ param }}",
+            "deleted": "Một Happy Order đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Happy Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Happy Order"
+            },
+            "baseTotal": "Base Total",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "totalPrice": "Total Price",
+            "orderStatus": "Order Status",
+            "customer": "Customer",
+            "coupon": "Coupon",
+            "restaurant": "Restaurant",
+            "staff": "Staff"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+
+{
+    "happybourBackEndApp": {
+        "saleOrder" : {
+            "home": {
+                "title": "Sale Orders",
+                "createLabel": "Create a new Sale Order",
+                "createOrEditLabel": "Create or edit a Sale Order"
+            },
+            "created": "A new Sale Order is created with identifier {{ param }}",
+            "updated": "A Sale Order is updated with identifier {{ param }}",
+            "deleted": "A Sale Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sale Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Sale Order"
+            },
+            "basePrice": "Base Price",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "discountAmount": "Discount Amount",
+            "originalPrice": "Original Price",
+            "product": "Product",
+            "happyOrder": "Happy Order"
+        }
+    }
+}

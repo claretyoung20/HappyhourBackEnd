@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity SaleOrder.
+    -->
+    <changeSet id="20181113122546-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="sale_order"
+                                 constraintName="fk_sale_order_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+
+        <addForeignKeyConstraint baseColumnNames="happy_order_id"
+                                 baseTableName="sale_order"
+                                 constraintName="fk_sale_order_happy_order_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happy_order"/>
+
+    </changeSet>
+</databaseChangeLog>

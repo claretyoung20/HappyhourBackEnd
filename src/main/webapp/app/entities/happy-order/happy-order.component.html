@@ -1,0 +1,98 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="happybourBackEndApp.happyOrder.home.title">Happy Orders</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-happy-order" [routerLink]="['/happy-order/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="happybourBackEndApp.happyOrder.home.createLabel">
+            Create new Happy Order
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="happyOrders">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="baseTotal"><span jhiTranslate="happybourBackEndApp.happyOrder.baseTotal">Base Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.happyOrder.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.happyOrder.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalPrice"><span jhiTranslate="happybourBackEndApp.happyOrder.totalPrice">Total Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="orderStatusId"><span jhiTranslate="happybourBackEndApp.happyOrder.orderStatus">Order Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="customerId"><span jhiTranslate="happybourBackEndApp.happyOrder.customer">Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="couponId"><span jhiTranslate="happybourBackEndApp.happyOrder.coupon">Coupon</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.happyOrder.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="staffStaffCode"><span jhiTranslate="happybourBackEndApp.happyOrder.staff">Staff</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let happyOrder of happyOrders ;trackBy: trackId">
+                <td><a [routerLink]="['/happy-order', happyOrder.id, 'view' ]">{{happyOrder.id}}</a></td>
+                <td>{{happyOrder.baseTotal}}</td>
+                <td>{{happyOrder.dateCreated | date:'medium'}}</td>
+                <td>{{happyOrder.dateUpdated | date:'medium'}}</td>
+                <td>{{happyOrder.totalPrice}}</td>
+                <td>
+                    <div *ngIf="happyOrder.orderStatusId">
+                        <a [routerLink]="['../order-status', happyOrder.orderStatusId , 'view' ]" >{{happyOrder.orderStatusId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="happyOrder.customerId">
+                        <a [routerLink]="['../customer', happyOrder.customerId , 'view' ]" >{{happyOrder.customerId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="happyOrder.couponId">
+                        <a [routerLink]="['../coupon', happyOrder.couponId , 'view' ]" >{{happyOrder.couponId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="happyOrder.restaurantId">
+                        <a [routerLink]="['../restaurant', happyOrder.restaurantId , 'view' ]" >{{happyOrder.restaurantId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="happyOrder.staffId">
+                        <a [routerLink]="['../staff', happyOrder.staffId , 'view' ]" >{{happyOrder.staffStaffCode}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/happy-order', happyOrder.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/happy-order', happyOrder.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'happy-order/'+ happyOrder.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="happyOrders && happyOrders.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

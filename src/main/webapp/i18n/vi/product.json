@@ -1,0 +1,30 @@
+
+{
+    "happybourBackEndApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Thêm mới một Product",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Product"
+            },
+            "created": "Một Product mới được tạo với định danh {{ param }}",
+            "updated": "Một Product cập nhật với định danh {{ param }}",
+            "deleted": "Một Product đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "createdDate": "Created Date",
+            "description": "Description",
+            "name": "Name",
+            "price": "Price",
+            "updatedDate": "Updated Date",
+            "isAvailable": "Is Available",
+            "restaurant": "Restaurant",
+            "category": "Category",
+            "productType": "Product Type"
+        }
+    }
+}

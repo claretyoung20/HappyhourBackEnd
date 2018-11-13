@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="happybourBackEndApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.comment">Comment</span></dt>
+                <dd>
+                    <span>{{reservation.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.reserverDate">Reserver Date</span></dt>
+                <dd>
+                    <span>{{reservation.reserverDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{reservation.updatedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.status">Status</span></dt>
+                <dd>
+                    <span>{{reservation.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{reservation.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{reservation.endTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.staff">Staff</span></dt>
+                <dd>
+                    <div *ngIf="reservation.staffId">
+                        <a [routerLink]="['/staff', reservation.staffId, 'view']">{{reservation.staffId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.bookTable">Book Table</span></dt>
+                <dd>
+                    <div *ngIf="reservation.bookTableId">
+                        <a [routerLink]="['/book-table', reservation.bookTableId, 'view']">{{reservation.bookTableId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.reservation.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="reservation.customerId">
+                        <a [routerLink]="['/customer', reservation.customerId, 'view']">{{reservation.customerId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reservation', reservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

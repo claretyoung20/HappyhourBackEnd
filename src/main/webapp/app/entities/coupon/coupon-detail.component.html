@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="coupon">
+            <h2><span jhiTranslate="happybourBackEndApp.coupon.detail.title">Coupon</span> {{coupon.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.code">Code</span></dt>
+                <dd>
+                    <span>{{coupon.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{coupon.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.dateUpdated">Date Updated</span></dt>
+                <dd>
+                    <span>{{coupon.dateUpdated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{coupon.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.isActive">Is Active</span></dt>
+                <dd>
+                    <span>{{coupon.isActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.noPerUser">No Per User</span></dt>
+                <dd>
+                    <span>{{coupon.noPerUser}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.price">Price</span></dt>
+                <dd>
+                    <span>{{coupon.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.startFromDate">Start From Date</span></dt>
+                <dd>
+                    <span>{{coupon.startFromDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.coupon.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="coupon.restaurantId">
+                        <a [routerLink]="['/restaurant', coupon.restaurantId, 'view']">{{coupon.restaurantId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/coupon', coupon.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

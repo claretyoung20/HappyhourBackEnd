@@ -1,0 +1,22 @@
+
+{
+    "happybourBackEndApp": {
+        "orderStatus" : {
+            "home": {
+                "title": "Order Statuses",
+                "createLabel": "Thêm mới một Order Status",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Order Status"
+            },
+            "created": "Một Order Status mới được tạo với định danh {{ param }}",
+            "updated": "Một Order Status cập nhật với định danh {{ param }}",
+            "deleted": "Một Order Status đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Order Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Status"
+            },
+            "name": "Name"
+        }
+    }
+}

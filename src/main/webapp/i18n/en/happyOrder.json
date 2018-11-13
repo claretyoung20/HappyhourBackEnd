@@ -1,0 +1,30 @@
+
+{
+    "happybourBackEndApp": {
+        "happyOrder" : {
+            "home": {
+                "title": "Happy Orders",
+                "createLabel": "Create a new Happy Order",
+                "createOrEditLabel": "Create or edit a Happy Order"
+            },
+            "created": "A new Happy Order is created with identifier {{ param }}",
+            "updated": "A Happy Order is updated with identifier {{ param }}",
+            "deleted": "A Happy Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Happy Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Happy Order"
+            },
+            "baseTotal": "Base Total",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "totalPrice": "Total Price",
+            "orderStatus": "Order Status",
+            "customer": "Customer",
+            "coupon": "Coupon",
+            "restaurant": "Restaurant",
+            "staff": "Staff"
+        }
+    }
+}

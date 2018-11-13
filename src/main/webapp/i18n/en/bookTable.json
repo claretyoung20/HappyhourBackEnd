@@ -1,0 +1,26 @@
+
+{
+    "happybourBackEndApp": {
+        "bookTable" : {
+            "home": {
+                "title": "Book Tables",
+                "createLabel": "Create a new Book Table",
+                "createOrEditLabel": "Create or edit a Book Table"
+            },
+            "created": "A new Book Table is created with identifier {{ param }}",
+            "updated": "A Book Table is updated with identifier {{ param }}",
+            "deleted": "A Book Table is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Book Table {{ id }}?"
+            },
+            "detail": {
+                "title": "Book Table"
+            },
+            "isAvaliable": "Is Avaliable",
+            "persons": "Persons",
+            "price": "Price",
+            "imageUrl": "Image Url",
+            "restaurant": "Restaurant"
+        }
+    }
+}
