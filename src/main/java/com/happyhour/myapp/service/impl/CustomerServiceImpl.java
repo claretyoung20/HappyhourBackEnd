@@ -90,4 +90,11 @@ public class CustomerServiceImpl implements CustomerService {
         log.debug("Request to delete Customer : {}", id);
         customerRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<CustomerDTO> findByEmailAndPassword(String email, String password) {
+        log.debug("Request to get Customer by email and password : {}", email, password);
+        return customerRepository.findByEmailAndPassword(email, password)
+            .map(customerMapper::toDto);
+    }
 }

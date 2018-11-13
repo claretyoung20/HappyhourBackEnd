@@ -55,6 +55,8 @@ public class CustomerResource {
         if (customerDTO.getId() != null) {
             throw new BadRequestAlertException("A new customer cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        // set date created for new customer to be instant
+        customerDTO.setDateCreated(Instant.now());
         CustomerDTO result = customerService.save(customerDTO);
         return ResponseEntity.created(new URI("/api/customers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -127,4 +129,13 @@ public class CustomerResource {
         customerService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/customers/login")
+    @Timed
+    public ResponseEntity<CustomerDTO> getCustomerByEmailAndPasword(String email, String password) {
+        log.debug("REST request to get Customer by email and password: {}", email, password);
+        Optional<CustomerDTO> customerDTO = customerService.findByEmailAndPassword(email, password);
+        return ResponseUtil.wrapOrNotFound(customerDTO);
+    }
+
 }

@@ -43,4 +43,6 @@ public interface CustomerService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    Optional<CustomerDTO> findByEmailAndPassword(String email, String password);
 }
