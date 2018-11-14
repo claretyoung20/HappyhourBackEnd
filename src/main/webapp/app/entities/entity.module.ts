@@ -7,7 +7,6 @@ import { HappybourBackEndTimeManagerModule } from './time-manager/time-manager.m
 import { HappybourBackEndSocialMediaModule } from './social-media/social-media.module';
 import { HappybourBackEndAddressModule } from './address/address.module';
 import { HappybourBackEndCategoryModule } from './category/category.module';
-import { HappybourBackEndRatingModule } from './rating/rating.module';
 import { HappybourBackEndProductTypeModule } from './product-type/product-type.module';
 import { HappybourBackEndProductModule } from './product/product.module';
 import { HappybourBackEndProductImageModule } from './product-image/product-image.module';
@@ -20,6 +19,7 @@ import { HappybourBackEndCartModule } from './cart/cart.module';
 import { HappybourBackEndContactUsModule } from './contact-us/contact-us.module';
 import { HappybourBackEndBookTableModule } from './book-table/book-table.module';
 import { HappybourBackEndReservationModule } from './reservation/reservation.module';
+import { HappybourBackEndRatingModule } from './rating/rating.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -32,7 +32,6 @@ import { HappybourBackEndReservationModule } from './reservation/reservation.mod
         HappybourBackEndSocialMediaModule,
         HappybourBackEndAddressModule,
         HappybourBackEndCategoryModule,
-        HappybourBackEndRatingModule,
         HappybourBackEndProductTypeModule,
         HappybourBackEndProductModule,
         HappybourBackEndProductImageModule,
@@ -45,6 +44,7 @@ import { HappybourBackEndReservationModule } from './reservation/reservation.mod
         HappybourBackEndContactUsModule,
         HappybourBackEndBookTableModule,
         HappybourBackEndReservationModule,
+        HappybourBackEndRatingModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

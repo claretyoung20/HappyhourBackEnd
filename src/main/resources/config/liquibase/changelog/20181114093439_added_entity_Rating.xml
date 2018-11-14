@@ -17,13 +17,13 @@
     <!--
         Added the entity Rating.
     -->
-    <changeSet id="20181113112500-1" author="jhipster">
+    <changeSet id="20181114093439-1" author="jhipster">
         <createTable tableName="rating">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="jhi_comment" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="date_created" type="datetime">
@@ -36,6 +36,14 @@
 
             <column name="star" type="integer">
                 <constraints nullable="false" />
+            </column>
+
+            <column name="customer_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="restaurant_id" type="bigint">
+                <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

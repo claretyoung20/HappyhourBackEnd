@@ -19,7 +19,9 @@
             "comment": "Comment",
             "dateCreated": "Date Created",
             "dateUpdated": "Date Updated",
-            "star": "Star"
+            "star": "Star",
+            "customer": "Customer",
+            "restaurant": "Restaurant"
         }
     }
 }

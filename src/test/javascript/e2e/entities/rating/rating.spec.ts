@@ -46,6 +46,8 @@ describe('Rating e2e test', () => {
         expect(await ratingUpdatePage.getDateUpdatedInput()).to.contain('2001-01-01T02:30');
         await ratingUpdatePage.setStarInput('5');
         expect(await ratingUpdatePage.getStarInput()).to.eq('5');
+        await ratingUpdatePage.customerSelectLastOption();
+        await ratingUpdatePage.restaurantSelectLastOption();
         await ratingUpdatePage.save();
         expect(await ratingUpdatePage.getSaveButton().isPresent()).to.be.false;
 

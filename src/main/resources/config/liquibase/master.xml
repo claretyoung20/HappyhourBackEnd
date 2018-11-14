@@ -12,7 +12,6 @@
     <include file="config/liquibase/changelog/20181103094343_added_entity_SocialMedia.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181103094638_added_entity_Address.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113111827_added_entity_Category.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20181113112500_added_entity_Rating.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113114722_added_entity_ProductType.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113115351_added_entity_Product.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113115735_added_entity_ProductImage.xml" relativeToChangelogFile="false"/>
@@ -25,6 +24,7 @@
     <include file="config/liquibase/changelog/20181113124847_added_entity_ContactUs.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113125711_added_entity_BookTable.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113130514_added_entity_Reservation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114093439_added_entity_Rating.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20181031215414_added_entity_constraints_Customer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181031221556_added_entity_constraints_Staff.xml" relativeToChangelogFile="false"/>
@@ -42,5 +42,6 @@
     <include file="config/liquibase/changelog/20181113124847_added_entity_constraints_ContactUs.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113125711_added_entity_constraints_BookTable.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181113130514_added_entity_constraints_Reservation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181114093439_added_entity_constraints_Rating.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

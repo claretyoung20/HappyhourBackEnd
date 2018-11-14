@@ -4,9 +4,14 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { JhiAlertService } from 'ng-jhipster';
 
 import { IRating } from 'app/shared/model/rating.model';
 import { RatingService } from './rating.service';
+import { ICustomer } from 'app/shared/model/customer.model';
+import { CustomerService } from 'app/entities/customer';
+import { IRestaurant } from 'app/shared/model/restaurant.model';
+import { RestaurantService } from 'app/entities/restaurant';
 
 @Component({
     selector: 'jhi-rating-update',
@@ -15,16 +20,38 @@ import { RatingService } from './rating.service';
 export class RatingUpdateComponent implements OnInit {
     private _rating: IRating;
     isSaving: boolean;
+
+    customers: ICustomer[];
+
+    restaurants: IRestaurant[];
     dateCreated: string;
     dateUpdated: string;
 
-    constructor(private ratingService: RatingService, private activatedRoute: ActivatedRoute) {}
+    constructor(
+        private jhiAlertService: JhiAlertService,
+        private ratingService: RatingService,
+        private customerService: CustomerService,
+        private restaurantService: RestaurantService,
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ rating }) => {
             this.rating = rating;
         });
+        this.customerService.query().subscribe(
+            (res: HttpResponse<ICustomer[]>) => {
+                this.customers = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.restaurantService.query().subscribe(
+            (res: HttpResponse<IRestaurant[]>) => {
+                this.restaurants = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
     previousState() {
@@ -53,6 +80,18 @@ export class RatingUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(errorMessage: string) {
+        this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackCustomerById(index: number, item: ICustomer) {
+        return item.id;
+    }
+
+    trackRestaurantById(index: number, item: IRestaurant) {
+        return item.id;
     }
     get rating() {
         return this._rating;

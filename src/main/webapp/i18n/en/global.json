@@ -14,7 +14,6 @@
                 "socialMedia": "Social Media",
                 "address": "Address",
                 "category": "Category",
-                "rating": "Rating",
                 "productType": "Product Type",
                 "product": "Product",
                 "productImage": "Product Image",
@@ -27,6 +26,7 @@
                 "contactUs": "Contact Us",
                 "bookTable": "Book Table",
                 "reservation": "Reservation",
+                "rating": "Rating",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

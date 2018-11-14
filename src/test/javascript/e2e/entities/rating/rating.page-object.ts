@@ -30,6 +30,8 @@ export class RatingUpdatePage {
     dateCreatedInput = element(by.id('field_dateCreated'));
     dateUpdatedInput = element(by.id('field_dateUpdated'));
     starInput = element(by.id('field_star'));
+    customerSelect = element(by.id('field_customer'));
+    restaurantSelect = element(by.id('field_restaurant'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -65,6 +67,44 @@ export class RatingUpdatePage {
 
     async getStarInput() {
         return this.starInput.getAttribute('value');
+    }
+
+    async customerSelectLastOption() {
+        await this.customerSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async customerSelectOption(option) {
+        await this.customerSelect.sendKeys(option);
+    }
+
+    getCustomerSelect(): ElementFinder {
+        return this.customerSelect;
+    }
+
+    async getCustomerSelectedOption() {
+        return this.customerSelect.element(by.css('option:checked')).getText();
+    }
+
+    async restaurantSelectLastOption() {
+        await this.restaurantSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async restaurantSelectOption(option) {
+        await this.restaurantSelect.sendKeys(option);
+    }
+
+    getRestaurantSelect(): ElementFinder {
+        return this.restaurantSelect;
+    }
+
+    async getRestaurantSelectedOption() {
+        return this.restaurantSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

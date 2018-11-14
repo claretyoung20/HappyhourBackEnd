@@ -6,6 +6,8 @@ export interface IRating {
     dateCreated?: Moment;
     dateUpdated?: Moment;
     star?: number;
+    customerId?: number;
+    restaurantId?: number;
 }
 
 export class Rating implements IRating {
@@ -14,6 +16,8 @@ export class Rating implements IRating {
         public comment?: string,
         public dateCreated?: Moment,
         public dateUpdated?: Moment,
-        public star?: number
+        public star?: number,
+        public customerId?: number,
+        public restaurantId?: number
     ) {}
 }

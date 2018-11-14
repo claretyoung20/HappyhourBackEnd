@@ -156,25 +156,6 @@ public class RatingResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCommentIsRequired() throws Exception {
-        int databaseSizeBeforeTest = ratingRepository.findAll().size();
-        // set the field null
-        rating.setComment(null);
-
-        // Create the Rating, which fails.
-        RatingDTO ratingDTO = ratingMapper.toDto(rating);
-
-        restRatingMockMvc.perform(post("/api/ratings")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ratingDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Rating> ratingList = ratingRepository.findAll();
-        assertThat(ratingList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkStarIsRequired() throws Exception {
         int databaseSizeBeforeTest = ratingRepository.findAll().size();
         // set the field null

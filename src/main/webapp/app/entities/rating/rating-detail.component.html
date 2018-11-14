@@ -21,6 +21,18 @@
                 <dd>
                     <span>{{rating.star}}</span>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="rating.customerId">
+                        <a [routerLink]="['/customer', rating.customerId, 'view']">{{rating.customerId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="rating.restaurantId">
+                        <a [routerLink]="['/restaurant', rating.restaurantId, 'view']">{{rating.restaurantId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

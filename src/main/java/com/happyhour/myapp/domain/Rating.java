@@ -1,5 +1,6 @@
 package com.happyhour.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -21,8 +22,7 @@ public class Rating implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "jhi_comment", nullable = false)
+    @Column(name = "jhi_comment")
     private String comment;
 
     @Column(name = "date_created")
@@ -32,8 +32,18 @@ public class Rating implements Serializable {
     private Instant dateUpdated;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 5)
     @Column(name = "star", nullable = false)
     private Integer star;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Customer customer;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Restaurant restaurant;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -94,6 +104,32 @@ public class Rating implements Serializable {
 
     public void setStar(Integer star) {
         this.star = star;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Rating customer(Customer customer) {
+        this.customer = customer;
+        return this;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public Rating restaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+        return this;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

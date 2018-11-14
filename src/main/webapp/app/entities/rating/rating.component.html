@@ -19,6 +19,8 @@
             <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.rating.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.rating.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="star"><span jhiTranslate="happybourBackEndApp.rating.star">Star</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="customerId"><span jhiTranslate="happybourBackEndApp.rating.customer">Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.rating.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -29,6 +31,16 @@
                 <td>{{rating.dateCreated | date:'medium'}}</td>
                 <td>{{rating.dateUpdated | date:'medium'}}</td>
                 <td>{{rating.star}}</td>
+                <td>
+                    <div *ngIf="rating.customerId">
+                        <a [routerLink]="['../customer', rating.customerId , 'view' ]" >{{rating.customerId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rating.restaurantId">
+                        <a [routerLink]="['../restaurant', rating.restaurantId , 'view' ]" >{{rating.restaurantId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

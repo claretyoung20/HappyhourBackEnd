@@ -12,7 +12,6 @@ public class RatingDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     private String comment;
 
     private Instant dateCreated;
@@ -20,7 +19,13 @@ public class RatingDTO implements Serializable {
     private Instant dateUpdated;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 5)
     private Integer star;
+
+    private Long customerId;
+
+    private Long restaurantId;
 
     public Long getId() {
         return id;
@@ -62,6 +67,22 @@ public class RatingDTO implements Serializable {
         this.star = star;
     }
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -91,6 +112,8 @@ public class RatingDTO implements Serializable {
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", star=" + getStar() +
+            ", customer=" + getCustomerId() +
+            ", restaurant=" + getRestaurantId() +
             "}";
     }
 }
