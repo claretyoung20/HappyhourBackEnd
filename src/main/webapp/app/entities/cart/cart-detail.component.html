@@ -23,6 +23,12 @@
                         <a [routerLink]="['/product', cart.productId, 'view']">{{cart.productId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.cart.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="cart.customerId">
+                        <a [routerLink]="['/customer', cart.customerId, 'view']">{{cart.customerId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

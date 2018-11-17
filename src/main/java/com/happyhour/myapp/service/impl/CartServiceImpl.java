@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -86,4 +87,20 @@ public class CartServiceImpl implements CartService {
         log.debug("Request to delete Cart : {}", id);
         cartRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<CartDTO> getByProductIdAndCustomerId(long productId, long customerId) {
+        log.debug("Request to get Cart by productId and customerId: {}", productId, customerId);
+        return cartRepository.getByProductIdAndCustomerId(productId, customerId)
+            .map(cartMapper::toDto);
+    }
+
+    @Override
+    public List<CartDTO> getAllByCustomerId(long id) {
+        log.debug("Request to get Cart by customerId: {}", id);
+        return cartMapper.toDto(cartRepository.getAllByCustomerId(id));
+
+    }
+
+
 }

@@ -10,7 +10,6 @@ export interface IProduct {
     isAvailable?: boolean;
     restaurantId?: number;
     categoryId?: number;
-    productTypeId?: number;
 }
 
 export class Product implements IProduct {
@@ -23,8 +22,7 @@ export class Product implements IProduct {
         public updatedDate?: Moment,
         public isAvailable?: boolean,
         public restaurantId?: number,
-        public categoryId?: number,
-        public productTypeId?: number
+        public categoryId?: number
     ) {
         this.isAvailable = this.isAvailable || false;
     }

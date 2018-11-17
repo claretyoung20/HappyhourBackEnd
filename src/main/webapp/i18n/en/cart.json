@@ -19,7 +19,8 @@
             "dateCreated": "Date Created",
             "dateUpdated": "Date Updated",
             "totalItem": "Total Item",
-            "product": "Product"
+            "product": "Product",
+            "customer": "Customer"
         }
     }
 }

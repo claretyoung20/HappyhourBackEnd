@@ -41,12 +41,6 @@
                         <a [routerLink]="['/category', product.categoryId, 'view']">{{product.categoryId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.product.productType">Product Type</span></dt>
-                <dd>
-                    <div *ngIf="product.productTypeId">
-                        <a [routerLink]="['/product-type', product.productTypeId, 'view']">{{product.productTypeId}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

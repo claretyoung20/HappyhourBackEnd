@@ -23,6 +23,12 @@
                         <a [routerLink]="['/restaurant', category.restaurantId, 'view']">{{category.restaurantId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.category.productType">Product Type</span></dt>
+                <dd>
+                    <div *ngIf="category.productTypeId">
+                        <a [routerLink]="['/product-type', category.productTypeId, 'view']">{{category.productTypeId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

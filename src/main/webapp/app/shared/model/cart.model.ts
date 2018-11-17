@@ -6,6 +6,7 @@ export interface ICart {
     dateUpdated?: Moment;
     totalItem?: number;
     productId?: number;
+    customerId?: number;
 }
 
 export class Cart implements ICart {
@@ -14,6 +15,7 @@ export class Cart implements ICart {
         public dateCreated?: Moment,
         public dateUpdated?: Moment,
         public totalItem?: number,
-        public productId?: number
+        public productId?: number,
+        public customerId?: number
     ) {}
 }

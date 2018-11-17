@@ -23,7 +23,6 @@
             <th jhiSortBy="isAvailable"><span jhiTranslate="happybourBackEndApp.product.isAvailable">Is Available</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.product.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="categoryId"><span jhiTranslate="happybourBackEndApp.product.category">Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="productTypeId"><span jhiTranslate="happybourBackEndApp.product.productType">Product Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -44,11 +43,6 @@
                 <td>
                     <div *ngIf="product.categoryId">
                         <a [routerLink]="['../category', product.categoryId , 'view' ]" >{{product.categoryId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="product.productTypeId">
-                        <a [routerLink]="['../product-type', product.productTypeId , 'view' ]" >{{product.productTypeId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

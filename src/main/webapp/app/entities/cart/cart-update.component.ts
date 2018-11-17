@@ -10,6 +10,8 @@ import { ICart } from 'app/shared/model/cart.model';
 import { CartService } from './cart.service';
 import { IProduct } from 'app/shared/model/product.model';
 import { ProductService } from 'app/entities/product';
+import { ICustomer } from 'app/shared/model/customer.model';
+import { CustomerService } from 'app/entities/customer';
 
 @Component({
     selector: 'jhi-cart-update',
@@ -20,6 +22,8 @@ export class CartUpdateComponent implements OnInit {
     isSaving: boolean;
 
     products: IProduct[];
+
+    customers: ICustomer[];
     dateCreated: string;
     dateUpdated: string;
 
@@ -27,6 +31,7 @@ export class CartUpdateComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private cartService: CartService,
         private productService: ProductService,
+        private customerService: CustomerService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -38,6 +43,12 @@ export class CartUpdateComponent implements OnInit {
         this.productService.query().subscribe(
             (res: HttpResponse<IProduct[]>) => {
                 this.products = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.customerService.query().subscribe(
+            (res: HttpResponse<ICustomer[]>) => {
+                this.customers = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -76,6 +87,10 @@ export class CartUpdateComponent implements OnInit {
     }
 
     trackProductById(index: number, item: IProduct) {
+        return item.id;
+    }
+
+    trackCustomerById(index: number, item: ICustomer) {
         return item.id;
     }
     get cart() {

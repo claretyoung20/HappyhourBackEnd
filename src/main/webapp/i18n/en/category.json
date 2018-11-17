@@ -19,7 +19,8 @@
             "dateCreated": "Date Created",
             "dateUpdated": "Date Updated",
             "name": "Name",
-            "restaurant": "Restaurant"
+            "restaurant": "Restaurant",
+            "productType": "Product Type"
         }
     }
 }

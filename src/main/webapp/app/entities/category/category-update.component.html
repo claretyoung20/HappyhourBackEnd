@@ -42,6 +42,13 @@
                         <option [ngValue]="restaurantOption.id" *ngFor="let restaurantOption of restaurants; trackBy: trackRestaurantById">{{restaurantOption.id}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.category.productType" for="field_productType">Product Type</label>
+                    <select class="form-control" id="field_productType" name="productType" [(ngModel)]="category.productTypeId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productTypeOption.id" *ngFor="let productTypeOption of producttypes; trackBy: trackProductTypeById">{{productTypeOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

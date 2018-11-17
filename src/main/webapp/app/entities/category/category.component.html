@@ -19,6 +19,7 @@
             <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.category.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="name"><span jhiTranslate="happybourBackEndApp.category.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.category.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="productTypeId"><span jhiTranslate="happybourBackEndApp.category.productType">Product Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <td>
                     <div *ngIf="category.restaurantId">
                         <a [routerLink]="['../restaurant', category.restaurantId , 'view' ]" >{{category.restaurantId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="category.productTypeId">
+                        <a [routerLink]="['../product-type', category.productTypeId , 'view' ]" >{{category.productTypeId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

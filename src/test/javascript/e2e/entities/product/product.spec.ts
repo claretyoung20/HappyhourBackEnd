@@ -58,7 +58,6 @@ describe('Product e2e test', () => {
         }
         await productUpdatePage.restaurantSelectLastOption();
         await productUpdatePage.categorySelectLastOption();
-        await productUpdatePage.productTypeSelectLastOption();
         await productUpdatePage.save();
         expect(await productUpdatePage.getSaveButton().isPresent()).to.be.false;
 

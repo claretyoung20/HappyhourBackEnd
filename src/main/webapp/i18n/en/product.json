@@ -23,8 +23,7 @@
             "updatedDate": "Updated Date",
             "isAvailable": "Is Available",
             "restaurant": "Restaurant",
-            "category": "Category",
-            "productType": "Product Type"
+            "category": "Category"
         }
     }
 }

@@ -30,6 +30,7 @@ export class CartUpdatePage {
     dateUpdatedInput = element(by.id('field_dateUpdated'));
     totalItemInput = element(by.id('field_totalItem'));
     productSelect = element(by.id('field_product'));
+    customerSelect = element(by.id('field_customer'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -76,6 +77,25 @@ export class CartUpdatePage {
 
     async getProductSelectedOption() {
         return this.productSelect.element(by.css('option:checked')).getText();
+    }
+
+    async customerSelectLastOption() {
+        await this.customerSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async customerSelectOption(option) {
+        await this.customerSelect.sendKeys(option);
+    }
+
+    getCustomerSelect(): ElementFinder {
+        return this.customerSelect;
+    }
+
+    async getCustomerSelectedOption() {
+        return this.customerSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

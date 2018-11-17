@@ -10,6 +10,8 @@ import { ICategory } from 'app/shared/model/category.model';
 import { CategoryService } from './category.service';
 import { IRestaurant } from 'app/shared/model/restaurant.model';
 import { RestaurantService } from 'app/entities/restaurant';
+import { IProductType } from 'app/shared/model/product-type.model';
+import { ProductTypeService } from 'app/entities/product-type';
 
 @Component({
     selector: 'jhi-category-update',
@@ -20,6 +22,8 @@ export class CategoryUpdateComponent implements OnInit {
     isSaving: boolean;
 
     restaurants: IRestaurant[];
+
+    producttypes: IProductType[];
     dateCreated: string;
     dateUpdated: string;
 
@@ -27,6 +31,7 @@ export class CategoryUpdateComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private categoryService: CategoryService,
         private restaurantService: RestaurantService,
+        private productTypeService: ProductTypeService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -38,6 +43,12 @@ export class CategoryUpdateComponent implements OnInit {
         this.restaurantService.query().subscribe(
             (res: HttpResponse<IRestaurant[]>) => {
                 this.restaurants = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.productTypeService.query().subscribe(
+            (res: HttpResponse<IProductType[]>) => {
+                this.producttypes = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -76,6 +87,10 @@ export class CategoryUpdateComponent implements OnInit {
     }
 
     trackRestaurantById(index: number, item: IRestaurant) {
+        return item.id;
+    }
+
+    trackProductTypeById(index: number, item: IProductType) {
         return item.id;
     }
     get category() {

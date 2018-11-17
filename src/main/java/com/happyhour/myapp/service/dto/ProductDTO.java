@@ -30,8 +30,6 @@ public class ProductDTO implements Serializable {
 
     private Long categoryId;
 
-    private Long productTypeId;
-
     public Long getId() {
         return id;
     }
@@ -104,14 +102,6 @@ public class ProductDTO implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public Long getProductTypeId() {
-        return productTypeId;
-    }
-
-    public void setProductTypeId(Long productTypeId) {
-        this.productTypeId = productTypeId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -145,7 +135,6 @@ public class ProductDTO implements Serializable {
             ", isAvailable='" + isIsAvailable() + "'" +
             ", restaurant=" + getRestaurantId() +
             ", category=" + getCategoryId() +
-            ", productType=" + getProductTypeId() +
             "}";
     }
 }

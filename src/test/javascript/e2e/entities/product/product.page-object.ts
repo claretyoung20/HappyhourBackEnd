@@ -34,7 +34,6 @@ export class ProductUpdatePage {
     isAvailableInput = element(by.id('field_isAvailable'));
     restaurantSelect = element(by.id('field_restaurant'));
     categorySelect = element(by.id('field_category'));
-    productTypeSelect = element(by.id('field_productType'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -120,25 +119,6 @@ export class ProductUpdatePage {
 
     async getCategorySelectedOption() {
         return this.categorySelect.element(by.css('option:checked')).getText();
-    }
-
-    async productTypeSelectLastOption() {
-        await this.productTypeSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    async productTypeSelectOption(option) {
-        await this.productTypeSelect.sendKeys(option);
-    }
-
-    getProductTypeSelect(): ElementFinder {
-        return this.productTypeSelect;
-    }
-
-    async getProductTypeSelectedOption() {
-        return this.productTypeSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

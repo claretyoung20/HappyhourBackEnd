@@ -45,6 +45,7 @@ describe('Category e2e test', () => {
         await categoryUpdatePage.setNameInput('name');
         expect(await categoryUpdatePage.getNameInput()).to.eq('name');
         await categoryUpdatePage.restaurantSelectLastOption();
+        await categoryUpdatePage.productTypeSelectLastOption();
         await categoryUpdatePage.save();
         expect(await categoryUpdatePage.getSaveButton().isPresent()).to.be.false;
 

@@ -45,6 +45,7 @@ describe('Cart e2e test', () => {
         await cartUpdatePage.setTotalItemInput('5');
         expect(await cartUpdatePage.getTotalItemInput()).to.eq('5');
         await cartUpdatePage.productSelectLastOption();
+        await cartUpdatePage.customerSelectLastOption();
         await cartUpdatePage.save();
         expect(await cartUpdatePage.getSaveButton().isPresent()).to.be.false;
 

@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -85,5 +86,12 @@ public class CategoryServiceImpl implements CategoryService {
     public void delete(Long id) {
         log.debug("Request to delete Category : {}", id);
         categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<CategoryDTO> getAllByProductTypeId(long id, Pageable pageable) {
+        log.debug("Request to get all Categories by Product Type Id");
+        return categoryRepository.findAllByProductTypeId(id, pageable)
+            .map(categoryMapper::toDto);
     }
 }

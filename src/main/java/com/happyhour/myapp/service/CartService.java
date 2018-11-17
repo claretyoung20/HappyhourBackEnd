@@ -1,10 +1,12 @@
 package com.happyhour.myapp.service;
 
+import com.happyhour.myapp.domain.Cart;
 import com.happyhour.myapp.service.dto.CartDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,4 +45,8 @@ public interface CartService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    Optional<CartDTO> getByProductIdAndCustomerId(long productId, long customerId);
+
+    List<CartDTO> getAllByCustomerId(long id);
 }

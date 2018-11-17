@@ -19,6 +19,8 @@ public class CartDTO implements Serializable {
 
     private Long productId;
 
+    private Long customerId;
+
     public Long getId() {
         return id;
     }
@@ -59,6 +61,14 @@ public class CartDTO implements Serializable {
         this.productId = productId;
     }
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -88,6 +98,7 @@ public class CartDTO implements Serializable {
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", totalItem=" + getTotalItem() +
             ", product=" + getProductId() +
+            ", customer=" + getCustomerId() +
             "}";
     }
 }

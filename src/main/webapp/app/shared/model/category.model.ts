@@ -6,6 +6,7 @@ export interface ICategory {
     dateUpdated?: Moment;
     name?: string;
     restaurantId?: number;
+    productTypeId?: number;
 }
 
 export class Category implements ICategory {
@@ -14,6 +15,7 @@ export class Category implements ICategory {
         public dateCreated?: Moment,
         public dateUpdated?: Moment,
         public name?: string,
-        public restaurantId?: number
+        public restaurantId?: number,
+        public productTypeId?: number
     ) {}
 }

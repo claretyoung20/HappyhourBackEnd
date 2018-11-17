@@ -1,7 +1,9 @@
 package com.happyhour.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.happyhour.myapp.domain.Cart;
 import com.happyhour.myapp.service.CartService;
+import com.happyhour.myapp.service.mapper.CartMapper;
 import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
@@ -9,6 +11,7 @@ import com.happyhour.myapp.service.dto.CartDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +38,9 @@ public class CartResource {
     private static final String ENTITY_NAME = "cart";
 
     private final CartService cartService;
+
+    @Autowired
+    private CartMapper cartMapper;
 
     public CartResource(CartService cartService) {
         this.cartService = cartService;
@@ -53,6 +60,8 @@ public class CartResource {
         if (cartDTO.getId() != null) {
             throw new BadRequestAlertException("A new cart cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        cartDTO.setDateCreated(Instant.now());
+        cartDTO.setDateUpdated(Instant.now());
         CartDTO result = cartService.save(cartDTO);
         return ResponseEntity.created(new URI("/api/carts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -75,6 +84,7 @@ public class CartResource {
         if (cartDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        cartDTO.setDateUpdated(Instant.now());
         CartDTO result = cartService.save(cartDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, cartDTO.getId().toString()))
@@ -122,5 +132,21 @@ public class CartResource {
         log.debug("REST request to delete Cart : {}", id);
         cartService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/carts/exist")
+    @Timed
+    public ResponseEntity<CartDTO> getCartByProductIdAbdCustomerId(long productId, long customerId) {
+        log.debug("REST request to get Cart by productId and customerId: {}",productId, customerId);
+        Optional<CartDTO> cartDTO = cartService.getByProductIdAndCustomerId(productId, customerId);
+        return ResponseUtil.wrapOrNotFound(cartDTO);
+    }
+
+    @GetMapping("/carts/customer/{id}")
+    @Timed
+    public List<Cart> getCartsByCustomer(@PathVariable Long id) {
+        log.debug("REST request to get Cart : {}", id);
+        List<CartDTO> cartDTO = cartService.getAllByCustomerId(id);
+        return cartMapper.toEntity(cartDTO);
     }
 }

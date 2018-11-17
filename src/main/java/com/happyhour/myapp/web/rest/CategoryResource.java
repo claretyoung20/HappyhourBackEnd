@@ -124,4 +124,12 @@ public class CategoryResource {
         categoryService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("categories/ptype/{id}")
+    public ResponseEntity<List<CategoryDTO>> getAllCategoriesByProductType(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of Categories by Product type Id {} ", id);
+        Page<CategoryDTO> page = categoryService.getAllByProductTypeId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/categories");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }
