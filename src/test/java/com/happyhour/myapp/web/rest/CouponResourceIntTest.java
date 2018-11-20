@@ -70,6 +70,9 @@ public class CouponResourceIntTest {
     private static final LocalDate DEFAULT_START_FROM_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_START_FROM_DATE = LocalDate.now(ZoneId.systemDefault());
 
+    private static final Double DEFAULT_MAX_AMOUNT_TO_APPLY = 1D;
+    private static final Double UPDATED_MAX_AMOUNT_TO_APPLY = 2D;
+
     @Autowired
     private CouponRepository couponRepository;
 
@@ -121,7 +124,8 @@ public class CouponResourceIntTest {
             .isActive(DEFAULT_IS_ACTIVE)
             .noPerUser(DEFAULT_NO_PER_USER)
             .price(DEFAULT_PRICE)
-            .startFromDate(DEFAULT_START_FROM_DATE);
+            .startFromDate(DEFAULT_START_FROM_DATE)
+            .maxAmountToApply(DEFAULT_MAX_AMOUNT_TO_APPLY);
         return coupon;
     }
 
@@ -154,6 +158,7 @@ public class CouponResourceIntTest {
         assertThat(testCoupon.getNoPerUser()).isEqualTo(DEFAULT_NO_PER_USER);
         assertThat(testCoupon.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testCoupon.getStartFromDate()).isEqualTo(DEFAULT_START_FROM_DATE);
+        assertThat(testCoupon.getMaxAmountToApply()).isEqualTo(DEFAULT_MAX_AMOUNT_TO_APPLY);
     }
 
     @Test
@@ -213,7 +218,8 @@ public class CouponResourceIntTest {
             .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE.booleanValue())))
             .andExpect(jsonPath("$.[*].noPerUser").value(hasItem(DEFAULT_NO_PER_USER)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].startFromDate").value(hasItem(DEFAULT_START_FROM_DATE.toString())));
+            .andExpect(jsonPath("$.[*].startFromDate").value(hasItem(DEFAULT_START_FROM_DATE.toString())))
+            .andExpect(jsonPath("$.[*].maxAmountToApply").value(hasItem(DEFAULT_MAX_AMOUNT_TO_APPLY.doubleValue())));
     }
     
     @Test
@@ -234,7 +240,8 @@ public class CouponResourceIntTest {
             .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE.booleanValue()))
             .andExpect(jsonPath("$.noPerUser").value(DEFAULT_NO_PER_USER))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.startFromDate").value(DEFAULT_START_FROM_DATE.toString()));
+            .andExpect(jsonPath("$.startFromDate").value(DEFAULT_START_FROM_DATE.toString()))
+            .andExpect(jsonPath("$.maxAmountToApply").value(DEFAULT_MAX_AMOUNT_TO_APPLY.doubleValue()));
     }
 
     @Test
@@ -265,7 +272,8 @@ public class CouponResourceIntTest {
             .isActive(UPDATED_IS_ACTIVE)
             .noPerUser(UPDATED_NO_PER_USER)
             .price(UPDATED_PRICE)
-            .startFromDate(UPDATED_START_FROM_DATE);
+            .startFromDate(UPDATED_START_FROM_DATE)
+            .maxAmountToApply(UPDATED_MAX_AMOUNT_TO_APPLY);
         CouponDTO couponDTO = couponMapper.toDto(updatedCoupon);
 
         restCouponMockMvc.perform(put("/api/coupons")
@@ -285,6 +293,7 @@ public class CouponResourceIntTest {
         assertThat(testCoupon.getNoPerUser()).isEqualTo(UPDATED_NO_PER_USER);
         assertThat(testCoupon.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testCoupon.getStartFromDate()).isEqualTo(UPDATED_START_FROM_DATE);
+        assertThat(testCoupon.getMaxAmountToApply()).isEqualTo(UPDATED_MAX_AMOUNT_TO_APPLY);
     }
 
     @Test

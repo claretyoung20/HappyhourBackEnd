@@ -30,6 +30,8 @@ public class CouponDTO implements Serializable {
 
     private LocalDate startFromDate;
 
+    private Double maxAmountToApply;
+
     private Long restaurantId;
 
     public Long getId() {
@@ -104,6 +106,14 @@ public class CouponDTO implements Serializable {
         this.startFromDate = startFromDate;
     }
 
+    public Double getMaxAmountToApply() {
+        return maxAmountToApply;
+    }
+
+    public void setMaxAmountToApply(Double maxAmountToApply) {
+        this.maxAmountToApply = maxAmountToApply;
+    }
+
     public Long getRestaurantId() {
         return restaurantId;
     }
@@ -145,6 +155,7 @@ public class CouponDTO implements Serializable {
             ", noPerUser=" + getNoPerUser() +
             ", price=" + getPrice() +
             ", startFromDate='" + getStartFromDate() + "'" +
+            ", maxAmountToApply=" + getMaxAmountToApply() +
             ", restaurant=" + getRestaurantId() +
             "}";
     }

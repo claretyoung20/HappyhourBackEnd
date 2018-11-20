@@ -24,6 +24,7 @@
             "noPerUser": "No Per User",
             "price": "Price",
             "startFromDate": "Start From Date",
+            "maxAmountToApply": "Max Amount To Apply",
             "restaurant": "Restaurant"
         }
     }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.happyhour.myapp.web.rest.AddressResource</OriginalElement>
+  <nodes>
+    <node x="212.0" y="153.0">com.happyhour.myapp.service.AddressService</node>
+    <node x="67.75" y="79.0">com.happyhour.myapp.web.rest.AddressResource</node>
+    <node x="200.0" y="232.0">com.happyhour.myapp.service.impl.AddressServiceImpl</node>
+    <node x="191.0" y="306.0">com.happyhour.myapp.service.dto.AddressDTO</node>
+    <node x="0.0" y="380.0">com.happyhour.myapp.domain.Address</node>
+    <node x="0.0" y="306.0">com.happyhour.myapp.repository.AddressRepository</node>
+    <node x="0.0" y="232.0">com.happyhour.myapp.service.mapper.AddressMapperImpl</node>
+    <node x="12.0" y="153.0">com.happyhour.myapp.service.mapper.AddressMapper</node>
+    <node x="143.0" y="0.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="0.0" y="0.0">org.springframework.web.bind.annotation.RestController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.happyhour.myapp.service.mapper.AddressMapperImpl" target="com.happyhour.myapp.service.mapper.AddressMapper">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.AddressServiceImpl" target="com.happyhour.myapp.service.AddressService">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.AddressResource" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="34.5" y="-14.5" />
+      <point x="171.25" y="54.0" />
+      <point x="212.0" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.AddressResource" target="org.springframework.web.bind.annotation.RestController">
+      <point x="-34.5" y="-14.5" />
+      <point x="102.25" y="54.0" />
+      <point x="61.5" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0251862891207153" x="624.7608664050008" y="279.14202645733394" />
+  <SelectedNodes>
+    <node>com.happyhour.myapp.domain.Address</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

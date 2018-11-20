@@ -48,6 +48,9 @@ public class Coupon implements Serializable {
     @Column(name = "start_from_date")
     private LocalDate startFromDate;
 
+    @Column(name = "max_amount_to_apply")
+    private Double maxAmountToApply;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Restaurant restaurant;
@@ -165,6 +168,19 @@ public class Coupon implements Serializable {
         this.startFromDate = startFromDate;
     }
 
+    public Double getMaxAmountToApply() {
+        return maxAmountToApply;
+    }
+
+    public Coupon maxAmountToApply(Double maxAmountToApply) {
+        this.maxAmountToApply = maxAmountToApply;
+        return this;
+    }
+
+    public void setMaxAmountToApply(Double maxAmountToApply) {
+        this.maxAmountToApply = maxAmountToApply;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -211,6 +227,7 @@ public class Coupon implements Serializable {
             ", noPerUser=" + getNoPerUser() +
             ", price=" + getPrice() +
             ", startFromDate='" + getStartFromDate() + "'" +
+            ", maxAmountToApply=" + getMaxAmountToApply() +
             "}";
     }
 }

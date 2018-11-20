@@ -60,6 +60,8 @@ describe('Coupon e2e test', () => {
         expect(await couponUpdatePage.getPriceInput()).to.eq('5');
         await couponUpdatePage.setStartFromDateInput('2000-12-31');
         expect(await couponUpdatePage.getStartFromDateInput()).to.eq('2000-12-31');
+        await couponUpdatePage.setMaxAmountToApplyInput('5');
+        expect(await couponUpdatePage.getMaxAmountToApplyInput()).to.eq('5');
         await couponUpdatePage.restaurantSelectLastOption();
         await couponUpdatePage.save();
         expect(await couponUpdatePage.getSaveButton().isPresent()).to.be.false;

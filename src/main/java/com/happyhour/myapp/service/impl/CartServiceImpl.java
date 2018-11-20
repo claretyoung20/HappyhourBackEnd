@@ -96,10 +96,10 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<CartDTO> getAllByCustomerId(long id) {
+    public Page<CartDTO> getAllByCustomerId(long id, Pageable pageable) {
         log.debug("Request to get Cart by customerId: {}", id);
-        return cartMapper.toDto(cartRepository.getAllByCustomerId(id));
-
+        return cartRepository.findAllByCustomerId(id, pageable)
+            .map(cartMapper::toDto);
     }
 
 

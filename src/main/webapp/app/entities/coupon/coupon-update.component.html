@@ -69,6 +69,11 @@
                         </span>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.coupon.maxAmountToApply" for="field_maxAmountToApply">Max Amount To Apply</label>
+                    <input type="number" class="form-control" name="maxAmountToApply" id="field_maxAmountToApply"
+                        [(ngModel)]="coupon.maxAmountToApply" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.coupon.restaurant" for="field_restaurant">Restaurant</label>

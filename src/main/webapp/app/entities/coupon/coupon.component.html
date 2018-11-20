@@ -23,6 +23,7 @@
             <th jhiSortBy="noPerUser"><span jhiTranslate="happybourBackEndApp.coupon.noPerUser">No Per User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="price"><span jhiTranslate="happybourBackEndApp.coupon.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="startFromDate"><span jhiTranslate="happybourBackEndApp.coupon.startFromDate">Start From Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="maxAmountToApply"><span jhiTranslate="happybourBackEndApp.coupon.maxAmountToApply">Max Amount To Apply</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.coupon.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -38,6 +39,7 @@
                 <td>{{coupon.noPerUser}}</td>
                 <td>{{coupon.price}}</td>
                 <td>{{coupon.startFromDate | date:'mediumDate'}}</td>
+                <td>{{coupon.maxAmountToApply}}</td>
                 <td>
                     <div *ngIf="coupon.restaurantId">
                         <a [routerLink]="['../restaurant', coupon.restaurantId , 'view' ]" >{{coupon.restaurantId}}</a>

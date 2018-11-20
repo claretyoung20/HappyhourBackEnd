@@ -1,6 +1,8 @@
 package com.happyhour.myapp.repository;
 
 import com.happyhour.myapp.domain.Cart;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,6 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 
     Optional<Cart> getByProductIdAndCustomerId(long productId, long customerId);
 
-    List<Cart> getAllByCustomerId(long id);
+    Page<Cart> findAllByCustomerId(long id, Pageable pageable);
 
 }

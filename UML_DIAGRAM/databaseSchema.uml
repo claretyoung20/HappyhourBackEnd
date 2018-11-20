@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>55f28ab0-83ba-4366-bbdb-611d334232de.SCHEMA:happybourbackend</OriginalElement>
+  <nodes>
+    <node x="2322.220370370371" y="615.5">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user_authority</node>
+    <node x="266.22037037037046" y="582.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.address</node>
+    <node x="1074.2203703703703" y="912.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.reservation</node>
+    <node x="186.0" y="1245.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.cart</node>
+    <node x="67.22037037037057" y="593.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product_type</node>
+    <node x="1293.2203703703703" y="527.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.coupon</node>
+    <node x="467.22037037037046" y="582.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.category</node>
+    <node x="868.2203703703705" y="571.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.book_table</node>
+    <node x="1068.2203703703703" y="472.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.customer</node>
+    <node x="1765.4703703703703" y="1212.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.sale_order</node>
+    <node x="668.2203703703705" y="593.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.social_media</node>
+    <node x="1813.2203703703703" y="912.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order</node>
+    <node x="2544.220370370371" y="615.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.order_status</node>
+    <node x="609.4703703703705" y="945.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.rating</node>
+    <node x="0.0" y="1234.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.discount</node>
+    <node x="1919.2203703703703" y="593.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.staff</node>
+    <node x="2400.720370370371" y="165.5">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_authority</node>
+    <node x="385.0" y="1267.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product_image</node>
+    <node x="1493.2203703703703" y="582.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.time_manager</node>
+    <node x="1693.2203703703703" y="560.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.contact_us</node>
+    <node x="337.48672839506173" y="912.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product</node>
+    <node x="2063.6117283950616" y="0.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user</node>
+    <node x="997.0364197530863" y="132.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant</node>
+    <node x="2119.2203703703703" y="571.0">55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_persistent_token</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.time_manager" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-70.0" />
+      <point x="1583.2203703703703" y="432.0" />
+      <point x="1104.7030864197532" y="432.0" />
+      <point x="31.666666666666742" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-125.0" />
+      <point x="435.48672839506173" y="892.0" />
+      <point x="456.72037037037046" y="892.0" />
+      <point x="456.72037037037046" y="412.0" />
+      <point x="1016.0364197530863" y="412.0" />
+      <point x="-57.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.staff" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="-45.0" y="-59.0" />
+      <point x="1964.2203703703703" y="402.0" />
+      <point x="1142.7030864197527" y="402.0" />
+      <point x="69.66666666666652" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.social_media" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-59.0" />
+      <point x="758.2203703703705" y="442.0" />
+      <point x="1054.0364197530862" y="442.0" />
+      <point x="-19.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.category" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-70.0" />
+      <point x="557.2203703703705" y="422.0" />
+      <point x="1028.7030864197532" y="422.0" />
+      <point x="-44.33333333333326" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.rating" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.customer">
+      <point x="48.25" y="-92.0" />
+      <point x="754.2203703703705" y="892.0" />
+      <point x="1102.3870370370373" y="892.0" />
+      <point x="-68.33333333333326" y="180.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.cart" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product">
+      <point x="0.0" y="-70.0" />
+      <point x="275.5" y="1192.0" />
+      <point x="410.98672839506173" y="1192.0" />
+      <point x="-24.5" y="125.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.reservation" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.book_table">
+      <point x="-64.33333333333326" y="-125.0" />
+      <point x="1106.3870370370373" y="882.0" />
+      <point x="958.2203703703705" y="882.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.contact_us" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-92.0" />
+      <point x="1795.7203703703703" y="422.0" />
+      <point x="1117.3697530864197" y="422.0" />
+      <point x="44.33333333333326" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product_image" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product">
+      <point x="0.0" y="-48.0" />
+      <point x="472.5" y="1192.0" />
+      <point x="459.98672839506173" y="1192.0" />
+      <point x="24.5" y="125.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-125.0" />
+      <point x="1908.7203703703703" y="412.0" />
+      <point x="1130.0364197530862" y="412.0" />
+      <point x="57.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.staff">
+      <point x="38.200000000000045" y="-125.0" />
+      <point x="1946.9203703703706" y="882.0" />
+      <point x="2054.2203703703703" y="882.0" />
+      <point x="45.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.address" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-70.0" />
+      <point x="356.22037037037046" y="402.0" />
+      <point x="1003.3697530864196" y="402.0" />
+      <point x="-69.66666666666674" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_persistent_token" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user">
+      <point x="0.0" y="-81.0" />
+      <point x="2210.7203703703703" y="452.0" />
+      <point x="2172.1117283950616" y="452.0" />
+      <point x="0.0" y="191.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product_type">
+      <point x="-65.33333333333348" y="-125.0" />
+      <point x="370.15339506172825" y="892.0" />
+      <point x="156.72037037037057" y="892.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user_authority" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user">
+      <point x="-50.5" y="-36.5" />
+      <point x="2372.720370370371" y="452.0" />
+      <point x="2244.4450617283946" y="452.0" />
+      <point x="72.33333333333331" y="191.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.staff" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user">
+      <point x="45.0" y="-59.0" />
+      <point x="2054.2203703703703" y="452.0" />
+      <point x="2099.7783950617286" y="452.0" />
+      <point x="-72.33333333333331" y="191.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.category">
+      <point x="65.33333333333348" y="-125.0" />
+      <point x="500.8200617283952" y="892.0" />
+      <point x="557.2203703703705" y="892.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.reservation" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.staff">
+      <point x="64.33333333333326" y="-125.0" />
+      <point x="1235.0537037037038" y="872.0" />
+      <point x="1964.2203703703703" y="872.0" />
+      <point x="-45.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.rating" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="-48.25" y="-92.0" />
+      <point x="657.7203703703705" y="432.0" />
+      <point x="1041.3697530864197" y="432.0" />
+      <point x="-31.666666666666742" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.sale_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product">
+      <point x="-47.75" y="-103.0" />
+      <point x="1813.2203703703703" y="1192.0" />
+      <point x="508.98672839506173" y="1192.0" />
+      <point x="73.5" y="125.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.discount" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.product">
+      <point x="0.0" y="-81.0" />
+      <point x="83.0" y="1182.0" />
+      <point x="361.98672839506173" y="1182.0" />
+      <point x="-73.5" y="125.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.order_status">
+      <point x="76.39999999999998" y="-125.0" />
+      <point x="1985.1203703703704" y="892.0" />
+      <point x="2620.220370370371" y="892.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.book_table" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-81.0" />
+      <point x="958.2203703703705" y="452.0" />
+      <point x="1066.7030864197532" y="452.0" />
+      <point x="-6.3333333333332575" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.customer" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-180.0" />
+      <point x="1170.7203703703703" y="452.0" />
+      <point x="1079.3697530864197" y="452.0" />
+      <point x="6.3333333333332575" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_user_authority" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.jhi_authority">
+      <point x="50.5" y="-36.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.coupon" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.restaurant">
+      <point x="0.0" y="-125.0" />
+      <point x="1383.2203703703703" y="442.0" />
+      <point x="1092.0364197530862" y="442.0" />
+      <point x="19.0" y="59.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.customer">
+      <point x="-76.39999999999998" y="-125.0" />
+      <point x="1832.3203703703705" y="862.0" />
+      <point x="1239.0537037037038" y="862.0" />
+      <point x="68.33333333333326" y="180.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.sale_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order">
+      <point x="47.75" y="-103.0" />
+      <point x="0.0" y="125.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.reservation" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.customer">
+      <point x="0.0" y="-125.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.happy_order" target="55f28ab0-83ba-4366-bbdb-611d334232de.TABLE:happybourbackend.coupon">
+      <point x="-38.200000000000045" y="-125.0" />
+      <point x="1870.5203703703705" y="852.0" />
+      <point x="1383.2203703703703" y="852.0" />
+      <point x="0.0" y="125.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9847626058152372" x="651.2277619973091" y="1402.1342128868291" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

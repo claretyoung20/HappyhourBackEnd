@@ -144,9 +144,10 @@ public class CartResource {
 
     @GetMapping("/carts/customer/{id}")
     @Timed
-    public List<Cart> getCartsByCustomer(@PathVariable Long id) {
-        log.debug("REST request to get Cart : {}", id);
-        List<CartDTO> cartDTO = cartService.getAllByCustomerId(id);
-        return cartMapper.toEntity(cartDTO);
+    public ResponseEntity<List<CartDTO>> getCartsByCustomer(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get Cart by customer id: {}", id);
+        Page<CartDTO> page = cartService.getAllByCustomerId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/carts/customer/{id}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

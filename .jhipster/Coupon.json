@@ -44,6 +44,10 @@
         {
             "fieldName": "startFromDate",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "maxAmountToApply",
+            "fieldType": "Double"
         }
     ],
     "changelogDate": "20181113120556",

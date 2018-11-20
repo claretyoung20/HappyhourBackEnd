@@ -54,6 +54,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="max_amount_to_apply" type="double">
+                <constraints nullable="true" />
+            </column>
+
             <column name="restaurant_id" type="bigint">
                 <constraints nullable="true" />
             </column>

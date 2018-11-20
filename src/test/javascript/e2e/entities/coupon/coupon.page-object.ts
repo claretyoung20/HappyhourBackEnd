@@ -34,6 +34,7 @@ export class CouponUpdatePage {
     noPerUserInput = element(by.id('field_noPerUser'));
     priceInput = element(by.id('field_price'));
     startFromDateInput = element(by.id('field_startFromDate'));
+    maxAmountToApplyInput = element(by.id('field_maxAmountToApply'));
     restaurantSelect = element(by.id('field_restaurant'));
 
     async getPageTitle() {
@@ -97,6 +98,14 @@ export class CouponUpdatePage {
 
     async getStartFromDateInput() {
         return this.startFromDateInput.getAttribute('value');
+    }
+
+    async setMaxAmountToApplyInput(maxAmountToApply) {
+        await this.maxAmountToApplyInput.sendKeys(maxAmountToApply);
+    }
+
+    async getMaxAmountToApplyInput() {
+        return this.maxAmountToApplyInput.getAttribute('value');
     }
 
     async restaurantSelectLastOption() {

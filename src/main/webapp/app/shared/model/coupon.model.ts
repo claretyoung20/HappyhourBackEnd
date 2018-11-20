@@ -10,6 +10,7 @@ export interface ICoupon {
     noPerUser?: number;
     price?: number;
     startFromDate?: Moment;
+    maxAmountToApply?: number;
     restaurantId?: number;
 }
 
@@ -24,6 +25,7 @@ export class Coupon implements ICoupon {
         public noPerUser?: number,
         public price?: number,
         public startFromDate?: Moment,
+        public maxAmountToApply?: number,
         public restaurantId?: number
     ) {
         this.isActive = this.isActive || false;
