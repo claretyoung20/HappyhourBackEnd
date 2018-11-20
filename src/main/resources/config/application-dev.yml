@@ -60,10 +60,17 @@ spring:
     liquibase:
         contexts: dev
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.gmail.com
+        port: 587
+        username: happyhour494@gmail.com
+        password: nnennayou
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
+
     messages:
         cache-duration: PT1S # 1 second, see the ISO 8601 standard
     thymeleaf:
@@ -99,8 +106,8 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: 50d83ba7a0bd97fd8bb95d68ebb65ee68a1d82bafbde96227e01d929ef8a4587217d97218b4d5c739987a67e6b1b32ac77ee
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: HappybourBackEnd@localhost
-        base-url: http://127.0.0.1:8080
+        from: claretyoung@gmail.com
+        base-url: http://localhost:9000
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:
             enabled: true
@@ -124,3 +131,16 @@ jhipster:
 # ===================================================================
 
 # application:
+
+
+
+
+#spring.mail.test-connection=true
+#spring.mail.host=smtp.gmail.com
+#spring.mail.port=587
+#spring.mail.username=claretyoung@gmail.com
+#spring.mail.password=nnennayou
+#spring.mail.properties.mail.smtp.auth=true
+#spring.mail.properties.mail.smtp.starttls.enable=true
+#spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
+#spring.mail.properties.mail.debug=true

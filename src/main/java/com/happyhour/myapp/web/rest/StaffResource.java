@@ -3,11 +3,13 @@ package com.happyhour.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.happyhour.myapp.domain.User;
 import com.happyhour.myapp.repository.UserRepository;
+import com.happyhour.myapp.service.MailService;
 import com.happyhour.myapp.service.StaffService;
 import com.happyhour.myapp.service.UserService;
 import com.happyhour.myapp.service.dto.UserDTO;
 import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.errors.EmailAlreadyUsedException;
+import com.happyhour.myapp.web.rest.errors.InvalidPasswordException;
 import com.happyhour.myapp.web.rest.errors.LoginAlreadyUsedException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
@@ -21,6 +23,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -47,6 +50,13 @@ public class StaffResource {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private  MailService mailService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     public StaffResource(StaffService staffService, UserService userService) {
         this.staffService = staffService;
@@ -80,6 +90,9 @@ public class StaffResource {
         staffDTO.setRestaurantId(Long.parseLong("1"));
 
         StaffDTO result = staffService.save(staffDTO);
+
+        // send email to staff
+        mailService.sendCreationEmail(newUser);
         log.debug("REST request to save Staff : {}", staffDTO);
         if (staffDTO.getId() != null) {
             throw new BadRequestAlertException("A new staff cannot already have an ID", ENTITY_NAME, "idexists");
@@ -184,5 +197,21 @@ public class StaffResource {
         // delete staff
         staffService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    // login
+    @GetMapping("/staff/user")
+    @Timed
+    public ResponseEntity<UserDTO> getStafflogin(String login, String password) {
+        // get user by login name
+        Optional<UserDTO> user = userService.findOneByLogin(login);
+
+        // check if the password is correct
+        String currentEncryptedPassword = user.get().getPassword();
+        if (!passwordEncoder.matches(password, currentEncryptedPassword)) {
+            throw new InvalidPasswordException();
+        }
+
+        return ResponseUtil.wrapOrNotFound(user);
     }
 }
