@@ -106,7 +106,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: 50d83ba7a0bd97fd8bb95d68ebb65ee68a1d82bafbde96227e01d929ef8a4587217d97218b4d5c739987a67e6b1b32ac77ee
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: claretyoung@gmail.com
+        from: happyhour494@gmail.com
         base-url: http://localhost:9000
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:

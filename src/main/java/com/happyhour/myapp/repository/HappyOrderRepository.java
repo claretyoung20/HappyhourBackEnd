@@ -1,6 +1,8 @@
 package com.happyhour.myapp.repository;
 
 import com.happyhour.myapp.domain.HappyOrder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +14,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HappyOrderRepository extends JpaRepository<HappyOrder, Long> {
 
+    Page<HappyOrder> findAllByOrderStatusId(long id, Pageable pageable);
 }

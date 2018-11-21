@@ -54,7 +54,7 @@ public class StaffResourceIntTest {
 
     @Autowired
     private StaffMapper staffMapper;
-    
+
     @Autowired
     private StaffService staffService;
 
@@ -111,8 +111,8 @@ public class StaffResourceIntTest {
         StaffDTO staffDTO = staffMapper.toDto(staff);
         restStaffMockMvc.perform(post("/api/staff")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(staffDTO)));
-          //  .andExpect(status().isCreated());
+            .content(TestUtil.convertObjectToJsonBytes(staffDTO)))
+            .andExpect(status().isCreated());
 
         // Validate the Staff in the database
         List<Staff> staffList = staffRepository.findAll();
@@ -173,7 +173,7 @@ public class StaffResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(staff.getId().intValue())))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getStaff() throws Exception {
@@ -214,8 +214,8 @@ public class StaffResourceIntTest {
 
         restStaffMockMvc.perform(put("/api/staff")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(staffDTO)));
-         //   .andExpect(status().isOk());
+            .content(TestUtil.convertObjectToJsonBytes(staffDTO)))
+            .andExpect(status().isOk());
 
         // Validate the Staff in the database
         List<Staff> staffList = staffRepository.findAll();

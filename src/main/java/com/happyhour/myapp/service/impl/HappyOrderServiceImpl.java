@@ -86,4 +86,11 @@ public class HappyOrderServiceImpl implements HappyOrderService {
         log.debug("Request to delete HappyOrder : {}", id);
         happyOrderRepository.deleteById(id);
     }
+
+    @Override
+    public Page<HappyOrderDTO> findAllByOrderStatusId(long id, Pageable pageable) {
+        log.debug("Request to get all HappyOrders by status id");
+        return happyOrderRepository.findAllByOrderStatusId(id, pageable)
+            .map(happyOrderMapper::toDto);
+    }
 }

@@ -43,4 +43,6 @@ public interface HappyOrderService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    Page<HappyOrderDTO> findAllByOrderStatusId(long id, Pageable pageable);
 }
