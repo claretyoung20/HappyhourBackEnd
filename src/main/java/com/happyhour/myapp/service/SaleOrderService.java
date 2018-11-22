@@ -43,4 +43,6 @@ public interface SaleOrderService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    Page<SaleOrderDTO> findAllByOrderId(Long id, Pageable pageable);
 }

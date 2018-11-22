@@ -123,4 +123,13 @@ public class SaleOrderResource {
         saleOrderService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/sale-orders/order/{id}")
+    @Timed
+    public ResponseEntity<List<SaleOrderDTO>> getAllSaleOrdersByOrderId(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of SaleOrders");
+        Page<SaleOrderDTO> page = saleOrderService.findAllByOrderId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sale-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

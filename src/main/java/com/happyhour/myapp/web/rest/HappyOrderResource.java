@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +76,7 @@ public class HappyOrderResource {
         if (happyOrderDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        happyOrderDTO.setDateUpdated(Instant.now());
         HappyOrderDTO result = happyOrderService.save(happyOrderDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, happyOrderDTO.getId().toString()))
@@ -122,5 +124,14 @@ public class HappyOrderResource {
         log.debug("REST request to delete HappyOrder : {}", id);
         happyOrderService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/happy-orders/status/{id}")
+    @Timed
+    public ResponseEntity<List<HappyOrderDTO>> getAllHappyOrdersByStatusId(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of HappyOrders by status id");
+        Page<HappyOrderDTO> page = happyOrderService.findAllByOrderStatusId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

@@ -44,9 +44,9 @@ public class StaffResource {
 
     private static final String ENTITY_NAME = "staff";
 
-    private final StaffService staffService;
+    private StaffService staffService;
 
-    private final UserService userService;
+    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -214,4 +214,13 @@ public class StaffResource {
 
         return ResponseUtil.wrapOrNotFound(user);
     }
+
+    @GetMapping("/staff/user-id/{id}")
+    @Timed
+    public ResponseEntity<StaffDTO> getStaffByUserId(@PathVariable Long id) {
+        log.debug("REST request to get Staff by user id: {}", id);
+        Optional<StaffDTO> staffDTO = staffService.findByUserId(id);
+        return ResponseUtil.wrapOrNotFound(staffDTO);
+    }
+
 }

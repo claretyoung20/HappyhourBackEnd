@@ -86,4 +86,11 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         log.debug("Request to delete SaleOrder : {}", id);
         saleOrderRepository.deleteById(id);
     }
+
+    @Override
+    public Page<SaleOrderDTO> findAllByOrderId(Long id, Pageable pageable) {
+        log.debug("Request to get all SaleOrders");
+        return saleOrderRepository.findAllByHappyOrderId(id, pageable)
+            .map(saleOrderMapper::toDto);
+    }
 }
