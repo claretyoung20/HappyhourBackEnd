@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 
 import { ISaleOrder } from 'app/shared/model/sale-order.model';
@@ -24,8 +22,8 @@ export class SaleOrderUpdateComponent implements OnInit {
     products: IProduct[];
 
     happyorders: IHappyOrder[];
-    dateCreated: string;
-    dateUpdated: string;
+    dateCreatedDp: any;
+    dateUpdatedDp: any;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -60,8 +58,6 @@ export class SaleOrderUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        this.saleOrder.dateCreated = moment(this.dateCreated, DATE_TIME_FORMAT);
-        this.saleOrder.dateUpdated = moment(this.dateUpdated, DATE_TIME_FORMAT);
         if (this.saleOrder.id !== undefined) {
             this.subscribeToSaveResponse(this.saleOrderService.update(this.saleOrder));
         } else {
@@ -99,7 +95,5 @@ export class SaleOrderUpdateComponent implements OnInit {
 
     set saleOrder(saleOrder: ISaleOrder) {
         this._saleOrder = saleOrder;
-        this.dateCreated = moment(saleOrder.dateCreated).format(DATE_TIME_FORMAT);
-        this.dateUpdated = moment(saleOrder.dateUpdated).format(DATE_TIME_FORMAT);
     }
 }

@@ -1,6 +1,6 @@
 package com.happyhour.myapp.service.dto;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,15 +13,15 @@ public class ReservationDTO implements Serializable {
 
     private String comment;
 
-    private Instant reserverDate;
-
-    private Instant updatedDate;
-
     private String status;
 
     private String startTime;
 
     private String endTime;
+
+    private LocalDate reserverDate;
+
+    private LocalDate updatedDate;
 
     private Long staffId;
 
@@ -43,22 +43,6 @@ public class ReservationDTO implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public Instant getReserverDate() {
-        return reserverDate;
-    }
-
-    public void setReserverDate(Instant reserverDate) {
-        this.reserverDate = reserverDate;
-    }
-
-    public Instant getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Instant updatedDate) {
-        this.updatedDate = updatedDate;
     }
 
     public String getStatus() {
@@ -83,6 +67,22 @@ public class ReservationDTO implements Serializable {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public LocalDate getReserverDate() {
+        return reserverDate;
+    }
+
+    public void setReserverDate(LocalDate reserverDate) {
+        this.reserverDate = reserverDate;
+    }
+
+    public LocalDate getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDate updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Long getStaffId() {
@@ -135,11 +135,11 @@ public class ReservationDTO implements Serializable {
         return "ReservationDTO{" +
             "id=" + getId() +
             ", comment='" + getComment() + "'" +
-            ", reserverDate='" + getReserverDate() + "'" +
-            ", updatedDate='" + getUpdatedDate() + "'" +
             ", status='" + getStatus() + "'" +
             ", startTime='" + getStartTime() + "'" +
             ", endTime='" + getEndTime() + "'" +
+            ", reserverDate='" + getReserverDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             ", staff=" + getStaffId() +
             ", bookTable=" + getBookTableId() +
             ", customer=" + getCustomerId() +

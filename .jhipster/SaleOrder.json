@@ -21,21 +21,20 @@
             "fieldType": "Double"
         },
         {
-            "fieldName": "dateCreated",
-            "fieldType": "Instant",
-            "fieldValidateRules": []
-        },
-        {
-            "fieldName": "dateUpdated",
-            "fieldType": "Instant"
-        },
-        {
             "fieldName": "discountAmount",
             "fieldType": "Double"
         },
         {
             "fieldName": "originalPrice",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20181113122546",

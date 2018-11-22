@@ -123,4 +123,13 @@ public class ReservationResource {
         reservationService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/reservations/all")
+    @Timed
+    public ResponseEntity<List<ReservationDTO>> getAllByReservations( String searchPara, Pageable pageable) throws URISyntaxException{
+        log.debug("REST request to get a page of Reservations");
+        Page<ReservationDTO> page = reservationService.findAllReservation(searchPara, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

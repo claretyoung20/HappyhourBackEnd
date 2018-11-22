@@ -17,10 +17,10 @@
                 "title": "Sale Order"
             },
             "basePrice": "Base Price",
-            "dateCreated": "Date Created",
-            "dateUpdated": "Date Updated",
             "discountAmount": "Discount Amount",
             "originalPrice": "Original Price",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
             "product": "Product",
             "happyOrder": "Happy Order"
         }

@@ -86,4 +86,11 @@ public class ReservationServiceImpl implements ReservationService {
         log.debug("Request to delete Reservation : {}", id);
         reservationRepository.deleteById(id);
     }
+
+    @Override
+    public Page<ReservationDTO> findAllReservation(String searchPara, Pageable pageable) {
+        log.debug("Request to get all Reservations");
+        return reservationRepository.findAllReservation(searchPara, pageable)
+            .map(reservationMapper::toDto);
+    }
 }

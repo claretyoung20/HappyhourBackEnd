@@ -17,11 +17,11 @@
                 "title": "Reservation"
             },
             "comment": "Comment",
-            "reserverDate": "Reserver Date",
-            "updatedDate": "Updated Date",
             "status": "Status",
             "startTime": "Start Time",
             "endTime": "End Time",
+            "reserverDate": "Reserver Date",
+            "updatedDate": "Updated Date",
             "staff": "Staff",
             "bookTable": "Book Table",
             "customer": "Customer"

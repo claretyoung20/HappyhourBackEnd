@@ -51,8 +51,12 @@ export class ReservationService {
 
     private convertDateFromClient(reservation: IReservation): IReservation {
         const copy: IReservation = Object.assign({}, reservation, {
-            reserverDate: reservation.reserverDate != null && reservation.reserverDate.isValid() ? reservation.reserverDate.toJSON() : null,
-            updatedDate: reservation.updatedDate != null && reservation.updatedDate.isValid() ? reservation.updatedDate.toJSON() : null
+            reserverDate:
+                reservation.reserverDate != null && reservation.reserverDate.isValid()
+                    ? reservation.reserverDate.format(DATE_FORMAT)
+                    : null,
+            updatedDate:
+                reservation.updatedDate != null && reservation.updatedDate.isValid() ? reservation.updatedDate.format(DATE_FORMAT) : null
         });
         return copy;
     }

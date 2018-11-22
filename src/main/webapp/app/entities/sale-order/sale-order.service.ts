@@ -51,8 +51,9 @@ export class SaleOrderService {
 
     private convertDateFromClient(saleOrder: ISaleOrder): ISaleOrder {
         const copy: ISaleOrder = Object.assign({}, saleOrder, {
-            dateCreated: saleOrder.dateCreated != null && saleOrder.dateCreated.isValid() ? saleOrder.dateCreated.toJSON() : null,
-            dateUpdated: saleOrder.dateUpdated != null && saleOrder.dateUpdated.isValid() ? saleOrder.dateUpdated.toJSON() : null
+            dateCreated:
+                saleOrder.dateCreated != null && saleOrder.dateCreated.isValid() ? saleOrder.dateCreated.format(DATE_FORMAT) : null,
+            dateUpdated: saleOrder.dateUpdated != null && saleOrder.dateUpdated.isValid() ? saleOrder.dateUpdated.format(DATE_FORMAT) : null
         });
         return copy;
     }

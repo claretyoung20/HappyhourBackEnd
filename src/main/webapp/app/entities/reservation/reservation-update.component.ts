@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 
 import { IReservation } from 'app/shared/model/reservation.model';
@@ -28,8 +26,8 @@ export class ReservationUpdateComponent implements OnInit {
     booktables: IBookTable[];
 
     customers: ICustomer[];
-    reserverDate: string;
-    updatedDate: string;
+    reserverDateDp: any;
+    updatedDateDp: any;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -71,8 +69,6 @@ export class ReservationUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        this.reservation.reserverDate = moment(this.reserverDate, DATE_TIME_FORMAT);
-        this.reservation.updatedDate = moment(this.updatedDate, DATE_TIME_FORMAT);
         if (this.reservation.id !== undefined) {
             this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
         } else {
@@ -114,7 +110,5 @@ export class ReservationUpdateComponent implements OnInit {
 
     set reservation(reservation: IReservation) {
         this._reservation = reservation;
-        this.reserverDate = moment(reservation.reserverDate).format(DATE_TIME_FORMAT);
-        this.updatedDate = moment(reservation.updatedDate).format(DATE_TIME_FORMAT);
     }
 }

@@ -27,11 +27,11 @@ export class ReservationUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     commentInput = element(by.id('field_comment'));
-    reserverDateInput = element(by.id('field_reserverDate'));
-    updatedDateInput = element(by.id('field_updatedDate'));
     statusInput = element(by.id('field_status'));
     startTimeInput = element(by.id('field_startTime'));
     endTimeInput = element(by.id('field_endTime'));
+    reserverDateInput = element(by.id('field_reserverDate'));
+    updatedDateInput = element(by.id('field_updatedDate'));
     staffSelect = element(by.id('field_staff'));
     bookTableSelect = element(by.id('field_bookTable'));
     customerSelect = element(by.id('field_customer'));
@@ -46,22 +46,6 @@ export class ReservationUpdatePage {
 
     async getCommentInput() {
         return this.commentInput.getAttribute('value');
-    }
-
-    async setReserverDateInput(reserverDate) {
-        await this.reserverDateInput.sendKeys(reserverDate);
-    }
-
-    async getReserverDateInput() {
-        return this.reserverDateInput.getAttribute('value');
-    }
-
-    async setUpdatedDateInput(updatedDate) {
-        await this.updatedDateInput.sendKeys(updatedDate);
-    }
-
-    async getUpdatedDateInput() {
-        return this.updatedDateInput.getAttribute('value');
     }
 
     async setStatusInput(status) {
@@ -86,6 +70,22 @@ export class ReservationUpdatePage {
 
     async getEndTimeInput() {
         return this.endTimeInput.getAttribute('value');
+    }
+
+    async setReserverDateInput(reserverDate) {
+        await this.reserverDateInput.sendKeys(reserverDate);
+    }
+
+    async getReserverDateInput() {
+        return this.reserverDateInput.getAttribute('value');
+    }
+
+    async setUpdatedDateInput(updatedDate) {
+        await this.updatedDateInput.sendKeys(updatedDate);
+    }
+
+    async getUpdatedDateInput() {
+        return this.updatedDateInput.getAttribute('value');
     }
 
     async staffSelectLastOption() {

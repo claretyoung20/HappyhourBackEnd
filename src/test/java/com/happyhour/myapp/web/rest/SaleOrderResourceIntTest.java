@@ -24,8 +24,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -47,17 +47,17 @@ public class SaleOrderResourceIntTest {
     private static final Double DEFAULT_BASE_PRICE = 1D;
     private static final Double UPDATED_BASE_PRICE = 2D;
 
-    private static final Instant DEFAULT_DATE_CREATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DATE_CREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final Instant DEFAULT_DATE_UPDATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DATE_UPDATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
     private static final Double DEFAULT_DISCOUNT_AMOUNT = 1D;
     private static final Double UPDATED_DISCOUNT_AMOUNT = 2D;
 
     private static final Double DEFAULT_ORIGINAL_PRICE = 1D;
     private static final Double UPDATED_ORIGINAL_PRICE = 2D;
+
+    private static final LocalDate DEFAULT_DATE_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_CREATED = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_UPDATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_UPDATED = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private SaleOrderRepository saleOrderRepository;
@@ -104,10 +104,10 @@ public class SaleOrderResourceIntTest {
     public static SaleOrder createEntity(EntityManager em) {
         SaleOrder saleOrder = new SaleOrder()
             .basePrice(DEFAULT_BASE_PRICE)
-            .dateCreated(DEFAULT_DATE_CREATED)
-            .dateUpdated(DEFAULT_DATE_UPDATED)
             .discountAmount(DEFAULT_DISCOUNT_AMOUNT)
-            .originalPrice(DEFAULT_ORIGINAL_PRICE);
+            .originalPrice(DEFAULT_ORIGINAL_PRICE)
+            .dateCreated(DEFAULT_DATE_CREATED)
+            .dateUpdated(DEFAULT_DATE_UPDATED);
         return saleOrder;
     }
 
@@ -133,10 +133,10 @@ public class SaleOrderResourceIntTest {
         assertThat(saleOrderList).hasSize(databaseSizeBeforeCreate + 1);
         SaleOrder testSaleOrder = saleOrderList.get(saleOrderList.size() - 1);
         assertThat(testSaleOrder.getBasePrice()).isEqualTo(DEFAULT_BASE_PRICE);
-        assertThat(testSaleOrder.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
-        assertThat(testSaleOrder.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
         assertThat(testSaleOrder.getDiscountAmount()).isEqualTo(DEFAULT_DISCOUNT_AMOUNT);
         assertThat(testSaleOrder.getOriginalPrice()).isEqualTo(DEFAULT_ORIGINAL_PRICE);
+        assertThat(testSaleOrder.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
+        assertThat(testSaleOrder.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
     }
 
     @Test
@@ -171,10 +171,10 @@ public class SaleOrderResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(saleOrder.getId().intValue())))
             .andExpect(jsonPath("$.[*].basePrice").value(hasItem(DEFAULT_BASE_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
-            .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())))
             .andExpect(jsonPath("$.[*].discountAmount").value(hasItem(DEFAULT_DISCOUNT_AMOUNT.doubleValue())))
-            .andExpect(jsonPath("$.[*].originalPrice").value(hasItem(DEFAULT_ORIGINAL_PRICE.doubleValue())));
+            .andExpect(jsonPath("$.[*].originalPrice").value(hasItem(DEFAULT_ORIGINAL_PRICE.doubleValue())))
+            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
+            .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())));
     }
     
     @Test
@@ -189,10 +189,10 @@ public class SaleOrderResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(saleOrder.getId().intValue()))
             .andExpect(jsonPath("$.basePrice").value(DEFAULT_BASE_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
-            .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()))
             .andExpect(jsonPath("$.discountAmount").value(DEFAULT_DISCOUNT_AMOUNT.doubleValue()))
-            .andExpect(jsonPath("$.originalPrice").value(DEFAULT_ORIGINAL_PRICE.doubleValue()));
+            .andExpect(jsonPath("$.originalPrice").value(DEFAULT_ORIGINAL_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
+            .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()));
     }
 
     @Test
@@ -217,10 +217,10 @@ public class SaleOrderResourceIntTest {
         em.detach(updatedSaleOrder);
         updatedSaleOrder
             .basePrice(UPDATED_BASE_PRICE)
-            .dateCreated(UPDATED_DATE_CREATED)
-            .dateUpdated(UPDATED_DATE_UPDATED)
             .discountAmount(UPDATED_DISCOUNT_AMOUNT)
-            .originalPrice(UPDATED_ORIGINAL_PRICE);
+            .originalPrice(UPDATED_ORIGINAL_PRICE)
+            .dateCreated(UPDATED_DATE_CREATED)
+            .dateUpdated(UPDATED_DATE_UPDATED);
         SaleOrderDTO saleOrderDTO = saleOrderMapper.toDto(updatedSaleOrder);
 
         restSaleOrderMockMvc.perform(put("/api/sale-orders")
@@ -233,10 +233,10 @@ public class SaleOrderResourceIntTest {
         assertThat(saleOrderList).hasSize(databaseSizeBeforeUpdate);
         SaleOrder testSaleOrder = saleOrderList.get(saleOrderList.size() - 1);
         assertThat(testSaleOrder.getBasePrice()).isEqualTo(UPDATED_BASE_PRICE);
-        assertThat(testSaleOrder.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
-        assertThat(testSaleOrder.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
         assertThat(testSaleOrder.getDiscountAmount()).isEqualTo(UPDATED_DISCOUNT_AMOUNT);
         assertThat(testSaleOrder.getOriginalPrice()).isEqualTo(UPDATED_ORIGINAL_PRICE);
+        assertThat(testSaleOrder.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
+        assertThat(testSaleOrder.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
     }
 
     @Test

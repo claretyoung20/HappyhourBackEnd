@@ -15,20 +15,6 @@
                         [(ngModel)]="saleOrder.basePrice" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.saleOrder.dateCreated" for="field_dateCreated">Date Created</label>
-                    <div class="d-flex">
-                        <input id="field_dateCreated" type="datetime-local" class="form-control" name="dateCreated" [(ngModel)]="dateCreated"
-                        />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.saleOrder.dateUpdated" for="field_dateUpdated">Date Updated</label>
-                    <div class="d-flex">
-                        <input id="field_dateUpdated" type="datetime-local" class="form-control" name="dateUpdated" [(ngModel)]="dateUpdated"
-                        />
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.saleOrder.discountAmount" for="field_discountAmount">Discount Amount</label>
                     <input type="number" class="form-control" name="discountAmount" id="field_discountAmount"
                         [(ngModel)]="saleOrder.discountAmount" />
@@ -37,6 +23,26 @@
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.saleOrder.originalPrice" for="field_originalPrice">Original Price</label>
                     <input type="number" class="form-control" name="originalPrice" id="field_originalPrice"
                         [(ngModel)]="saleOrder.originalPrice" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.saleOrder.dateCreated" for="field_dateCreated">Date Created</label>
+                    <div class="input-group">
+                        <input id="field_dateCreated" type="text" class="form-control" name="dateCreated" ngbDatepicker  #dateCreatedDp="ngbDatepicker" [(ngModel)]="saleOrder.dateCreated"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateCreatedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.saleOrder.dateUpdated" for="field_dateUpdated">Date Updated</label>
+                    <div class="input-group">
+                        <input id="field_dateUpdated" type="text" class="form-control" name="dateUpdated" ngbDatepicker  #dateUpdatedDp="ngbDatepicker" [(ngModel)]="saleOrder.dateUpdated"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateUpdatedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="form-group">

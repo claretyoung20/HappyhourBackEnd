@@ -27,14 +27,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "reserverDate",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "updatedDate",
-            "fieldType": "Instant"
-        },
-        {
             "fieldName": "status",
             "fieldType": "String"
         },
@@ -45,6 +37,14 @@
         {
             "fieldName": "endTime",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "reserverDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20181113130514",

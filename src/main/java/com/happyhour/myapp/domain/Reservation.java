@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -24,12 +24,6 @@ public class Reservation implements Serializable {
     @Column(name = "jhi_comment")
     private String comment;
 
-    @Column(name = "reserver_date")
-    private Instant reserverDate;
-
-    @Column(name = "updated_date")
-    private Instant updatedDate;
-
     @Column(name = "status")
     private String status;
 
@@ -38,6 +32,12 @@ public class Reservation implements Serializable {
 
     @Column(name = "end_time")
     private String endTime;
+
+    @Column(name = "reserver_date")
+    private LocalDate reserverDate;
+
+    @Column(name = "updated_date")
+    private LocalDate updatedDate;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -71,32 +71,6 @@ public class Reservation implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public Instant getReserverDate() {
-        return reserverDate;
-    }
-
-    public Reservation reserverDate(Instant reserverDate) {
-        this.reserverDate = reserverDate;
-        return this;
-    }
-
-    public void setReserverDate(Instant reserverDate) {
-        this.reserverDate = reserverDate;
-    }
-
-    public Instant getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public Reservation updatedDate(Instant updatedDate) {
-        this.updatedDate = updatedDate;
-        return this;
-    }
-
-    public void setUpdatedDate(Instant updatedDate) {
-        this.updatedDate = updatedDate;
     }
 
     public String getStatus() {
@@ -136,6 +110,32 @@ public class Reservation implements Serializable {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public LocalDate getReserverDate() {
+        return reserverDate;
+    }
+
+    public Reservation reserverDate(LocalDate reserverDate) {
+        this.reserverDate = reserverDate;
+        return this;
+    }
+
+    public void setReserverDate(LocalDate reserverDate) {
+        this.reserverDate = reserverDate;
+    }
+
+    public LocalDate getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public Reservation updatedDate(LocalDate updatedDate) {
+        this.updatedDate = updatedDate;
+        return this;
+    }
+
+    public void setUpdatedDate(LocalDate updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Staff getStaff() {
@@ -203,11 +203,11 @@ public class Reservation implements Serializable {
         return "Reservation{" +
             "id=" + getId() +
             ", comment='" + getComment() + "'" +
-            ", reserverDate='" + getReserverDate() + "'" +
-            ", updatedDate='" + getUpdatedDate() + "'" +
             ", status='" + getStatus() + "'" +
             ", startTime='" + getStartTime() + "'" +
             ", endTime='" + getEndTime() + "'" +
+            ", reserverDate='" + getReserverDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

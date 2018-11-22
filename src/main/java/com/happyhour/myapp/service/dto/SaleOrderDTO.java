@@ -1,6 +1,6 @@
 package com.happyhour.myapp.service.dto;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,13 +13,13 @@ public class SaleOrderDTO implements Serializable {
 
     private Double basePrice;
 
-    private Instant dateCreated;
-
-    private Instant dateUpdated;
-
     private Double discountAmount;
 
     private Double originalPrice;
+
+    private LocalDate dateCreated;
+
+    private LocalDate dateUpdated;
 
     private Long productId;
 
@@ -41,22 +41,6 @@ public class SaleOrderDTO implements Serializable {
         this.basePrice = basePrice;
     }
 
-    public Instant getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Instant getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(Instant dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
-
     public Double getDiscountAmount() {
         return discountAmount;
     }
@@ -71,6 +55,22 @@ public class SaleOrderDTO implements Serializable {
 
     public void setOriginalPrice(Double originalPrice) {
         this.originalPrice = originalPrice;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDate getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
     public Long getProductId() {
@@ -115,10 +115,10 @@ public class SaleOrderDTO implements Serializable {
         return "SaleOrderDTO{" +
             "id=" + getId() +
             ", basePrice=" + getBasePrice() +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", dateUpdated='" + getDateUpdated() + "'" +
             ", discountAmount=" + getDiscountAmount() +
             ", originalPrice=" + getOriginalPrice() +
+            ", dateCreated='" + getDateCreated() + "'" +
+            ", dateUpdated='" + getDateUpdated() + "'" +
             ", product=" + getProductId() +
             ", happyOrder=" + getHappyOrderId() +
             "}";

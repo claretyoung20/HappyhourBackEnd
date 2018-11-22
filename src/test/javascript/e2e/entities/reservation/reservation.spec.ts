@@ -1,5 +1,5 @@
 /* tslint:disable no-unused-expression */
-import { browser, ExpectedConditions as ec, protractor } from 'protractor';
+import { browser, ExpectedConditions as ec } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { ReservationComponentsPage, ReservationDeleteDialog, ReservationUpdatePage } from './reservation.page-object';
@@ -40,16 +40,16 @@ describe('Reservation e2e test', () => {
         await reservationComponentsPage.clickOnCreateButton();
         await reservationUpdatePage.setCommentInput('comment');
         expect(await reservationUpdatePage.getCommentInput()).to.eq('comment');
-        await reservationUpdatePage.setReserverDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(await reservationUpdatePage.getReserverDateInput()).to.contain('2001-01-01T02:30');
-        await reservationUpdatePage.setUpdatedDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(await reservationUpdatePage.getUpdatedDateInput()).to.contain('2001-01-01T02:30');
         await reservationUpdatePage.setStatusInput('status');
         expect(await reservationUpdatePage.getStatusInput()).to.eq('status');
         await reservationUpdatePage.setStartTimeInput('startTime');
         expect(await reservationUpdatePage.getStartTimeInput()).to.eq('startTime');
         await reservationUpdatePage.setEndTimeInput('endTime');
         expect(await reservationUpdatePage.getEndTimeInput()).to.eq('endTime');
+        await reservationUpdatePage.setReserverDateInput('2000-12-31');
+        expect(await reservationUpdatePage.getReserverDateInput()).to.eq('2000-12-31');
+        await reservationUpdatePage.setUpdatedDateInput('2000-12-31');
+        expect(await reservationUpdatePage.getUpdatedDateInput()).to.eq('2000-12-31');
         await reservationUpdatePage.staffSelectLastOption();
         await reservationUpdatePage.bookTableSelectLastOption();
         await reservationUpdatePage.customerSelectLastOption();

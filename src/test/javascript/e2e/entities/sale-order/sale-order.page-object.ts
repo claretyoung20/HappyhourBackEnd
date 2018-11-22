@@ -27,10 +27,10 @@ export class SaleOrderUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     basePriceInput = element(by.id('field_basePrice'));
-    dateCreatedInput = element(by.id('field_dateCreated'));
-    dateUpdatedInput = element(by.id('field_dateUpdated'));
     discountAmountInput = element(by.id('field_discountAmount'));
     originalPriceInput = element(by.id('field_originalPrice'));
+    dateCreatedInput = element(by.id('field_dateCreated'));
+    dateUpdatedInput = element(by.id('field_dateUpdated'));
     productSelect = element(by.id('field_product'));
     happyOrderSelect = element(by.id('field_happyOrder'));
 
@@ -44,22 +44,6 @@ export class SaleOrderUpdatePage {
 
     async getBasePriceInput() {
         return this.basePriceInput.getAttribute('value');
-    }
-
-    async setDateCreatedInput(dateCreated) {
-        await this.dateCreatedInput.sendKeys(dateCreated);
-    }
-
-    async getDateCreatedInput() {
-        return this.dateCreatedInput.getAttribute('value');
-    }
-
-    async setDateUpdatedInput(dateUpdated) {
-        await this.dateUpdatedInput.sendKeys(dateUpdated);
-    }
-
-    async getDateUpdatedInput() {
-        return this.dateUpdatedInput.getAttribute('value');
     }
 
     async setDiscountAmountInput(discountAmount) {
@@ -76,6 +60,22 @@ export class SaleOrderUpdatePage {
 
     async getOriginalPriceInput() {
         return this.originalPriceInput.getAttribute('value');
+    }
+
+    async setDateCreatedInput(dateCreated) {
+        await this.dateCreatedInput.sendKeys(dateCreated);
+    }
+
+    async getDateCreatedInput() {
+        return this.dateCreatedInput.getAttribute('value');
+    }
+
+    async setDateUpdatedInput(dateUpdated) {
+        await this.dateUpdatedInput.sendKeys(dateUpdated);
+    }
+
+    async getDateUpdatedInput() {
+        return this.dateUpdatedInput.getAttribute('value');
     }
 
     async productSelectLastOption() {

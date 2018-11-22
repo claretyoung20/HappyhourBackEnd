@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -24,17 +24,17 @@ public class SaleOrder implements Serializable {
     @Column(name = "base_price")
     private Double basePrice;
 
-    @Column(name = "date_created")
-    private Instant dateCreated;
-
-    @Column(name = "date_updated")
-    private Instant dateUpdated;
-
     @Column(name = "discount_amount")
     private Double discountAmount;
 
     @Column(name = "original_price")
     private Double originalPrice;
+
+    @Column(name = "date_created")
+    private LocalDate dateCreated;
+
+    @Column(name = "date_updated")
+    private LocalDate dateUpdated;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -66,32 +66,6 @@ public class SaleOrder implements Serializable {
         this.basePrice = basePrice;
     }
 
-    public Instant getDateCreated() {
-        return dateCreated;
-    }
-
-    public SaleOrder dateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-        return this;
-    }
-
-    public void setDateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Instant getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public SaleOrder dateUpdated(Instant dateUpdated) {
-        this.dateUpdated = dateUpdated;
-        return this;
-    }
-
-    public void setDateUpdated(Instant dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
-
     public Double getDiscountAmount() {
         return discountAmount;
     }
@@ -116,6 +90,32 @@ public class SaleOrder implements Serializable {
 
     public void setOriginalPrice(Double originalPrice) {
         this.originalPrice = originalPrice;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public SaleOrder dateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+        return this;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDate getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public SaleOrder dateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
+        return this;
+    }
+
+    public void setDateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
     public Product getProduct() {
@@ -170,10 +170,10 @@ public class SaleOrder implements Serializable {
         return "SaleOrder{" +
             "id=" + getId() +
             ", basePrice=" + getBasePrice() +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", dateUpdated='" + getDateUpdated() + "'" +
             ", discountAmount=" + getDiscountAmount() +
             ", originalPrice=" + getOriginalPrice() +
+            ", dateCreated='" + getDateCreated() + "'" +
+            ", dateUpdated='" + getDateUpdated() + "'" +
             "}";
     }
 }
