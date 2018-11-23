@@ -45,4 +45,6 @@ public interface ProductService {
     void delete(Long id);
 
     Page<ProductDTO> getAllByCategoryId(long id, Pageable pageable);
+
+    ProductDTO findById(long id);
 }

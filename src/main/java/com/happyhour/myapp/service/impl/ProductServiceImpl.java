@@ -94,4 +94,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAllByCategoryId(id, pageable)
             .map(productMapper::toDto);
     }
+
+    @Override
+    public ProductDTO findById(long id) {
+        return productMapper.toDto(productRepository.findById(id));
+    }
+
+
 }

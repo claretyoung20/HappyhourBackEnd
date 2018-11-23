@@ -49,4 +49,6 @@ public interface CartService {
     Optional<CartDTO> getByProductIdAndCustomerId(long productId, long customerId);
 
     Page<CartDTO> getAllByCustomerId(long id, Pageable pageable);
+
+    List<CartDTO> findAllByCustomerId(long id);
 }

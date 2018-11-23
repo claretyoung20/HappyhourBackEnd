@@ -3,11 +3,14 @@ package com.happyhour.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.happyhour.myapp.domain.Cart;
 import com.happyhour.myapp.service.CartService;
+import com.happyhour.myapp.service.ProductService;
+import com.happyhour.myapp.service.dto.ProductDTO;
 import com.happyhour.myapp.service.mapper.CartMapper;
 import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.CartDTO;
+import com.sun.deploy.util.ArrayUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,11 +21,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.ListUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +46,9 @@ public class CartResource {
 
     @Autowired
     private CartMapper cartMapper;
+
+    @Autowired
+    private ProductService productService;
 
     public CartResource(CartService cartService) {
         this.cartService = cartService;
@@ -149,5 +157,23 @@ public class CartResource {
         Page<CartDTO> page = cartService.getAllByCustomerId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/carts/customer/{id}");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    // return product
+    @GetMapping("/carts/customer/product/{id}")
+    @Timed
+    public ResponseEntity<List<ProductDTO>> getAllProductFromCart(@PathVariable Long id) {
+        log.debug("REST request to get Cart by customer id: {}", id);
+        List<CartDTO> cartDTOS = cartService.findAllByCustomerId(id);
+
+        List<ProductDTO> productDTOS = new ArrayList<>();
+
+        for (CartDTO cartDTO: cartDTOS) {
+            productDTOS.add(productService.findById(cartDTO.getProductId()));
+        }
+
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/carts/customer/{id}");
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(productDTOS, headers, HttpStatus.OK);
     }
 }

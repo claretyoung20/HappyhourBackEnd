@@ -102,5 +102,12 @@ public class CartServiceImpl implements CartService {
             .map(cartMapper::toDto);
     }
 
+    @Override
+    public List<CartDTO> findAllByCustomerId(long id) {
+
+        log.debug("Request to get Cart by customerId: {}", id);
+       return cartMapper.toDto(cartRepository.findAllByCustomerId(id));
+    }
+
 
 }
