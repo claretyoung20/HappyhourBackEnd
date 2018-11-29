@@ -1,0 +1,25 @@
+
+{
+    "happybourBackEndApp": {
+        "timeManager" : {
+            "home": {
+                "title": "Time Managers",
+                "createLabel": "Thêm mới một Time Manager",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Time Manager"
+            },
+            "created": "Một Time Manager mới được tạo với định danh {{ param }}",
+            "updated": "Một Time Manager cập nhật với định danh {{ param }}",
+            "deleted": "Một Time Manager đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Time Manager {{ id }}?"
+            },
+            "detail": {
+                "title": "Time Manager"
+            },
+            "day": "Day",
+            "startTime": "Start Time",
+            "endTime": "End Time",
+            "restaurant": "Restaurant"
+        }
+    }
+}

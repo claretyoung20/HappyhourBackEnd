@@ -173,6 +173,16 @@ public class UserResource {
                 .map(UserDTO::new));
     }
 
+    @GetMapping("/user/staff/account/{id}")
+    @Timed
+    public ResponseEntity<UserDTO> getStaff(@PathVariable Long id) {
+        log.debug("REST request to get User : {}", id);
+        return ResponseUtil.wrapOrNotFound(
+            userService.findOne(id)
+                .map(UserDTO::new));
+    }
+
+
     /**
      * DELETE /users/:login : delete the "login" User.
      *

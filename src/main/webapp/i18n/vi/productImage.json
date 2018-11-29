@@ -1,0 +1,23 @@
+
+{
+    "happybourBackEndApp": {
+        "productImage" : {
+            "home": {
+                "title": "Product Images",
+                "createLabel": "Thêm mới một Product Image",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Product Image"
+            },
+            "created": "Một Product Image mới được tạo với định danh {{ param }}",
+            "updated": "Một Product Image cập nhật với định danh {{ param }}",
+            "deleted": "Một Product Image đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Product Image {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Image"
+            },
+            "imageUrl": "Image Url",
+            "product": "Product"
+        }
+    }
+}

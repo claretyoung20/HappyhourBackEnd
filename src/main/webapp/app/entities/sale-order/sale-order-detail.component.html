@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="saleOrder">
+            <h2><span jhiTranslate="happybourBackEndApp.saleOrder.detail.title">Sale Order</span> {{saleOrder.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.basePrice">Base Price</span></dt>
+                <dd>
+                    <span>{{saleOrder.basePrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.discountAmount">Discount Amount</span></dt>
+                <dd>
+                    <span>{{saleOrder.discountAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.originalPrice">Original Price</span></dt>
+                <dd>
+                    <span>{{saleOrder.originalPrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{saleOrder.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.dateUpdated">Date Updated</span></dt>
+                <dd>
+                    <span>{{saleOrder.dateUpdated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="saleOrder.productId">
+                        <a [routerLink]="['/product', saleOrder.productId, 'view']">{{saleOrder.productId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.saleOrder.happyOrder">Happy Order</span></dt>
+                <dd>
+                    <div *ngIf="saleOrder.happyOrderId">
+                        <a [routerLink]="['/happy-order', saleOrder.happyOrderId, 'view']">{{saleOrder.happyOrderId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sale-order', saleOrder.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

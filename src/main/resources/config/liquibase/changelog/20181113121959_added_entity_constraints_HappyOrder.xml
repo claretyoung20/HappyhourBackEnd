@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity HappyOrder.
+    -->
+    <changeSet id="20181113121959-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="order_status_id"
+                                 baseTableName="happy_order"
+                                 constraintName="fk_happy_order_order_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="order_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="happy_order"
+                                 constraintName="fk_happy_order_customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="coupon_id"
+                                 baseTableName="happy_order"
+                                 constraintName="fk_happy_order_coupon_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coupon"/>
+
+        <addForeignKeyConstraint baseColumnNames="restaurant_id"
+                                 baseTableName="happy_order"
+                                 constraintName="fk_happy_order_restaurant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="restaurant"/>
+
+        <addForeignKeyConstraint baseColumnNames="staff_id"
+                                 baseTableName="happy_order"
+                                 constraintName="fk_happy_order_staff_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+    </changeSet>
+</databaseChangeLog>

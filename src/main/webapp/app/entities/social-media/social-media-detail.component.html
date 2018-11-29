@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="socialMedia">
+            <h2><span jhiTranslate="happybourBackEndApp.socialMedia.detail.title">Social Media</span> {{socialMedia.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.socialMedia.name">Name</span></dt>
+                <dd>
+                    <span>{{socialMedia.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.socialMedia.link">Link</span></dt>
+                <dd>
+                    <span>{{socialMedia.link}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.socialMedia.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="socialMedia.restaurantId">
+                        <a [routerLink]="['/restaurant', socialMedia.restaurantId, 'view']">{{socialMedia.restaurantId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/social-media', socialMedia.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

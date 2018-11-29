@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.happyhour.myapp.web.rest.CustomerResource</OriginalElement>
+  <nodes>
+    <node x="913.4478991596641" y="883.0">com.happyhour.myapp.service.CustomerService</node>
+    <node x="384.04411764705907" y="0.0">com.happyhour.myapp.domain.Customer</node>
+    <node x="693.8536414565827" y="1160.5">com.happyhour.myapp.service.mapper.CustomerMapperImpl</node>
+    <node x="425.5" y="905.0">com.happyhour.myapp.service.mapper.CustomerMapper</node>
+    <node x="10.5" y="927.0">com.happyhour.myapp.repository.CustomerRepository</node>
+    <node x="1352.447899159664" y="850.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="1183.1666666666667" y="1116.0">com.happyhour.myapp.web.rest.CustomerResource</node>
+    <node x="220.12240896358549" y="1127.0">com.happyhour.myapp.service.impl.CustomerServiceImpl</node>
+    <node x="798.8536414565829" y="165.5">com.happyhour.myapp.service.dto.CustomerDTO</node>
+    <node x="1585.447899159664" y="927.0">org.springframework.web.bind.annotation.RestController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.happyhour.myapp.service.impl.CustomerServiceImpl" target="com.happyhour.myapp.service.CustomerService">
+      <point x="179.57142857142844" y="-115.0" />
+      <point x="609.1938375350139" y="1096.0" />
+      <point x="983.2812324929974" y="1096.0" />
+      <point x="-139.66666666666663" y="70.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CustomerServiceImpl" target="com.happyhour.myapp.service.mapper.CustomerMapper">
+      <point x="59.85714285714289" y="-115.0" />
+      <point x="489.4795518207284" y="1076.0" />
+      <point x="549.0" y="1076.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CustomerMapper" target="com.happyhour.myapp.domain.Customer">
+      <point x="0.0" y="-48.0" />
+      <point x="549.0" y="830.0" />
+      <point x="525.794117647059" y="830.0" />
+      <point x="20.25" y="390.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CustomerResource" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="0.0" y="-126.0" />
+      <point x="1431.1666666666667" y="1096.0" />
+      <point x="1458.447899159664" y="1096.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CustomerMapper" target="com.happyhour.myapp.service.dto.CustomerDTO">
+      <point x="82.33333333333326" y="-48.0" />
+      <point x="631.3333333333333" y="820.0" />
+      <point x="814.6869747899161" y="820.0" />
+      <point x="-79.16666666666663" y="224.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CustomerMapperImpl" target="com.happyhour.myapp.service.dto.CustomerDTO">
+      <point x="126.0" y="-81.5" />
+      <point x="977.3536414565827" y="1076.0" />
+      <point x="884.3978991596641" y="1076.0" />
+      <point x="884.3978991596641" y="830.0" />
+      <point x="909.6869747899161" y="830.0" />
+      <point x="15.833333333333258" y="224.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.repository.CustomerRepository" target="com.happyhour.myapp.domain.Customer">
+      <point x="0.0" y="-26.0" />
+      <point x="208.0" y="830.0" />
+      <point x="444.79411764705907" y="830.0" />
+      <point x="-60.75" y="390.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.CustomerService" target="com.happyhour.myapp.service.dto.CustomerDTO">
+      <point x="0.0" y="-70.0" />
+      <point x="1122.947899159664" y="830.0" />
+      <point x="941.3536414565829" y="830.0" />
+      <point x="47.5" y="224.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CustomerResource" target="com.happyhour.myapp.service.dto.CustomerDTO">
+      <point x="99.20000000000005" y="-126.0" />
+      <point x="1530.3666666666668" y="1096.0" />
+      <point x="1574.947899159664" y="1096.0" />
+      <point x="1574.947899159664" y="820.0" />
+      <point x="973.0203081232496" y="820.0" />
+      <point x="79.16666666666674" y="224.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CustomerResource" target="com.happyhour.myapp.service.CustomerService">
+      <point x="-99.19999999999993" y="-126.0" />
+      <point x="1331.9666666666667" y="1096.0" />
+      <point x="1262.6145658263308" y="1096.0" />
+      <point x="139.66666666666663" y="70.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CustomerServiceImpl" target="com.happyhour.myapp.domain.Customer">
+      <point x="-179.57142857142856" y="-115.0" />
+      <point x="250.05098039215693" y="1096.0" />
+      <point x="0.0" y="1096.0" />
+      <point x="0.0" y="820.0" />
+      <point x="404.29411764705907" y="820.0" />
+      <point x="-101.25" y="390.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CustomerMapperImpl" target="com.happyhour.myapp.domain.Customer">
+      <point x="0.0" y="-81.5" />
+      <point x="851.3536414565827" y="1086.0" />
+      <point x="862.3978991596641" y="1086.0" />
+      <point x="862.3978991596641" y="800.0" />
+      <point x="606.794117647059" y="800.0" />
+      <point x="101.25" y="390.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CustomerServiceImpl" target="com.happyhour.myapp.service.dto.CustomerDTO">
+      <point x="119.71428571428578" y="-115.0" />
+      <point x="549.3366946778713" y="1086.0" />
+      <point x="757.3333333333334" y="1086.0" />
+      <point x="757.3333333333334" y="830.0" />
+      <point x="846.3536414565829" y="830.0" />
+      <point x="-47.5" y="224.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CustomerServiceImpl" target="com.happyhour.myapp.repository.CustomerRepository">
+      <point x="-59.85714285714289" y="-115.0" />
+      <point x="369.7652661064426" y="1076.0" />
+      <point x="306.75" y="1076.0" />
+      <point x="98.75" y="26.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CustomerResource" target="org.springframework.web.bind.annotation.RestController">
+      <point x="198.39999999999998" y="-126.0" />
+      <point x="1629.5666666666666" y="1096.0" />
+      <point x="1653.947899159664" y="1096.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CustomerMapperImpl" target="com.happyhour.myapp.service.mapper.CustomerMapper">
+      <point x="-126.0" y="-81.5" />
+      <point x="725.3536414565827" y="1076.0" />
+      <point x="631.3333333333333" y="1076.0" />
+      <point x="82.33333333333326" y="48.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="206.5" y="769.5" />
+  <SelectedNodes>
+    <node>com.happyhour.myapp.domain.Customer</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

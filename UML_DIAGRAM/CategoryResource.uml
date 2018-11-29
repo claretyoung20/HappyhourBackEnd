@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.happyhour.myapp.web.rest.CategoryResource</OriginalElement>
+  <nodes>
+    <node x="1026.617857142857" y="0.0">com.happyhour.myapp.domain.Category</node>
+    <node x="1047.720238095238" y="727.5">com.happyhour.myapp.service.mapper.CategoryMapperImpl</node>
+    <node x="688.9999999999999" y="55.5">com.happyhour.myapp.service.dto.CategoryDTO</node>
+    <node x="702.5" y="516.0">com.happyhour.myapp.repository.CategoryRepository</node>
+    <node x="943.4186974789916" y="483.0">com.happyhour.myapp.service.mapper.CategoryMapper</node>
+    <node x="10.5" y="428.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="641.7202380952381" y="705.0">com.happyhour.myapp.service.impl.CategoryServiceImpl</node>
+    <node x="399.49999999999994" y="472.0">com.happyhour.myapp.service.CategoryService</node>
+    <node x="117.5804621848738" y="694.0">com.happyhour.myapp.web.rest.CategoryResource</node>
+    <node x="242.5" y="505.0">org.springframework.web.bind.annotation.RestController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.happyhour.myapp.service.impl.CategoryServiceImpl" target="com.happyhour.myapp.domain.Category">
+      <point x="55.14285714285717" y="-104.0" />
+      <point x="889.8630952380952" y="674.0" />
+      <point x="875.5271708683472" y="674.0" />
+      <point x="875.5271708683472" y="398.0" />
+      <point x="1085.367857142857" y="398.0" />
+      <point x="-58.75" y="159.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CategoryServiceImpl" target="com.happyhour.myapp.service.dto.CategoryDTO">
+      <point x="-110.28571428571428" y="-104.0" />
+      <point x="724.4345238095237" y="674.0" />
+      <point x="692.0" y="674.0" />
+      <point x="692.0" y="408.0" />
+      <point x="768.1666666666665" y="408.0" />
+      <point x="-15.833333333333371" y="103.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CategoryMapperImpl" target="com.happyhour.myapp.service.mapper.CategoryMapper">
+      <point x="-61.39999999999998" y="-81.5" />
+      <point x="1139.820238095238" y="674.0" />
+      <point x="1142.5853641456583" y="674.0" />
+      <point x="79.66666666666669" y="48.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CategoryResource" target="com.happyhour.myapp.service.CategoryService">
+      <point x="83.0" y="-115.0" />
+      <point x="408.0804621848738" y="674.0" />
+      <point x="446.49999999999994" y="674.0" />
+      <point x="-94.0" y="59.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CategoryResource" target="org.springframework.web.bind.annotation.RestController">
+      <point x="0.0" y="-115.0" />
+      <point x="325.0804621848738" y="674.0" />
+      <point x="311.0" y="674.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CategoryResource" target="com.happyhour.myapp.service.dto.CategoryDTO">
+      <point x="-166.0" y="-115.0" />
+      <point x="159.0804621848738" y="674.0" />
+      <point x="0.0" y="674.0" />
+      <point x="0.0" y="388.0" />
+      <point x="704.8333333333333" y="388.0" />
+      <point x="-79.16666666666663" y="103.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CategoryResource" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="-83.0" y="-115.0" />
+      <point x="242.0804621848738" y="664.0" />
+      <point x="116.5" y="664.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.repository.CategoryRepository" target="com.happyhour.myapp.domain.Category">
+      <point x="0.0" y="-15.0" />
+      <point x="778.5" y="388.0" />
+      <point x="1046.2011904761903" y="388.0" />
+      <point x="-97.91666666666666" y="159.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CategoryMapperImpl" target="com.happyhour.myapp.service.dto.CategoryDTO">
+      <point x="-122.80000000000001" y="-81.5" />
+      <point x="1078.420238095238" y="664.0" />
+      <point x="930.1542016806721" y="664.0" />
+      <point x="930.1542016806721" y="378.0" />
+      <point x="799.8333333333333" y="378.0" />
+      <point x="15.833333333333371" y="103.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CategoryMapperImpl" target="com.happyhour.myapp.domain.Category">
+      <point x="61.39999999999998" y="-81.5" />
+      <point x="1262.620238095238" y="664.0" />
+      <point x="1331.220238095238" y="664.0" />
+      <point x="1331.220238095238" y="348.0" />
+      <point x="1202.867857142857" y="348.0" />
+      <point x="58.75" y="159.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CategoryServiceImpl" target="com.happyhour.myapp.service.mapper.CategoryMapper">
+      <point x="110.28571428571433" y="-104.0" />
+      <point x="945.0059523809523" y="674.0" />
+      <point x="983.2520308123248" y="674.0" />
+      <point x="-79.66666666666669" y="48.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CategoryMapper" target="com.happyhour.myapp.domain.Category">
+      <point x="79.66666666666669" y="-48.0" />
+      <point x="1142.5853641456583" y="408.0" />
+      <point x="1163.7011904761903" y="408.0" />
+      <point x="19.58333333333337" y="159.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CategoryMapper" target="com.happyhour.myapp.service.dto.CategoryDTO">
+      <point x="-79.66666666666669" y="-48.0" />
+      <point x="983.2520308123248" y="368.0" />
+      <point x="831.4999999999999" y="368.0" />
+      <point x="47.5" y="103.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CategoryServiceImpl" target="com.happyhour.myapp.repository.CategoryRepository">
+      <point x="2.8421709430404007E-14" y="-104.0" />
+      <point x="834.7202380952381" y="674.0" />
+      <point x="816.5" y="674.0" />
+      <point x="38.0" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.CategoryService" target="com.happyhour.myapp.service.dto.CategoryDTO">
+      <point x="0.0" y="-59.0" />
+      <point x="540.5" y="398.0" />
+      <point x="736.4999999999999" y="398.0" />
+      <point x="-47.5" y="103.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CategoryServiceImpl" target="com.happyhour.myapp.service.CategoryService">
+      <point x="-165.42857142857144" y="-104.0" />
+      <point x="669.2916666666665" y="674.0" />
+      <point x="634.5" y="674.0" />
+      <point x="94.0" y="59.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="735.0" y="639.5" />
+  <SelectedNodes>
+    <node>com.happyhour.myapp.domain.Category</node>
+    <node>com.happyhour.myapp.service.mapper.CategoryMapperImpl</node>
+    <node>com.happyhour.myapp.service.dto.CategoryDTO</node>
+    <node>com.happyhour.myapp.repository.CategoryRepository</node>
+    <node>com.happyhour.myapp.service.mapper.CategoryMapper</node>
+    <node>com.happyhour.myapp.service.impl.CategoryServiceImpl</node>
+    <node>com.happyhour.myapp.service.CategoryService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

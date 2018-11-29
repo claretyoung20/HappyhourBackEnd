@@ -1,0 +1,31 @@
+
+{
+    "happybourBackEndApp": {
+        "coupon" : {
+            "home": {
+                "title": "Coupons",
+                "createLabel": "Create a new Coupon",
+                "createOrEditLabel": "Create or edit a Coupon"
+            },
+            "created": "A new Coupon is created with identifier {{ param }}",
+            "updated": "A Coupon is updated with identifier {{ param }}",
+            "deleted": "A Coupon is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Coupon {{ id }}?"
+            },
+            "detail": {
+                "title": "Coupon"
+            },
+            "code": "Code",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "endDate": "End Date",
+            "isActive": "Is Active",
+            "noPerUser": "No Per User",
+            "price": "Price",
+            "startFromDate": "Start From Date",
+            "maxAmountToApply": "Max Amount To Apply",
+            "restaurant": "Restaurant"
+        }
+    }
+}

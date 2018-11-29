@@ -1,0 +1,25 @@
+
+{
+    "happybourBackEndApp": {
+        "timeManager" : {
+            "home": {
+                "title": "Time Managers",
+                "createLabel": "Create a new Time Manager",
+                "createOrEditLabel": "Create or edit a Time Manager"
+            },
+            "created": "A new Time Manager is created with identifier {{ param }}",
+            "updated": "A Time Manager is updated with identifier {{ param }}",
+            "deleted": "A Time Manager is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Time Manager {{ id }}?"
+            },
+            "detail": {
+                "title": "Time Manager"
+            },
+            "day": "Day",
+            "startTime": "Start Time",
+            "endTime": "End Time",
+            "restaurant": "Restaurant"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+
+{
+    "happybourBackEndApp": {
+        "saleOrder" : {
+            "home": {
+                "title": "Sale Orders",
+                "createLabel": "Thêm mới một Sale Order",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Sale Order"
+            },
+            "created": "Một Sale Order mới được tạo với định danh {{ param }}",
+            "updated": "Một Sale Order cập nhật với định danh {{ param }}",
+            "deleted": "Một Sale Order đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Sale Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Sale Order"
+            },
+            "basePrice": "Base Price",
+            "discountAmount": "Discount Amount",
+            "originalPrice": "Original Price",
+            "dateCreated": "Date Created",
+            "dateUpdated": "Date Updated",
+            "product": "Product",
+            "happyOrder": "Happy Order"
+        }
+    }
+}

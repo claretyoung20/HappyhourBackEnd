@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="happyOrder">
+            <h2><span jhiTranslate="happybourBackEndApp.happyOrder.detail.title">Happy Order</span> {{happyOrder.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.baseTotal">Base Total</span></dt>
+                <dd>
+                    <span>{{happyOrder.baseTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{happyOrder.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.dateUpdated">Date Updated</span></dt>
+                <dd>
+                    <span>{{happyOrder.dateUpdated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.totalPrice">Total Price</span></dt>
+                <dd>
+                    <span>{{happyOrder.totalPrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.orderStatus">Order Status</span></dt>
+                <dd>
+                    <div *ngIf="happyOrder.orderStatusId">
+                        <a [routerLink]="['/order-status', happyOrder.orderStatusId, 'view']">{{happyOrder.orderStatusId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="happyOrder.customerId">
+                        <a [routerLink]="['/customer', happyOrder.customerId, 'view']">{{happyOrder.customerId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.coupon">Coupon</span></dt>
+                <dd>
+                    <div *ngIf="happyOrder.couponId">
+                        <a [routerLink]="['/coupon', happyOrder.couponId, 'view']">{{happyOrder.couponId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="happyOrder.restaurantId">
+                        <a [routerLink]="['/restaurant', happyOrder.restaurantId, 'view']">{{happyOrder.restaurantId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.staff">Staff</span></dt>
+                <dd>
+                    <div *ngIf="happyOrder.staffId">
+                        <a [routerLink]="['/staff', happyOrder.staffId, 'view']">{{happyOrder.staffStaffCode}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/happy-order', happyOrder.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.happyhour.myapp.service</OriginalElement>
+  <nodes>
+    <node x="197.80723135685574" y="-23.89681103577186">com.happyhour.myapp.repository</node>
+    <node x="134.9620161553906" y="386.10318896422814">com.happyhour.myapp.domain</node>
+    <node x="326.30723135685577" y="256.10318896422814">com.happyhour.myapp.config</node>
+    <node x="178.7953494887239" y="126.10318896422814">com.happyhour.myapp.security</node>
+    <node x="389.06696121033565" y="536.1031889642281">com.happyhour.myapp.web.rest</node>
+    <node x="470.1072313568558" y="386.10318896422814">com.happyhour.myapp.service</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.happyhour.myapp.security" target="com.happyhour.myapp.repository">
+      <point x="-30.0" y="-15.0" />
+      <point x="208.7953494887239" y="96.10318896422814" />
+      <point x="269.3072313568557" y="96.10318896422814" />
+      <point x="5.5" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.security" target="com.happyhour.myapp.domain">
+      <point x="-13.333333333333343" y="15.0" />
+      <point x="225.46201615539053" y="226.10318896422814" />
+      <point x="201.1048732982477" y="226.10318896422814" />
+      <point x="201.1048732982477" y="366.10318896422814" />
+      <point x="194.9620161553906" y="366.10318896422814" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.domain" target="com.happyhour.myapp.config">
+      <point x="51.428571428571445" y="-15.0" />
+      <point x="246.39058758396203" y="366.10318896422814" />
+      <point x="405.4072313568558" y="366.10318896422814" />
+      <point x="22.600000000000023" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest" target="com.happyhour.myapp.config">
+      <point x="-4.899999999999977" y="-15.0" />
+      <point x="433.16696121033567" y="476.10318896422814" />
+      <point x="428.00723135685575" y="476.10318896422814" />
+      <point x="45.20000000000002" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.config" target="com.happyhour.myapp.config">
+      <point x="-22.6" y="15.0" />
+      <point x="360.20723135685574" y="316.10318896422814" />
+      <point x="296.30723135685577" y="316.10318896422814" />
+      <point x="296.30723135685577" y="271.10318896422814" />
+      <point x="-56.5" y="-0.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest" target="com.happyhour.myapp.security">
+      <point x="-14.699999999999989" y="-15.0" />
+      <point x="423.36696121033566" y="486.10318896422814" />
+      <point x="275.80723135685577" y="486.10318896422814" />
+      <point x="275.80723135685577" y="236.10318896422814" />
+      <point x="265.4620161553906" y="236.10318896422814" />
+      <point x="26.666666666666686" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest" target="com.happyhour.myapp.service">
+      <point x="34.30000000000001" y="-15.0" />
+      <point x="472.36696121033566" y="506.10318896422814" />
+      <point x="527.6072313568558" y="506.10318896422814" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.repository" target="com.happyhour.myapp.config">
+      <point x="27.5" y="15.0" />
+      <point x="291.3072313568557" y="106.10318896422814" />
+      <point x="405.55723135685577" y="106.10318896422814" />
+      <point x="405.55723135685577" y="236.10318896422814" />
+      <point x="396.93223135685577" y="236.10318896422814" />
+      <point x="14.125" y="-15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest" target="com.happyhour.myapp.domain">
+      <point x="-44.099999999999966" y="-15.0" />
+      <point x="393.9669612103357" y="516.1031889642281" />
+      <point x="204.9620161553906" y="516.1031889642281" />
+      <point x="10.0" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.repository" target="com.happyhour.myapp.repository">
+      <point x="-49.5" y="15.0" />
+      <point x="214.30723135685574" y="36.10318896422814" />
+      <point x="167.80723135685574" y="36.10318896422814" />
+      <point x="167.80723135685574" y="-8.896811035771861" />
+      <point x="-66.0" y="-0.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.domain" target="com.happyhour.myapp.domain">
+      <point x="-30.0" y="15.0" />
+      <point x="164.9620161553906" y="446.10318896422814" />
+      <point x="104.96201615539059" y="446.10318896422814" />
+      <point x="104.96201615539059" y="401.10318896422814" />
+      <point x="-60.0" y="-0.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.repository" target="com.happyhour.myapp.domain">
+      <point x="-27.5" y="15.0" />
+      <point x="236.30723135685574" y="66.10318896422814" />
+      <point x="106.2953494887239" y="66.10318896422814" />
+      <point x="106.2953494887239" y="366.10318896422814" />
+      <point x="143.5334447268192" y="366.10318896422814" />
+      <point x="-51.42857142857139" y="-15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.security" target="com.happyhour.myapp.config">
+      <point x="53.33333333333337" y="15.0" />
+      <point x="292.12868282205727" y="216.10318896422814" />
+      <point x="368.68223135685577" y="216.10318896422814" />
+      <point x="-14.125" y="-15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.security" target="com.happyhour.myapp.security">
+      <point x="-53.33333333333333" y="15.0" />
+      <point x="185.46201615539056" y="176.10318896422814" />
+      <point x="158.7953494887239" y="176.10318896422814" />
+      <point x="158.7953494887239" y="151.10318896422814" />
+      <point x="-60.0" y="10.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest" target="com.happyhour.myapp.repository">
+      <point x="4.899999999999977" y="-15.0" />
+      <point x="442.9669612103356" y="476.10318896422814" />
+      <point x="449.80723135685577" y="476.10318896422814" />
+      <point x="449.80723135685577" y="86.10318896422814" />
+      <point x="313.3072313568557" y="86.10318896422814" />
+      <point x="49.5" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.config" target="com.happyhour.myapp.repository">
+      <point x="42.375" y="-15.0" />
+      <point x="425.18223135685577" y="236.10318896422814" />
+      <point x="418.0743558989803" y="236.10318896422814" />
+      <point x="418.0743558989803" y="96.10318896422814" />
+      <point x="302.3072313568557" y="96.10318896422814" />
+      <point x="38.5" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.config" target="com.happyhour.myapp.security">
+      <point x="-42.375" y="-15.0" />
+      <point x="340.43223135685577" y="226.10318896422814" />
+      <point x="278.7953494887239" y="226.10318896422814" />
+      <point x="40.00000000000003" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest" target="com.happyhour.myapp.web.rest">
+      <point x="24.5" y="15.0" />
+      <point x="462.56696121033565" y="596.1031889642281" />
+      <point x="359.06696121033565" y="596.1031889642281" />
+      <point x="359.06696121033565" y="543.6031889642281" />
+      <point x="-49.0" y="-7.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1091372174466732" x="514.0227973105477" y="292.333274968483" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

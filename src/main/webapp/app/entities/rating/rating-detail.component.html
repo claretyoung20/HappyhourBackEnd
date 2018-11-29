@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rating">
+            <h2><span jhiTranslate="happybourBackEndApp.rating.detail.title">Rating</span> {{rating.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.rating.comment">Comment</span></dt>
+                <dd>
+                    <span>{{rating.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{rating.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.dateUpdated">Date Updated</span></dt>
+                <dd>
+                    <span>{{rating.dateUpdated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.star">Star</span></dt>
+                <dd>
+                    <span>{{rating.star}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="rating.customerId">
+                        <a [routerLink]="['/customer', rating.customerId, 'view']">{{rating.customerId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.rating.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="rating.restaurantId">
+                        <a [routerLink]="['/restaurant', rating.restaurantId, 'view']">{{rating.restaurantId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rating', rating.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

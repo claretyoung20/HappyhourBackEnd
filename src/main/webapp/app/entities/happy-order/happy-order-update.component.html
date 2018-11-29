@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-happy-order-heading" jhiTranslate="happybourBackEndApp.happyOrder.home.createOrEditLabel">Create or edit a Happy Order</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!happyOrder.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="happyOrder.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.baseTotal" for="field_baseTotal">Base Total</label>
+                    <input type="number" class="form-control" name="baseTotal" id="field_baseTotal"
+                        [(ngModel)]="happyOrder.baseTotal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.dateCreated" for="field_dateCreated">Date Created</label>
+                    <div class="d-flex">
+                        <input id="field_dateCreated" type="datetime-local" class="form-control" name="dateCreated" [(ngModel)]="dateCreated"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.dateUpdated" for="field_dateUpdated">Date Updated</label>
+                    <div class="d-flex">
+                        <input id="field_dateUpdated" type="datetime-local" class="form-control" name="dateUpdated" [(ngModel)]="dateUpdated"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.totalPrice" for="field_totalPrice">Total Price</label>
+                    <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
+                        [(ngModel)]="happyOrder.totalPrice" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.orderStatus" for="field_orderStatus">Order Status</label>
+                    <select class="form-control" id="field_orderStatus" name="orderStatus" [(ngModel)]="happyOrder.orderStatusId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="orderStatusOption.id" *ngFor="let orderStatusOption of orderstatuses; trackBy: trackOrderStatusById">{{orderStatusOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.customer" for="field_customer">Customer</label>
+                    <select class="form-control" id="field_customer" name="customer" [(ngModel)]="happyOrder.customerId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customerOption.id" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.coupon" for="field_coupon">Coupon</label>
+                    <select class="form-control" id="field_coupon" name="coupon" [(ngModel)]="happyOrder.couponId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="couponOption.id" *ngFor="let couponOption of coupons; trackBy: trackCouponById">{{couponOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.restaurant" for="field_restaurant">Restaurant</label>
+                    <select class="form-control" id="field_restaurant" name="restaurant" [(ngModel)]="happyOrder.restaurantId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="restaurantOption.id" *ngFor="let restaurantOption of restaurants; trackBy: trackRestaurantById">{{restaurantOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.staff" for="field_staff">Staff</label>
+                    <select class="form-control" id="field_staff" name="staff" [(ngModel)]="happyOrder.staffId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="staffOption.id" *ngFor="let staffOption of staff; trackBy: trackStaffById">{{staffOption.staffCode}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

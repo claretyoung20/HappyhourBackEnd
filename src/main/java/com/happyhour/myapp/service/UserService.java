@@ -9,11 +9,13 @@ import com.happyhour.myapp.repository.UserRepository;
 import com.happyhour.myapp.security.AuthoritiesConstants;
 import com.happyhour.myapp.security.SecurityUtils;
 import com.happyhour.myapp.service.dto.UserDTO;
+import com.happyhour.myapp.service.mapper.UserMapper;
 import com.happyhour.myapp.service.util.RandomUtil;
 import com.happyhour.myapp.web.rest.errors.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,6 +48,9 @@ public class UserService {
     private final AuthorityRepository authorityRepository;
 
     private final CacheManager cacheManager;
+
+    @Autowired
+    private UserMapper userMapper;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, PersistentTokenRepository persistentTokenRepository, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
@@ -259,6 +264,11 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public Optional<User> findOne(long id) {
+        return userRepository.findOneWithAuthoritiesById(id);
+    }
+
+    @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthorities(Long id) {
         return userRepository.findOneWithAuthoritiesById(id);
     }
@@ -311,5 +321,12 @@ public class UserService {
     private void clearUserCaches(User user) {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
+    }
+
+
+    public Optional<UserDTO> findOneByLogin(String login) {
+        log.debug("Request to get User by login : {}", login);
+        return userRepository.findOneByLogin(login)
+            .map(userMapper::userToUserDTO);
     }
 }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.happyhour.myapp.web.rest.CouponResource</OriginalElement>
+  <nodes>
+    <node x="592.6323529411765" y="110.5">com.happyhour.myapp.service.dto.CouponDTO</node>
+    <node x="130.25980392156868" y="0.0">com.happyhour.myapp.domain.Coupon</node>
+    <node x="177.5" y="705.0">com.happyhour.myapp.service.mapper.CouponMapper</node>
+    <node x="949.0147058823529" y="650.0">org.springframework.web.bind.annotation.RequestMapping</node>
+    <node x="446.6647058823529" y="979.5">com.happyhour.myapp.service.mapper.CouponMapperImpl</node>
+    <node x="10.5" y="738.0">com.happyhour.myapp.repository.CouponRepository</node>
+    <node x="652.0147058823529" y="694.0">com.happyhour.myapp.service.CouponService</node>
+    <node x="815.1666666666666" y="946.0">com.happyhour.myapp.web.rest.CouponResource</node>
+    <node x="1181.014705882353" y="727.0">org.springframework.web.bind.annotation.RestController</node>
+    <node x="55.664705882352905" y="957.0">com.happyhour.myapp.service.impl.CouponServiceImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.happyhour.myapp.service.mapper.CouponMapperImpl" target="com.happyhour.myapp.service.dto.CouponDTO">
+      <point x="118.79999999999995" y="-81.5" />
+      <point x="713.9647058823529" y="876.0" />
+      <point x="603.9647058823529" y="876.0" />
+      <point x="603.9647058823529" y="630.0" />
+      <point x="703.4656862745098" y="630.0" />
+      <point x="15.833333333333371" y="169.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CouponServiceImpl" target="com.happyhour.myapp.service.CouponService">
+      <point x="159.0" y="-104.0" />
+      <point x="400.1647058823529" y="926.0" />
+      <point x="698.1813725490197" y="926.0" />
+      <point x="-92.33333333333331" y="59.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CouponServiceImpl" target="com.happyhour.myapp.service.dto.CouponDTO">
+      <point x="106.0" y="-104.0" />
+      <point x="347.1647058823529" y="916.0" />
+      <point x="549.9941176470587" y="916.0" />
+      <point x="549.9941176470587" y="610.0" />
+      <point x="640.1323529411765" y="610.0" />
+      <point x="-47.5" y="169.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CouponMapper" target="com.happyhour.myapp.domain.Coupon">
+      <point x="0.0" y="-48.0" />
+      <point x="292.0" y="630.0" />
+      <point x="274.9264705882354" y="630.0" />
+      <point x="20.666666666666742" y="280.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CouponResource" target="org.springframework.web.bind.annotation.RequestMapping">
+      <point x="0.0" y="-115.0" />
+      <point x="1016.1666666666666" y="926.0" />
+      <point x="1055.014705882353" y="926.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CouponServiceImpl" target="com.happyhour.myapp.service.mapper.CouponMapper">
+      <point x="53.0" y="-104.0" />
+      <point x="294.1647058823529" y="926.0" />
+      <point x="292.0" y="926.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CouponMapperImpl" target="com.happyhour.myapp.service.mapper.CouponMapper">
+      <point x="-118.79999999999995" y="-81.5" />
+      <point x="476.36470588235295" y="906.0" />
+      <point x="368.33333333333326" y="906.0" />
+      <point x="76.33333333333326" y="48.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CouponMapperImpl" target="com.happyhour.myapp.domain.Coupon">
+      <point x="-59.40000000000009" y="-81.5" />
+      <point x="535.7647058823528" y="906.0" />
+      <point x="487.83333333333337" y="906.0" />
+      <point x="487.83333333333337" y="590.0" />
+      <point x="316.2598039215687" y="590.0" />
+      <point x="62.0" y="280.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CouponResource" target="com.happyhour.myapp.service.dto.CouponDTO">
+      <point x="160.79999999999995" y="-115.0" />
+      <point x="1176.9666666666667" y="926.0" />
+      <point x="1328.514705882353" y="926.0" />
+      <point x="1328.514705882353" y="620.0" />
+      <point x="766.7990196078432" y="620.0" />
+      <point x="79.16666666666674" y="169.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CouponResource" target="com.happyhour.myapp.service.CouponService">
+      <point x="-80.39999999999998" y="-115.0" />
+      <point x="935.7666666666667" y="926.0" />
+      <point x="882.8480392156863" y="926.0" />
+      <point x="92.33333333333337" y="59.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CouponServiceImpl" target="com.happyhour.myapp.domain.Coupon">
+      <point x="-159.0" y="-104.0" />
+      <point x="82.1647058823529" y="926.0" />
+      <point x="0.0" y="926.0" />
+      <point x="0.0" y="620.0" />
+      <point x="150.9264705882353" y="620.0" />
+      <point x="-103.33333333333337" y="280.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.web.rest.CouponResource" target="org.springframework.web.bind.annotation.RestController">
+      <point x="80.39999999999998" y="-115.0" />
+      <point x="1096.5666666666666" y="916.0" />
+      <point x="1249.514705882353" y="916.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.impl.CouponServiceImpl" target="com.happyhour.myapp.repository.CouponRepository">
+      <point x="-53.0" y="-104.0" />
+      <point x="188.1647058823529" y="906.0" />
+      <point x="120.75" y="906.0" />
+      <point x="36.75" y="15.0" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.mapper.CouponMapper" target="com.happyhour.myapp.service.dto.CouponDTO">
+      <point x="76.33333333333326" y="-48.0" />
+      <point x="368.33333333333326" y="600.0" />
+      <point x="608.4656862745098" y="600.0" />
+      <point x="-79.16666666666663" y="169.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.service.CouponService" target="com.happyhour.myapp.service.dto.CouponDTO">
+      <point x="0.0" y="-59.0" />
+      <point x="790.5147058823529" y="630.0" />
+      <point x="735.1323529411765" y="630.0" />
+      <point x="47.5" y="169.5" />
+    </edge>
+    <edge source="com.happyhour.myapp.repository.CouponRepository" target="com.happyhour.myapp.domain.Coupon">
+      <point x="0.0" y="-15.0" />
+      <point x="84.0" y="630.0" />
+      <point x="192.25980392156868" y="630.0" />
+      <point x="-62.0" y="280.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1" x="382.0" y="535.5" />
+  <SelectedNodes>
+    <node>com.happyhour.myapp.service.dto.CouponDTO</node>
+    <node>com.happyhour.myapp.domain.Coupon</node>
+    <node>com.happyhour.myapp.service.mapper.CouponMapper</node>
+    <node>com.happyhour.myapp.service.mapper.CouponMapperImpl</node>
+    <node>com.happyhour.myapp.repository.CouponRepository</node>
+    <node>com.happyhour.myapp.service.CouponService</node>
+    <node>com.happyhour.myapp.service.impl.CouponServiceImpl</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

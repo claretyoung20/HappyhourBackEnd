@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "happyOrder",
+            "otherEntityName": "happyOrder",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "basePrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "discountAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "originalPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20181113122546",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "sale_order",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

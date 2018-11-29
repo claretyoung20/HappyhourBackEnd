@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contactUs">
+            <h2><span jhiTranslate="happybourBackEndApp.contactUs.detail.title">Contact Us</span> {{contactUs.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.contactUs.fullName">Full Name</span></dt>
+                <dd>
+                    <span>{{contactUs.fullName}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.contactUs.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{contactUs.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.contactUs.email">Email</span></dt>
+                <dd>
+                    <span>{{contactUs.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.contactUs.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{contactUs.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.contactUs.comment">Comment</span></dt>
+                <dd>
+                    <span>{{contactUs.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.contactUs.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="contactUs.restaurantId">
+                        <a [routerLink]="['/restaurant', contactUs.restaurantId, 'view']">{{contactUs.restaurantId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contact-us', contactUs.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

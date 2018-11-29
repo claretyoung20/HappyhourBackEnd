@@ -1,0 +1,26 @@
+
+{
+    "happybourBackEndApp": {
+        "discount" : {
+            "home": {
+                "title": "Discounts",
+                "createLabel": "Thêm mới một Discount",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Discount"
+            },
+            "created": "Một Discount mới được tạo với định danh {{ param }}",
+            "updated": "Một Discount cập nhật với định danh {{ param }}",
+            "deleted": "Một Discount đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Discount {{ id }}?"
+            },
+            "detail": {
+                "title": "Discount"
+            },
+            "amount": "Amount",
+            "endDate": "End Date",
+            "startDate": "Start Date",
+            "percentage": "Percentage",
+            "product": "Product"
+        }
+    }
+}

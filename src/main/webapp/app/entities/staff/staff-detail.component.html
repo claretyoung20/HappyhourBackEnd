@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="staff">
+            <h2><span jhiTranslate="happybourBackEndApp.staff.detail.title">Staff</span> {{staff.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="happybourBackEndApp.staff.staffCode">Staff Code</span></dt>
+                <dd>
+                    <span>{{staff.staffCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.staff.user">User</span></dt>
+                <dd>
+                    {{staff.userLogin}}
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.staff.restaurant">Restaurant</span></dt>
+                <dd>
+                    <div *ngIf="staff.restaurantId">
+                        <a [routerLink]="['/restaurant', staff.restaurantId, 'view']">{{staff.restaurantY}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/staff', staff.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

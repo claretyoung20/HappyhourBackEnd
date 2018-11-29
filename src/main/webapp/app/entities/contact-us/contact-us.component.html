@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="happybourBackEndApp.contactUs.home.title">Contactuses</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contact-us" [routerLink]="['/contact-us/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="happybourBackEndApp.contactUs.home.createLabel">
+            Create new Contact Us
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="contactuses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fullName"><span jhiTranslate="happybourBackEndApp.contactUs.fullName">Full Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.contactUs.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span jhiTranslate="happybourBackEndApp.contactUs.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNumber"><span jhiTranslate="happybourBackEndApp.contactUs.phoneNumber">Phone Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="comment"><span jhiTranslate="happybourBackEndApp.contactUs.comment">Comment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.contactUs.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contactUs of contactuses ;trackBy: trackId">
+                <td><a [routerLink]="['/contact-us', contactUs.id, 'view' ]">{{contactUs.id}}</a></td>
+                <td>{{contactUs.fullName}}</td>
+                <td>{{contactUs.dateCreated | date:'medium'}}</td>
+                <td>{{contactUs.email}}</td>
+                <td>{{contactUs.phoneNumber}}</td>
+                <td>{{contactUs.comment}}</td>
+                <td>
+                    <div *ngIf="contactUs.restaurantId">
+                        <a [routerLink]="['../restaurant', contactUs.restaurantId , 'view' ]" >{{contactUs.restaurantId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/contact-us', contactUs.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/contact-us', contactUs.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contact-us/'+ contactUs.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="contactuses && contactuses.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

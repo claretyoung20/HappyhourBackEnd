@@ -1,0 +1,26 @@
+
+{
+    "happybourBackEndApp": {
+        "bookTable" : {
+            "home": {
+                "title": "Book Tables",
+                "createLabel": "Thêm mới một Book Table",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Book Table"
+            },
+            "created": "Một Book Table mới được tạo với định danh {{ param }}",
+            "updated": "Một Book Table cập nhật với định danh {{ param }}",
+            "deleted": "Một Book Table đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Book Table {{ id }}?"
+            },
+            "detail": {
+                "title": "Book Table"
+            },
+            "isAvaliable": "Is Avaliable",
+            "persons": "Persons",
+            "price": "Price",
+            "imageUrl": "Image Url",
+            "restaurant": "Restaurant"
+        }
+    }
+}

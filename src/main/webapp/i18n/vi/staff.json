@@ -1,0 +1,24 @@
+
+{
+    "happybourBackEndApp": {
+        "staff" : {
+            "home": {
+                "title": "Staff",
+                "createLabel": "Thêm mới một Staff",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Staff"
+            },
+            "created": "Một Staff mới được tạo với định danh {{ param }}",
+            "updated": "Một Staff cập nhật với định danh {{ param }}",
+            "deleted": "Một Staff đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Staff {{ id }}?"
+            },
+            "detail": {
+                "title": "Staff"
+            },
+            "staffCode": "Staff Code",
+            "user": "User",
+            "restaurant": "Restaurant"
+        }
+    }
+}
