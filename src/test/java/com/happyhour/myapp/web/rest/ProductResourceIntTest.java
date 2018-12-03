@@ -62,6 +62,9 @@ public class ProductResourceIntTest {
     private static final Boolean DEFAULT_IS_AVAILABLE = false;
     private static final Boolean UPDATED_IS_AVAILABLE = true;
 
+    private static final Boolean DEFAULT_SHOW_ON_HOMEPAGE = false;
+    private static final Boolean UPDATED_SHOW_ON_HOMEPAGE = true;
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -111,7 +114,8 @@ public class ProductResourceIntTest {
             .name(DEFAULT_NAME)
             .price(DEFAULT_PRICE)
             .updatedDate(DEFAULT_UPDATED_DATE)
-            .isAvailable(DEFAULT_IS_AVAILABLE);
+            .isAvailable(DEFAULT_IS_AVAILABLE)
+            .showOnHomepage(DEFAULT_SHOW_ON_HOMEPAGE);
         return product;
     }
 
@@ -142,6 +146,7 @@ public class ProductResourceIntTest {
         assertThat(testProduct.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testProduct.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
         assertThat(testProduct.isIsAvailable()).isEqualTo(DEFAULT_IS_AVAILABLE);
+        assertThat(testProduct.isShowOnHomepage()).isEqualTo(DEFAULT_SHOW_ON_HOMEPAGE);
     }
 
     @Test
@@ -218,7 +223,8 @@ public class ProductResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())))
-            .andExpect(jsonPath("$.[*].isAvailable").value(hasItem(DEFAULT_IS_AVAILABLE.booleanValue())));
+            .andExpect(jsonPath("$.[*].isAvailable").value(hasItem(DEFAULT_IS_AVAILABLE.booleanValue())))
+            .andExpect(jsonPath("$.[*].showOnHomepage").value(hasItem(DEFAULT_SHOW_ON_HOMEPAGE.booleanValue())));
     }
     
     @Test
@@ -237,7 +243,8 @@ public class ProductResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()))
-            .andExpect(jsonPath("$.isAvailable").value(DEFAULT_IS_AVAILABLE.booleanValue()));
+            .andExpect(jsonPath("$.isAvailable").value(DEFAULT_IS_AVAILABLE.booleanValue()))
+            .andExpect(jsonPath("$.showOnHomepage").value(DEFAULT_SHOW_ON_HOMEPAGE.booleanValue()));
     }
 
     @Test
@@ -266,7 +273,8 @@ public class ProductResourceIntTest {
             .name(UPDATED_NAME)
             .price(UPDATED_PRICE)
             .updatedDate(UPDATED_UPDATED_DATE)
-            .isAvailable(UPDATED_IS_AVAILABLE);
+            .isAvailable(UPDATED_IS_AVAILABLE)
+            .showOnHomepage(UPDATED_SHOW_ON_HOMEPAGE);
         ProductDTO productDTO = productMapper.toDto(updatedProduct);
 
         restProductMockMvc.perform(put("/api/products")
@@ -284,6 +292,7 @@ public class ProductResourceIntTest {
         assertThat(testProduct.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testProduct.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
         assertThat(testProduct.isIsAvailable()).isEqualTo(UPDATED_IS_AVAILABLE);
+        assertThat(testProduct.isShowOnHomepage()).isEqualTo(UPDATED_SHOW_ON_HOMEPAGE);
     }
 
     @Test

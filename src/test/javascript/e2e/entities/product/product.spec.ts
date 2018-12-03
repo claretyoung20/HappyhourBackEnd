@@ -56,6 +56,14 @@ describe('Product e2e test', () => {
             await productUpdatePage.getIsAvailableInput().click();
             expect(await productUpdatePage.getIsAvailableInput().isSelected()).to.be.true;
         }
+        const selectedShowOnHomepage = productUpdatePage.getShowOnHomepageInput();
+        if (await selectedShowOnHomepage.isSelected()) {
+            await productUpdatePage.getShowOnHomepageInput().click();
+            expect(await productUpdatePage.getShowOnHomepageInput().isSelected()).to.be.false;
+        } else {
+            await productUpdatePage.getShowOnHomepageInput().click();
+            expect(await productUpdatePage.getShowOnHomepageInput().isSelected()).to.be.true;
+        }
         await productUpdatePage.restaurantSelectLastOption();
         await productUpdatePage.categorySelectLastOption();
         await productUpdatePage.save();

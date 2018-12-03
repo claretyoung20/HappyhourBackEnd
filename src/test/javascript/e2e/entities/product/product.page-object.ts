@@ -32,6 +32,7 @@ export class ProductUpdatePage {
     priceInput = element(by.id('field_price'));
     updatedDateInput = element(by.id('field_updatedDate'));
     isAvailableInput = element(by.id('field_isAvailable'));
+    showOnHomepageInput = element(by.id('field_showOnHomepage'));
     restaurantSelect = element(by.id('field_restaurant'));
     categorySelect = element(by.id('field_category'));
 
@@ -81,6 +82,9 @@ export class ProductUpdatePage {
 
     getIsAvailableInput() {
         return this.isAvailableInput;
+    }
+    getShowOnHomepageInput() {
+        return this.showOnHomepageInput;
     }
 
     async restaurantSelectLastOption() {

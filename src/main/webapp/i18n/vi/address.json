@@ -19,6 +19,8 @@
             "city": "City",
             "street": "Street",
             "country": "Country",
+            "supportEmail": "Support Email",
+            "contactNumber": "Contact Number",
             "restaurant": "Restaurant"
         }
     }

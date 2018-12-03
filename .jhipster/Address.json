@@ -21,6 +21,14 @@
         {
             "fieldName": "country",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "supportEmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contactNumber",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20181103094638",

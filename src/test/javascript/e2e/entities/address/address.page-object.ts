@@ -29,6 +29,8 @@ export class AddressUpdatePage {
     cityInput = element(by.id('field_city'));
     streetInput = element(by.id('field_street'));
     countryInput = element(by.id('field_country'));
+    supportEmailInput = element(by.id('field_supportEmail'));
+    contactNumberInput = element(by.id('field_contactNumber'));
     restaurantSelect = element(by.id('field_restaurant'));
 
     async getPageTitle() {
@@ -57,6 +59,22 @@ export class AddressUpdatePage {
 
     async getCountryInput() {
         return this.countryInput.getAttribute('value');
+    }
+
+    async setSupportEmailInput(supportEmail) {
+        await this.supportEmailInput.sendKeys(supportEmail);
+    }
+
+    async getSupportEmailInput() {
+        return this.supportEmailInput.getAttribute('value');
+    }
+
+    async setContactNumberInput(contactNumber) {
+        await this.contactNumberInput.sendKeys(contactNumber);
+    }
+
+    async getContactNumberInput() {
+        return this.contactNumberInput.getAttribute('value');
     }
 
     async restaurantSelectLastOption() {

@@ -42,6 +42,9 @@ public class Product implements Serializable {
     @Column(name = "is_available")
     private Boolean isAvailable;
 
+    @Column(name = "show_on_homepage")
+    private Boolean showOnHomepage;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Restaurant restaurant;
@@ -137,6 +140,19 @@ public class Product implements Serializable {
         this.isAvailable = isAvailable;
     }
 
+    public Boolean isShowOnHomepage() {
+        return showOnHomepage;
+    }
+
+    public Product showOnHomepage(Boolean showOnHomepage) {
+        this.showOnHomepage = showOnHomepage;
+        return this;
+    }
+
+    public void setShowOnHomepage(Boolean showOnHomepage) {
+        this.showOnHomepage = showOnHomepage;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -194,6 +210,7 @@ public class Product implements Serializable {
             ", price=" + getPrice() +
             ", updatedDate='" + getUpdatedDate() + "'" +
             ", isAvailable='" + isIsAvailable() + "'" +
+            ", showOnHomepage='" + isShowOnHomepage() + "'" +
             "}";
     }
 }

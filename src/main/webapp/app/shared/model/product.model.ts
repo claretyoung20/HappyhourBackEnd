@@ -8,6 +8,7 @@ export interface IProduct {
     price?: number;
     updatedDate?: Moment;
     isAvailable?: boolean;
+    showOnHomepage?: boolean;
     restaurantId?: number;
     categoryId?: number;
 }
@@ -21,9 +22,11 @@ export class Product implements IProduct {
         public price?: number,
         public updatedDate?: Moment,
         public isAvailable?: boolean,
+        public showOnHomepage?: boolean,
         public restaurantId?: number,
         public categoryId?: number
     ) {
         this.isAvailable = this.isAvailable || false;
+        this.showOnHomepage = this.showOnHomepage || false;
     }
 }

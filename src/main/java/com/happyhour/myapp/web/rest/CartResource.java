@@ -10,7 +10,6 @@ import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.CartDTO;
-import com.sun.deploy.util.ArrayUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

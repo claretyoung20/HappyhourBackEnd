@@ -51,6 +51,12 @@ public class AddressResourceIntTest {
     private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SUPPORT_EMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_SUPPORT_EMAIL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CONTACT_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACT_NUMBER = "BBBBBBBBBB";
+
     @Autowired
     private AddressRepository addressRepository;
 
@@ -97,7 +103,9 @@ public class AddressResourceIntTest {
         Address address = new Address()
             .city(DEFAULT_CITY)
             .street(DEFAULT_STREET)
-            .country(DEFAULT_COUNTRY);
+            .country(DEFAULT_COUNTRY)
+            .supportEmail(DEFAULT_SUPPORT_EMAIL)
+            .contactNumber(DEFAULT_CONTACT_NUMBER);
         return address;
     }
 
@@ -125,6 +133,8 @@ public class AddressResourceIntTest {
         assertThat(testAddress.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testAddress.getStreet()).isEqualTo(DEFAULT_STREET);
         assertThat(testAddress.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testAddress.getSupportEmail()).isEqualTo(DEFAULT_SUPPORT_EMAIL);
+        assertThat(testAddress.getContactNumber()).isEqualTo(DEFAULT_CONTACT_NUMBER);
     }
 
     @Test
@@ -160,7 +170,9 @@ public class AddressResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(address.getId().intValue())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].street").value(hasItem(DEFAULT_STREET.toString())))
-            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())));
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
+            .andExpect(jsonPath("$.[*].supportEmail").value(hasItem(DEFAULT_SUPPORT_EMAIL.toString())))
+            .andExpect(jsonPath("$.[*].contactNumber").value(hasItem(DEFAULT_CONTACT_NUMBER.toString())));
     }
     
     @Test
@@ -176,7 +188,9 @@ public class AddressResourceIntTest {
             .andExpect(jsonPath("$.id").value(address.getId().intValue()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
             .andExpect(jsonPath("$.street").value(DEFAULT_STREET.toString()))
-            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()));
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
+            .andExpect(jsonPath("$.supportEmail").value(DEFAULT_SUPPORT_EMAIL.toString()))
+            .andExpect(jsonPath("$.contactNumber").value(DEFAULT_CONTACT_NUMBER.toString()));
     }
 
     @Test
@@ -202,7 +216,9 @@ public class AddressResourceIntTest {
         updatedAddress
             .city(UPDATED_CITY)
             .street(UPDATED_STREET)
-            .country(UPDATED_COUNTRY);
+            .country(UPDATED_COUNTRY)
+            .supportEmail(UPDATED_SUPPORT_EMAIL)
+            .contactNumber(UPDATED_CONTACT_NUMBER);
         AddressDTO addressDTO = addressMapper.toDto(updatedAddress);
 
         restAddressMockMvc.perform(put("/api/addresses")
@@ -217,6 +233,8 @@ public class AddressResourceIntTest {
         assertThat(testAddress.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testAddress.getStreet()).isEqualTo(UPDATED_STREET);
         assertThat(testAddress.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testAddress.getSupportEmail()).isEqualTo(UPDATED_SUPPORT_EMAIL);
+        assertThat(testAddress.getContactNumber()).isEqualTo(UPDATED_CONTACT_NUMBER);
     }
 
     @Test

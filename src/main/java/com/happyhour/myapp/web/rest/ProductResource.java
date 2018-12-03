@@ -132,4 +132,13 @@ public class ProductResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    // display show on home page products
+    @GetMapping("/products/showOnHomepage")
+    public ResponseEntity<List<ProductDTO>> getAllProductsBywShowhomepage(Pageable pageable) {
+        log.debug("REST request to get a page of Products by show on hoepage");
+        Page<ProductDTO> page = productService.findAllByShowOnHomepageTrue(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

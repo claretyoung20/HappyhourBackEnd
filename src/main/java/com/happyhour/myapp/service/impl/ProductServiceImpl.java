@@ -100,5 +100,12 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.toDto(productRepository.findById(id));
     }
 
+    @Override
+    public Page<ProductDTO> findAllByShowOnHomepageTrue(Pageable pageable) {
+        log.debug("Request to get all Products show on homepage {} ");
+        return productRepository.findAllByShowOnHomepageTrue(pageable)
+            .map(productMapper::toDto);
+    }
+
 
 }

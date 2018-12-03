@@ -22,6 +22,7 @@
             "price": "Price",
             "updatedDate": "Updated Date",
             "isAvailable": "Is Available",
+            "showOnHomepage": "Show On Homepage",
             "restaurant": "Restaurant",
             "category": "Category"
         }

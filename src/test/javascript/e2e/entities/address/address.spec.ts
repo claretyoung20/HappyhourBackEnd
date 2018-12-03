@@ -44,6 +44,10 @@ describe('Address e2e test', () => {
         expect(await addressUpdatePage.getStreetInput()).to.eq('street');
         await addressUpdatePage.setCountryInput('country');
         expect(await addressUpdatePage.getCountryInput()).to.eq('country');
+        await addressUpdatePage.setSupportEmailInput('supportEmail');
+        expect(await addressUpdatePage.getSupportEmailInput()).to.eq('supportEmail');
+        await addressUpdatePage.setContactNumberInput('contactNumber');
+        expect(await addressUpdatePage.getContactNumberInput()).to.eq('contactNumber');
         await addressUpdatePage.restaurantSelectLastOption();
         await addressUpdatePage.save();
         expect(await addressUpdatePage.getSaveButton().isPresent()).to.be.false;

@@ -18,6 +18,8 @@
             <th jhiSortBy="city"><span jhiTranslate="happybourBackEndApp.address.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="street"><span jhiTranslate="happybourBackEndApp.address.street">Street</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="country"><span jhiTranslate="happybourBackEndApp.address.country">Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="supportEmail"><span jhiTranslate="happybourBackEndApp.address.supportEmail">Support Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contactNumber"><span jhiTranslate="happybourBackEndApp.address.contactNumber">Contact Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.address.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -28,6 +30,8 @@
                 <td>{{address.city}}</td>
                 <td>{{address.street}}</td>
                 <td>{{address.country}}</td>
+                <td>{{address.supportEmail}}</td>
+                <td>{{address.contactNumber}}</td>
                 <td>
                     <div *ngIf="address.restaurantId">
                         <a [routerLink]="['../restaurant', address.restaurantId , 'view' ]" >{{address.restaurantId}}</a>

@@ -34,6 +34,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="support_email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="contact_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="restaurant_id" type="bigint">
                 <constraints nullable="true" />
             </column>

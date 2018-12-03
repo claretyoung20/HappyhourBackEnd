@@ -46,6 +46,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="show_on_homepage" type="bit">
+                <constraints nullable="true" />
+            </column>
+
             <column name="restaurant_id" type="bigint">
                 <constraints nullable="true" />
             </column>

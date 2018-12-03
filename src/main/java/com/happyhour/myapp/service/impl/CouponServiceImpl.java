@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -85,5 +86,12 @@ public class CouponServiceImpl implements CouponService {
     public void delete(Long id) {
         log.debug("Request to delete Coupon : {}", id);
         couponRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<CouponDTO> findAllValidCoupon(Pageable pageable, LocalDate startDate, LocalDate endDate) {
+        log.debug("Request to get all Coupons");
+        return couponRepository.findAllByIsActiveTrueAndStartFromDateIsLessThanEqualAndEndDateIsGreaterThanEqual(pageable, startDate, endDate)
+            .map(couponMapper::toDto);
     }
 }

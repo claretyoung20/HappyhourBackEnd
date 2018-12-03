@@ -5,6 +5,7 @@ import com.happyhour.myapp.service.dto.CouponDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -43,4 +44,6 @@ public interface CouponService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    Page<CouponDTO> findAllValidCoupon(Pageable pageable, LocalDate startDate, LocalDate endDate);
 }

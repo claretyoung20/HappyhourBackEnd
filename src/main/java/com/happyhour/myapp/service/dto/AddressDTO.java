@@ -16,6 +16,10 @@ public class AddressDTO implements Serializable {
 
     private String country;
 
+    private String supportEmail;
+
+    private String contactNumber;
+
     private Long restaurantId;
 
     public Long getId() {
@@ -48,6 +52,22 @@ public class AddressDTO implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getSupportEmail() {
+        return supportEmail;
+    }
+
+    public void setSupportEmail(String supportEmail) {
+        this.supportEmail = supportEmail;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public Long getRestaurantId() {
@@ -86,6 +106,8 @@ public class AddressDTO implements Serializable {
             ", city='" + getCity() + "'" +
             ", street='" + getStreet() + "'" +
             ", country='" + getCountry() + "'" +
+            ", supportEmail='" + getSupportEmail() + "'" +
+            ", contactNumber='" + getContactNumber() + "'" +
             ", restaurant=" + getRestaurantId() +
             "}";
     }

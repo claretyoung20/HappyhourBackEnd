@@ -24,6 +24,16 @@
                     <input type="text" class="form-control" name="country" id="field_country"
                         [(ngModel)]="address.country" />
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.address.supportEmail" for="field_supportEmail">Support Email</label>
+                    <input type="text" class="form-control" name="supportEmail" id="field_supportEmail"
+                        [(ngModel)]="address.supportEmail" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.address.contactNumber" for="field_contactNumber">Contact Number</label>
+                    <input type="text" class="form-control" name="contactNumber" id="field_contactNumber"
+                        [(ngModel)]="address.contactNumber" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.address.restaurant" for="field_restaurant">Restaurant</label>

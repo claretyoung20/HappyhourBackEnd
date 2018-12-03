@@ -26,6 +26,8 @@ public class ProductDTO implements Serializable {
 
     private Boolean isAvailable;
 
+    private Boolean showOnHomepage;
+
     private Long restaurantId;
 
     private Long categoryId;
@@ -86,6 +88,14 @@ public class ProductDTO implements Serializable {
         this.isAvailable = isAvailable;
     }
 
+    public Boolean isShowOnHomepage() {
+        return showOnHomepage;
+    }
+
+    public void setShowOnHomepage(Boolean showOnHomepage) {
+        this.showOnHomepage = showOnHomepage;
+    }
+
     public Long getRestaurantId() {
         return restaurantId;
     }
@@ -133,6 +143,7 @@ public class ProductDTO implements Serializable {
             ", price=" + getPrice() +
             ", updatedDate='" + getUpdatedDate() + "'" +
             ", isAvailable='" + isIsAvailable() + "'" +
+            ", showOnHomepage='" + isShowOnHomepage() + "'" +
             ", restaurant=" + getRestaurantId() +
             ", category=" + getCategoryId() +
             "}";

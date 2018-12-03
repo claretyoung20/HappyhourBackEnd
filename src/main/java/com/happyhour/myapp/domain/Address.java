@@ -29,6 +29,12 @@ public class Address implements Serializable {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "support_email")
+    private String supportEmail;
+
+    @Column(name = "contact_number")
+    private String contactNumber;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Restaurant restaurant;
@@ -81,6 +87,32 @@ public class Address implements Serializable {
         this.country = country;
     }
 
+    public String getSupportEmail() {
+        return supportEmail;
+    }
+
+    public Address supportEmail(String supportEmail) {
+        this.supportEmail = supportEmail;
+        return this;
+    }
+
+    public void setSupportEmail(String supportEmail) {
+        this.supportEmail = supportEmail;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public Address contactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+        return this;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -122,6 +154,8 @@ public class Address implements Serializable {
             ", city='" + getCity() + "'" +
             ", street='" + getStreet() + "'" +
             ", country='" + getCountry() + "'" +
+            ", supportEmail='" + getSupportEmail() + "'" +
+            ", contactNumber='" + getContactNumber() + "'" +
             "}";
     }
 }

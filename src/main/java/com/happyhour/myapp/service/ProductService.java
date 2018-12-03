@@ -47,4 +47,7 @@ public interface ProductService {
     Page<ProductDTO> getAllByCategoryId(long id, Pageable pageable);
 
     ProductDTO findById(long id);
+
+    Page<ProductDTO> findAllByShowOnHomepageTrue(Pageable pageable);
+
 }

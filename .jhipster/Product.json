@@ -45,6 +45,10 @@
         {
             "fieldName": "isAvailable",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "showOnHomepage",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20181113115351",
