@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -24,14 +24,14 @@ public class HappyOrder implements Serializable {
     @Column(name = "base_total")
     private Double baseTotal;
 
-    @Column(name = "date_created")
-    private Instant dateCreated;
-
-    @Column(name = "date_updated")
-    private Instant dateUpdated;
-
     @Column(name = "total_price")
     private Double totalPrice;
+
+    @Column(name = "date_updated")
+    private LocalDate dateUpdated;
+
+    @Column(name = "date_created")
+    private LocalDate dateCreated;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -75,32 +75,6 @@ public class HappyOrder implements Serializable {
         this.baseTotal = baseTotal;
     }
 
-    public Instant getDateCreated() {
-        return dateCreated;
-    }
-
-    public HappyOrder dateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-        return this;
-    }
-
-    public void setDateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Instant getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public HappyOrder dateUpdated(Instant dateUpdated) {
-        this.dateUpdated = dateUpdated;
-        return this;
-    }
-
-    public void setDateUpdated(Instant dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
-
     public Double getTotalPrice() {
         return totalPrice;
     }
@@ -112,6 +86,32 @@ public class HappyOrder implements Serializable {
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public LocalDate getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public HappyOrder dateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
+        return this;
+    }
+
+    public void setDateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public HappyOrder dateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+        return this;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public OrderStatus getOrderStatus() {
@@ -205,9 +205,9 @@ public class HappyOrder implements Serializable {
         return "HappyOrder{" +
             "id=" + getId() +
             ", baseTotal=" + getBaseTotal() +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", dateUpdated='" + getDateUpdated() + "'" +
             ", totalPrice=" + getTotalPrice() +
+            ", dateUpdated='" + getDateUpdated() + "'" +
+            ", dateCreated='" + getDateCreated() + "'" +
             "}";
     }
 }

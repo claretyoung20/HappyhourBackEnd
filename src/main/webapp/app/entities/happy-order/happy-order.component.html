@@ -16,9 +16,9 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="baseTotal"><span jhiTranslate="happybourBackEndApp.happyOrder.baseTotal">Base Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.happyOrder.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.happyOrder.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="totalPrice"><span jhiTranslate="happybourBackEndApp.happyOrder.totalPrice">Total Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.happyOrder.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.happyOrder.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="orderStatusId"><span jhiTranslate="happybourBackEndApp.happyOrder.orderStatus">Order Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="customerId"><span jhiTranslate="happybourBackEndApp.happyOrder.customer">Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="couponId"><span jhiTranslate="happybourBackEndApp.happyOrder.coupon">Coupon</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -31,9 +31,9 @@
             <tr *ngFor="let happyOrder of happyOrders ;trackBy: trackId">
                 <td><a [routerLink]="['/happy-order', happyOrder.id, 'view' ]">{{happyOrder.id}}</a></td>
                 <td>{{happyOrder.baseTotal}}</td>
-                <td>{{happyOrder.dateCreated | date:'medium'}}</td>
-                <td>{{happyOrder.dateUpdated | date:'medium'}}</td>
                 <td>{{happyOrder.totalPrice}}</td>
+                <td>{{happyOrder.dateUpdated | date:'mediumDate'}}</td>
+                <td>{{happyOrder.dateCreated | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="happyOrder.orderStatusId">
                         <a [routerLink]="['../order-status', happyOrder.orderStatusId , 'view' ]" >{{happyOrder.orderStatusId}}</a>

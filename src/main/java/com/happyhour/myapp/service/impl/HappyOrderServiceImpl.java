@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -92,6 +92,20 @@ public class HappyOrderServiceImpl implements HappyOrderService {
     public Page<HappyOrderDTO> findAllByOrderStatusId(long id, Pageable pageable) {
         log.debug("Request to get all HappyOrders by status id");
         return happyOrderRepository.findAllByOrderStatusId(id, pageable)
+            .map(happyOrderMapper::toDto);
+    }
+
+    @Override
+    public Page<HappyOrderDTO> findAllByCustomerIdAAndDateCreatedLessThan(long id, LocalDate localDate, Pageable pageable) {
+        log.debug("Request to get all HappyOrders by status id");
+        return happyOrderRepository.findAllByCustomerIdAndDateCreatedLessThan(id, localDate, pageable)
+            .map(happyOrderMapper::toDto);
+    }
+
+    @Override
+    public Page<HappyOrderDTO> findAllActiveOrder(long id, LocalDate localDate, Pageable pageable) {
+        log.debug("Request to get all HappyOrders by status id");
+        return happyOrderRepository.findAllByCustomerIdAndDateCreatedIsGreaterThanEqual(id, localDate, pageable)
             .map(happyOrderMapper::toDto);
     }
 }

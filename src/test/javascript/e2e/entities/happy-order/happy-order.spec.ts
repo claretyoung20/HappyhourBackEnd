@@ -1,5 +1,5 @@
 /* tslint:disable no-unused-expression */
-import { browser, ExpectedConditions as ec, protractor } from 'protractor';
+import { browser, ExpectedConditions as ec } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { HappyOrderComponentsPage, HappyOrderDeleteDialog, HappyOrderUpdatePage } from './happy-order.page-object';
@@ -40,12 +40,12 @@ describe('HappyOrder e2e test', () => {
         await happyOrderComponentsPage.clickOnCreateButton();
         await happyOrderUpdatePage.setBaseTotalInput('5');
         expect(await happyOrderUpdatePage.getBaseTotalInput()).to.eq('5');
-        await happyOrderUpdatePage.setDateCreatedInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(await happyOrderUpdatePage.getDateCreatedInput()).to.contain('2001-01-01T02:30');
-        await happyOrderUpdatePage.setDateUpdatedInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(await happyOrderUpdatePage.getDateUpdatedInput()).to.contain('2001-01-01T02:30');
         await happyOrderUpdatePage.setTotalPriceInput('5');
         expect(await happyOrderUpdatePage.getTotalPriceInput()).to.eq('5');
+        await happyOrderUpdatePage.setDateUpdatedInput('2000-12-31');
+        expect(await happyOrderUpdatePage.getDateUpdatedInput()).to.eq('2000-12-31');
+        await happyOrderUpdatePage.setDateCreatedInput('2000-12-31');
+        expect(await happyOrderUpdatePage.getDateCreatedInput()).to.eq('2000-12-31');
         await happyOrderUpdatePage.orderStatusSelectLastOption();
         await happyOrderUpdatePage.customerSelectLastOption();
         await happyOrderUpdatePage.couponSelectLastOption();

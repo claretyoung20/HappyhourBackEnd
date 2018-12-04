@@ -3,9 +3,9 @@ import { Moment } from 'moment';
 export interface IHappyOrder {
     id?: number;
     baseTotal?: number;
-    dateCreated?: Moment;
-    dateUpdated?: Moment;
     totalPrice?: number;
+    dateUpdated?: Moment;
+    dateCreated?: Moment;
     orderStatusId?: number;
     customerId?: number;
     couponId?: number;
@@ -18,9 +18,9 @@ export class HappyOrder implements IHappyOrder {
     constructor(
         public id?: number,
         public baseTotal?: number,
-        public dateCreated?: Moment,
-        public dateUpdated?: Moment,
         public totalPrice?: number,
+        public dateUpdated?: Moment,
+        public dateCreated?: Moment,
         public orderStatusId?: number,
         public customerId?: number,
         public couponId?: number,

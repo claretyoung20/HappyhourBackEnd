@@ -51,22 +51,24 @@ export class HappyOrderService {
 
     private convertDateFromClient(happyOrder: IHappyOrder): IHappyOrder {
         const copy: IHappyOrder = Object.assign({}, happyOrder, {
-            dateCreated: happyOrder.dateCreated != null && happyOrder.dateCreated.isValid() ? happyOrder.dateCreated.toJSON() : null,
-            dateUpdated: happyOrder.dateUpdated != null && happyOrder.dateUpdated.isValid() ? happyOrder.dateUpdated.toJSON() : null
+            dateUpdated:
+                happyOrder.dateUpdated != null && happyOrder.dateUpdated.isValid() ? happyOrder.dateUpdated.format(DATE_FORMAT) : null,
+            dateCreated:
+                happyOrder.dateCreated != null && happyOrder.dateCreated.isValid() ? happyOrder.dateCreated.format(DATE_FORMAT) : null
         });
         return copy;
     }
 
     private convertDateFromServer(res: EntityResponseType): EntityResponseType {
-        res.body.dateCreated = res.body.dateCreated != null ? moment(res.body.dateCreated) : null;
         res.body.dateUpdated = res.body.dateUpdated != null ? moment(res.body.dateUpdated) : null;
+        res.body.dateCreated = res.body.dateCreated != null ? moment(res.body.dateCreated) : null;
         return res;
     }
 
     private convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
         res.body.forEach((happyOrder: IHappyOrder) => {
-            happyOrder.dateCreated = happyOrder.dateCreated != null ? moment(happyOrder.dateCreated) : null;
             happyOrder.dateUpdated = happyOrder.dateUpdated != null ? moment(happyOrder.dateUpdated) : null;
+            happyOrder.dateCreated = happyOrder.dateCreated != null ? moment(happyOrder.dateCreated) : null;
         });
         return res;
     }

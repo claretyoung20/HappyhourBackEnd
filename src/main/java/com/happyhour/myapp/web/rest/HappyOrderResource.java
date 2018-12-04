@@ -20,6 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,8 @@ public class HappyOrderResource {
         if (happyOrderDTO.getId() != null) {
             throw new BadRequestAlertException("A new happyOrder cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        happyOrderDTO.setDateUpdated( LocalDate.now());
+        happyOrderDTO.setDateCreated( LocalDate.now());
         HappyOrderDTO result = happyOrderService.save(happyOrderDTO);
         return ResponseEntity.created(new URI("/api/happy-orders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -76,7 +79,7 @@ public class HappyOrderResource {
         if (happyOrderDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        happyOrderDTO.setDateUpdated(Instant.now());
+        happyOrderDTO.setDateUpdated( LocalDate.now());
         HappyOrderDTO result = happyOrderService.save(happyOrderDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, happyOrderDTO.getId().toString()))
@@ -131,6 +134,26 @@ public class HappyOrderResource {
     public ResponseEntity<List<HappyOrderDTO>> getAllHappyOrdersByStatusId(@PathVariable Long id, Pageable pageable) {
         log.debug("REST request to get a page of HappyOrders by status id");
         Page<HappyOrderDTO> page = happyOrderService.findAllByOrderStatusId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/history/{id}")
+    @Timed
+    public ResponseEntity<List<HappyOrderDTO>> getAllHappyOrdersHistory(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of HappyOrders by customer id and date");
+        LocalDate checkDate = LocalDate.now();
+        Page<HappyOrderDTO> page = happyOrderService.findAllByCustomerIdAAndDateCreatedLessThan(id,checkDate, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/active/{id}")
+    @Timed
+    public ResponseEntity<List<HappyOrderDTO>> getAllActveOrder(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get a page of HappyOrders by customer id and date");
+        LocalDate checkDate = LocalDate.now();
+        Page<HappyOrderDTO> page = happyOrderService.findAllActiveOrder(id,checkDate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

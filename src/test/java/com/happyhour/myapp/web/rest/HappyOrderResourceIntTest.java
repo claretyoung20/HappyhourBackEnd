@@ -24,8 +24,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -47,14 +47,14 @@ public class HappyOrderResourceIntTest {
     private static final Double DEFAULT_BASE_TOTAL = 1D;
     private static final Double UPDATED_BASE_TOTAL = 2D;
 
-    private static final Instant DEFAULT_DATE_CREATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DATE_CREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final Instant DEFAULT_DATE_UPDATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DATE_UPDATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
     private static final Double DEFAULT_TOTAL_PRICE = 1D;
     private static final Double UPDATED_TOTAL_PRICE = 2D;
+
+    private static final LocalDate DEFAULT_DATE_UPDATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_UPDATED = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_CREATED = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private HappyOrderRepository happyOrderRepository;
@@ -101,9 +101,9 @@ public class HappyOrderResourceIntTest {
     public static HappyOrder createEntity(EntityManager em) {
         HappyOrder happyOrder = new HappyOrder()
             .baseTotal(DEFAULT_BASE_TOTAL)
-            .dateCreated(DEFAULT_DATE_CREATED)
+            .totalPrice(DEFAULT_TOTAL_PRICE)
             .dateUpdated(DEFAULT_DATE_UPDATED)
-            .totalPrice(DEFAULT_TOTAL_PRICE);
+            .dateCreated(DEFAULT_DATE_CREATED);
         return happyOrder;
     }
 
@@ -129,9 +129,9 @@ public class HappyOrderResourceIntTest {
         assertThat(happyOrderList).hasSize(databaseSizeBeforeCreate + 1);
         HappyOrder testHappyOrder = happyOrderList.get(happyOrderList.size() - 1);
         assertThat(testHappyOrder.getBaseTotal()).isEqualTo(DEFAULT_BASE_TOTAL);
-        assertThat(testHappyOrder.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
-        assertThat(testHappyOrder.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
         assertThat(testHappyOrder.getTotalPrice()).isEqualTo(DEFAULT_TOTAL_PRICE);
+        assertThat(testHappyOrder.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
+        assertThat(testHappyOrder.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
     }
 
     @Test
@@ -166,9 +166,9 @@ public class HappyOrderResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(happyOrder.getId().intValue())))
             .andExpect(jsonPath("$.[*].baseTotal").value(hasItem(DEFAULT_BASE_TOTAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
+            .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())))
-            .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.doubleValue())));
+            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())));
     }
     
     @Test
@@ -183,9 +183,9 @@ public class HappyOrderResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(happyOrder.getId().intValue()))
             .andExpect(jsonPath("$.baseTotal").value(DEFAULT_BASE_TOTAL.doubleValue()))
-            .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
+            .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.doubleValue()))
             .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()))
-            .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.doubleValue()));
+            .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()));
     }
 
     @Test
@@ -210,9 +210,9 @@ public class HappyOrderResourceIntTest {
         em.detach(updatedHappyOrder);
         updatedHappyOrder
             .baseTotal(UPDATED_BASE_TOTAL)
-            .dateCreated(UPDATED_DATE_CREATED)
+            .totalPrice(UPDATED_TOTAL_PRICE)
             .dateUpdated(UPDATED_DATE_UPDATED)
-            .totalPrice(UPDATED_TOTAL_PRICE);
+            .dateCreated(UPDATED_DATE_CREATED);
         HappyOrderDTO happyOrderDTO = happyOrderMapper.toDto(updatedHappyOrder);
 
         restHappyOrderMockMvc.perform(put("/api/happy-orders")
@@ -225,9 +225,9 @@ public class HappyOrderResourceIntTest {
         assertThat(happyOrderList).hasSize(databaseSizeBeforeUpdate);
         HappyOrder testHappyOrder = happyOrderList.get(happyOrderList.size() - 1);
         assertThat(testHappyOrder.getBaseTotal()).isEqualTo(UPDATED_BASE_TOTAL);
-        assertThat(testHappyOrder.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
-        assertThat(testHappyOrder.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
         assertThat(testHappyOrder.getTotalPrice()).isEqualTo(UPDATED_TOTAL_PRICE);
+        assertThat(testHappyOrder.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
+        assertThat(testHappyOrder.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
     }
 
     @Test

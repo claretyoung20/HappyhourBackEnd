@@ -167,6 +167,12 @@
                             <span jhiTranslate="global.menu.entities.customer">Customer</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="happy-order" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.happyOrder">Happy Order</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

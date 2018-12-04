@@ -1,6 +1,6 @@
 package com.happyhour.myapp.service.dto;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,11 +13,11 @@ public class HappyOrderDTO implements Serializable {
 
     private Double baseTotal;
 
-    private Instant dateCreated;
-
-    private Instant dateUpdated;
-
     private Double totalPrice;
+
+    private LocalDate dateUpdated;
+
+    private LocalDate dateCreated;
 
     private Long orderStatusId;
 
@@ -47,28 +47,28 @@ public class HappyOrderDTO implements Serializable {
         this.baseTotal = baseTotal;
     }
 
-    public Instant getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Instant getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(Instant dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
-
     public Double getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public LocalDate getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public Long getOrderStatusId() {
@@ -145,9 +145,9 @@ public class HappyOrderDTO implements Serializable {
         return "HappyOrderDTO{" +
             "id=" + getId() +
             ", baseTotal=" + getBaseTotal() +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", dateUpdated='" + getDateUpdated() + "'" +
             ", totalPrice=" + getTotalPrice() +
+            ", dateUpdated='" + getDateUpdated() + "'" +
+            ", dateCreated='" + getDateCreated() + "'" +
             ", orderStatus=" + getOrderStatusId() +
             ", customer=" + getCustomerId() +
             ", coupon=" + getCouponId() +

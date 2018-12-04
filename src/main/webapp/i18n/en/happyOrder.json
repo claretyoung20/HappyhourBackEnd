@@ -17,9 +17,9 @@
                 "title": "Happy Order"
             },
             "baseTotal": "Base Total",
-            "dateCreated": "Date Created",
-            "dateUpdated": "Date Updated",
             "totalPrice": "Total Price",
+            "dateUpdated": "Date Updated",
+            "dateCreated": "Date Created",
             "orderStatus": "Order Status",
             "customer": "Customer",
             "coupon": "Coupon",

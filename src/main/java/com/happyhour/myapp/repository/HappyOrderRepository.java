@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+
 
 /**
  * Spring Data  repository for the HappyOrder entity.
@@ -15,4 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface HappyOrderRepository extends JpaRepository<HappyOrder, Long> {
 
     Page<HappyOrder> findAllByOrderStatusId(long id, Pageable pageable);
+    Page<HappyOrder> findAllByCustomerIdAndDateCreatedLessThan(long id, LocalDate localDate, Pageable pageable);
+    Page<HappyOrder> findAllByCustomerIdAndDateCreatedIsGreaterThanEqual(long id, LocalDate localDate, Pageable pageable);
 }

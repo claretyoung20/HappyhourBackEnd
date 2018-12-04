@@ -39,16 +39,16 @@
             "fieldType": "Double"
         },
         {
-            "fieldName": "dateCreated",
-            "fieldType": "Instant"
+            "fieldName": "totalPrice",
+            "fieldType": "Double"
         },
         {
             "fieldName": "dateUpdated",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "totalPrice",
-            "fieldType": "Double"
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20181113121959",
