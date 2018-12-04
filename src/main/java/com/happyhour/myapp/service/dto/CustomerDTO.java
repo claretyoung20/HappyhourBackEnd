@@ -2,7 +2,6 @@ package com.happyhour.myapp.service.dto;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -21,28 +20,15 @@ public class CustomerDTO implements Serializable {
 
     private LocalDate dateOfBirth;
 
-    @NotNull
-    private String email;
-
-    @NotNull
-    private String firstName;
-
-    private String imgUrl;
-
-    private String lastName;
-
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
-    private String password;
-
     private String phoneNumber;
-
-    private Instant resetDate;
-
-    private String reset_Key;
 
     private Boolean status;
 
     private Long restaurantId;
+
+    private Long userId;
+
+    private String userLogin;
 
     public Long getId() {
         return id;
@@ -84,68 +70,12 @@ public class CustomerDTO implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Instant getResetDate() {
-        return resetDate;
-    }
-
-    public void setResetDate(Instant resetDate) {
-        this.resetDate = resetDate;
-    }
-
-    public String getReset_Key() {
-        return reset_Key;
-    }
-
-    public void setReset_Key(String reset_Key) {
-        this.reset_Key = reset_Key;
     }
 
     public Boolean isStatus() {
@@ -162,6 +92,22 @@ public class CustomerDTO implements Serializable {
 
     public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
     @Override
@@ -193,16 +139,11 @@ public class CustomerDTO implements Serializable {
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", dateOfBirth='" + getDateOfBirth() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", firstName='" + getFirstName() + "'" +
-            ", imgUrl='" + getImgUrl() + "'" +
-            ", lastName='" + getLastName() + "'" +
-            ", password='" + getPassword() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", resetDate='" + getResetDate() + "'" +
-            ", reset_Key='" + getReset_Key() + "'" +
             ", status='" + isStatus() + "'" +
             ", restaurant=" + getRestaurantId() +
+            ", user=" + getUserId() +
+            ", user='" + getUserLogin() + "'" +
             "}";
     }
 }

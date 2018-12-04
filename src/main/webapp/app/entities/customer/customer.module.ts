@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HappybourBackEndSharedModule } from 'app/shared';
+import { HappybourBackEndAdminModule } from 'app/admin/admin.module';
 import {
     CustomerComponent,
     CustomerDetailComponent,
@@ -15,7 +16,7 @@ import {
 const ENTITY_STATES = [...customerRoute, ...customerPopupRoute];
 
 @NgModule({
-    imports: [HappybourBackEndSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [HappybourBackEndSharedModule, HappybourBackEndAdminModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         CustomerComponent,
         CustomerDetailComponent,

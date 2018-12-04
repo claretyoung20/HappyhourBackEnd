@@ -30,16 +30,10 @@ export class CustomerUpdatePage {
     dateCreatedInput = element(by.id('field_dateCreated'));
     dateUpdatedInput = element(by.id('field_dateUpdated'));
     dateOfBirthInput = element(by.id('field_dateOfBirth'));
-    emailInput = element(by.id('field_email'));
-    firstNameInput = element(by.id('field_firstName'));
-    imgUrlInput = element(by.id('field_imgUrl'));
-    lastNameInput = element(by.id('field_lastName'));
-    passwordInput = element(by.id('field_password'));
     phoneNumberInput = element(by.id('field_phoneNumber'));
-    resetDateInput = element(by.id('field_resetDate'));
-    reset_KeyInput = element(by.id('field_reset_Key'));
     statusInput = element(by.id('field_status'));
     restaurantSelect = element(by.id('field_restaurant'));
+    userSelect = element(by.id('field_user'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -77,68 +71,12 @@ export class CustomerUpdatePage {
         return this.dateOfBirthInput.getAttribute('value');
     }
 
-    async setEmailInput(email) {
-        await this.emailInput.sendKeys(email);
-    }
-
-    async getEmailInput() {
-        return this.emailInput.getAttribute('value');
-    }
-
-    async setFirstNameInput(firstName) {
-        await this.firstNameInput.sendKeys(firstName);
-    }
-
-    async getFirstNameInput() {
-        return this.firstNameInput.getAttribute('value');
-    }
-
-    async setImgUrlInput(imgUrl) {
-        await this.imgUrlInput.sendKeys(imgUrl);
-    }
-
-    async getImgUrlInput() {
-        return this.imgUrlInput.getAttribute('value');
-    }
-
-    async setLastNameInput(lastName) {
-        await this.lastNameInput.sendKeys(lastName);
-    }
-
-    async getLastNameInput() {
-        return this.lastNameInput.getAttribute('value');
-    }
-
-    async setPasswordInput(password) {
-        await this.passwordInput.sendKeys(password);
-    }
-
-    async getPasswordInput() {
-        return this.passwordInput.getAttribute('value');
-    }
-
     async setPhoneNumberInput(phoneNumber) {
         await this.phoneNumberInput.sendKeys(phoneNumber);
     }
 
     async getPhoneNumberInput() {
         return this.phoneNumberInput.getAttribute('value');
-    }
-
-    async setResetDateInput(resetDate) {
-        await this.resetDateInput.sendKeys(resetDate);
-    }
-
-    async getResetDateInput() {
-        return this.resetDateInput.getAttribute('value');
-    }
-
-    async setReset_KeyInput(reset_Key) {
-        await this.reset_KeyInput.sendKeys(reset_Key);
-    }
-
-    async getReset_KeyInput() {
-        return this.reset_KeyInput.getAttribute('value');
     }
 
     getStatusInput() {
@@ -162,6 +100,25 @@ export class CustomerUpdatePage {
 
     async getRestaurantSelectedOption() {
         return this.restaurantSelect.element(by.css('option:checked')).getText();
+    }
+
+    async userSelectLastOption() {
+        await this.userSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async userSelectOption(option) {
+        await this.userSelect.sendKeys(option);
+    }
+
+    getUserSelect(): ElementFinder {
+        return this.userSelect;
+    }
+
+    async getUserSelectedOption() {
+        return this.userSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

@@ -21,37 +21,9 @@
                 <dd>
                     <span>{{customer.dateOfBirth}}</span>
                 </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.email">Email</span></dt>
-                <dd>
-                    <span>{{customer.email}}</span>
-                </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.firstName">First Name</span></dt>
-                <dd>
-                    <span>{{customer.firstName}}</span>
-                </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.imgUrl">Img Url</span></dt>
-                <dd>
-                    <span>{{customer.imgUrl}}</span>
-                </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.lastName">Last Name</span></dt>
-                <dd>
-                    <span>{{customer.lastName}}</span>
-                </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.password">Password</span></dt>
-                <dd>
-                    <span>{{customer.password}}</span>
-                </dd>
                 <dt><span jhiTranslate="happybourBackEndApp.customer.phoneNumber">Phone Number</span></dt>
                 <dd>
                     <span>{{customer.phoneNumber}}</span>
-                </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.resetDate">Reset Date</span></dt>
-                <dd>
-                    <span>{{customer.resetDate}}</span>
-                </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.customer.reset_Key">Reset Key</span></dt>
-                <dd>
-                    <span>{{customer.reset_Key}}</span>
                 </dd>
                 <dt><span jhiTranslate="happybourBackEndApp.customer.status">Status</span></dt>
                 <dd>
@@ -62,6 +34,10 @@
                     <div *ngIf="customer.restaurantId">
                         <a [routerLink]="['/restaurant', customer.restaurantId, 'view']">{{customer.restaurantId}}</a>
                     </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.customer.user">User</span></dt>
+                <dd>
+                    {{customer.userLogin}}
                 </dd>
             </dl>
 

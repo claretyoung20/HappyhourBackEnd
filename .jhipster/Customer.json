@@ -7,6 +7,14 @@
             "otherEntityName": "restaurant",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "customer"
         }
     ],
     "fields": [
@@ -27,45 +35,7 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "email",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "firstName",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "imgUrl",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "password",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "pattern"
-            ],
-            "fieldValidateRulesPattern": "^[a-zA-Z0-9]*$"
-        },
-        {
             "fieldName": "phoneNumber",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "resetDate",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "reset_Key",
             "fieldType": "String"
         },
         {

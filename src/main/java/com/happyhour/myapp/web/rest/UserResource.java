@@ -197,4 +197,13 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
     }
+
+    @GetMapping("/user/userId/{id}")
+    @Timed
+    public ResponseEntity<UserDTO> getUserByd(@PathVariable Long id) {
+        log.debug("REST request to get User : {}", id);
+        Optional<UserDTO> customerDTO = userService.findById(id);
+        return ResponseUtil.wrapOrNotFound(customerDTO);
+    }
+
 }

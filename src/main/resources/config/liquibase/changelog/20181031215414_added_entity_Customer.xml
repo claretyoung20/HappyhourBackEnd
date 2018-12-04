@@ -38,35 +38,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="email" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="first_name" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="img_url" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="last_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="jhi_password" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="phone_number" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="reset_date" type="datetime">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="reset_key" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -77,12 +49,13 @@
             <column name="restaurant_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            <column name="user_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_customer_user_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="customer" columnName="date_created" columnDataType="datetime"/>
         <dropDefaultValue tableName="customer" columnName="date_updated" columnDataType="datetime"/>
-        <dropDefaultValue tableName="customer" columnName="reset_date" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

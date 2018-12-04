@@ -10,6 +10,7 @@ import { ICustomer } from 'app/shared/model/customer.model';
 import { CustomerService } from './customer.service';
 import { IRestaurant } from 'app/shared/model/restaurant.model';
 import { RestaurantService } from 'app/entities/restaurant';
+import { IUser, UserService } from 'app/core';
 
 @Component({
     selector: 'jhi-customer-update',
@@ -20,15 +21,17 @@ export class CustomerUpdateComponent implements OnInit {
     isSaving: boolean;
 
     restaurants: IRestaurant[];
+
+    users: IUser[];
     dateCreated: string;
     dateUpdated: string;
     dateOfBirthDp: any;
-    resetDate: string;
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private customerService: CustomerService,
         private restaurantService: RestaurantService,
+        private userService: UserService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -43,6 +46,12 @@ export class CustomerUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+        this.userService.query().subscribe(
+            (res: HttpResponse<IUser[]>) => {
+                this.users = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
     previousState() {
@@ -53,7 +62,6 @@ export class CustomerUpdateComponent implements OnInit {
         this.isSaving = true;
         this.customer.dateCreated = moment(this.dateCreated, DATE_TIME_FORMAT);
         this.customer.dateUpdated = moment(this.dateUpdated, DATE_TIME_FORMAT);
-        this.customer.resetDate = moment(this.resetDate, DATE_TIME_FORMAT);
         if (this.customer.id !== undefined) {
             this.subscribeToSaveResponse(this.customerService.update(this.customer));
         } else {
@@ -81,6 +89,10 @@ export class CustomerUpdateComponent implements OnInit {
     trackRestaurantById(index: number, item: IRestaurant) {
         return item.id;
     }
+
+    trackUserById(index: number, item: IUser) {
+        return item.id;
+    }
     get customer() {
         return this._customer;
     }
@@ -89,6 +101,5 @@ export class CustomerUpdateComponent implements OnInit {
         this._customer = customer;
         this.dateCreated = moment(customer.dateCreated).format(DATE_TIME_FORMAT);
         this.dateUpdated = moment(customer.dateUpdated).format(DATE_TIME_FORMAT);
-        this.resetDate = moment(customer.resetDate).format(DATE_TIME_FORMAT);
     }
 }

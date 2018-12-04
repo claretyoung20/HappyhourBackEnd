@@ -46,22 +46,8 @@ describe('Customer e2e test', () => {
         expect(await customerUpdatePage.getDateUpdatedInput()).to.contain('2001-01-01T02:30');
         await customerUpdatePage.setDateOfBirthInput('2000-12-31');
         expect(await customerUpdatePage.getDateOfBirthInput()).to.eq('2000-12-31');
-        await customerUpdatePage.setEmailInput('email');
-        expect(await customerUpdatePage.getEmailInput()).to.eq('email');
-        await customerUpdatePage.setFirstNameInput('firstName');
-        expect(await customerUpdatePage.getFirstNameInput()).to.eq('firstName');
-        await customerUpdatePage.setImgUrlInput('imgUrl');
-        expect(await customerUpdatePage.getImgUrlInput()).to.eq('imgUrl');
-        await customerUpdatePage.setLastNameInput('lastName');
-        expect(await customerUpdatePage.getLastNameInput()).to.eq('lastName');
-        await customerUpdatePage.setPasswordInput('password');
-        expect(await customerUpdatePage.getPasswordInput()).to.eq('password');
         await customerUpdatePage.setPhoneNumberInput('phoneNumber');
         expect(await customerUpdatePage.getPhoneNumberInput()).to.eq('phoneNumber');
-        await customerUpdatePage.setResetDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(await customerUpdatePage.getResetDateInput()).to.contain('2001-01-01T02:30');
-        await customerUpdatePage.setReset_KeyInput('reset_Key');
-        expect(await customerUpdatePage.getReset_KeyInput()).to.eq('reset_Key');
         const selectedStatus = customerUpdatePage.getStatusInput();
         if (await selectedStatus.isSelected()) {
             await customerUpdatePage.getStatusInput().click();
@@ -71,6 +57,7 @@ describe('Customer e2e test', () => {
             expect(await customerUpdatePage.getStatusInput().isSelected()).to.be.true;
         }
         await customerUpdatePage.restaurantSelectLastOption();
+        await customerUpdatePage.userSelectLastOption();
         await customerUpdatePage.save();
         expect(await customerUpdatePage.getSaveButton().isPresent()).to.be.false;
 

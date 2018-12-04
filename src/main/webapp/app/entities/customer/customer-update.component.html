@@ -39,64 +39,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.email" for="field_email">Email</label>
-                    <input type="text" class="form-control" name="email" id="field_email"
-                        [(ngModel)]="customer.email" required/>
-                    <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.firstName" for="field_firstName">First Name</label>
-                    <input type="text" class="form-control" name="firstName" id="field_firstName"
-                        [(ngModel)]="customer.firstName" required/>
-                    <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.firstName?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.imgUrl" for="field_imgUrl">Img Url</label>
-                    <input type="text" class="form-control" name="imgUrl" id="field_imgUrl"
-                        [(ngModel)]="customer.imgUrl" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.lastName" for="field_lastName">Last Name</label>
-                    <input type="text" class="form-control" name="lastName" id="field_lastName"
-                        [(ngModel)]="customer.lastName" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.password" for="field_password">Password</label>
-                    <input type="text" class="form-control" name="password" id="field_password"
-                        [(ngModel)]="customer.password" pattern="^[a-zA-Z0-9]*$"/>
-                    <div [hidden]="!(editForm.controls.password?.dirty && editForm.controls.password?.invalid)">
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.password?.errors?.pattern" jhiTranslate="entity.validation.pattern" translateValues="{ pattern: 'Password' }">
-                            This field should follow pattern for "Password".
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.phoneNumber" for="field_phoneNumber">Phone Number</label>
                     <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
                         [(ngModel)]="customer.phoneNumber" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.resetDate" for="field_resetDate">Reset Date</label>
-                    <div class="d-flex">
-                        <input id="field_resetDate" type="datetime-local" class="form-control" name="resetDate" [(ngModel)]="resetDate"
-                        />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.reset_Key" for="field_reset_Key">Reset Key</label>
-                    <input type="text" class="form-control" name="reset_Key" id="field_reset_Key"
-                        [(ngModel)]="customer.reset_Key" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.status" for="field_status">Status</label>
@@ -109,6 +54,13 @@
                     <select class="form-control" id="field_restaurant" name="restaurant" [(ngModel)]="customer.restaurantId" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="restaurantOption.id" *ngFor="let restaurantOption of restaurants; trackBy: trackRestaurantById">{{restaurantOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.customer.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="customer.userId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
                     </select>
                 </div>
             </div>

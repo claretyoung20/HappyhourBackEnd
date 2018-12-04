@@ -20,16 +20,10 @@
             "dateCreated": "Date Created",
             "dateUpdated": "Date Updated",
             "dateOfBirth": "Date Of Birth",
-            "email": "Email",
-            "firstName": "First Name",
-            "imgUrl": "Img Url",
-            "lastName": "Last Name",
-            "password": "Password",
             "phoneNumber": "Phone Number",
-            "resetDate": "Reset Date",
-            "reset_Key": "Reset Key",
             "status": "Status",
-            "restaurant": "Restaurant"
+            "restaurant": "Restaurant",
+            "user": "User"
         }
     }
 }

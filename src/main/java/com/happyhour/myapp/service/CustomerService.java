@@ -20,6 +20,15 @@ public interface CustomerService {
      */
     CustomerDTO save(CustomerDTO customerDTO);
 
+
+    /**
+     * Update a customer.
+     *
+     * @param customerDTO the entity to save
+     * @return the persisted entity
+     */
+    CustomerDTO update(CustomerDTO customerDTO);
+
     /**
      * Get all the customers.
      *
@@ -44,5 +53,5 @@ public interface CustomerService {
      */
     void delete(Long id);
 
-    Optional<CustomerDTO> findByEmailAndPassword(String email, String password);
+    Optional<CustomerDTO> findByUserId(Long id);
 }

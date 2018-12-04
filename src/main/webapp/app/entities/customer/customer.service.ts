@@ -53,8 +53,7 @@ export class CustomerService {
         const copy: ICustomer = Object.assign({}, customer, {
             dateCreated: customer.dateCreated != null && customer.dateCreated.isValid() ? customer.dateCreated.toJSON() : null,
             dateUpdated: customer.dateUpdated != null && customer.dateUpdated.isValid() ? customer.dateUpdated.toJSON() : null,
-            dateOfBirth: customer.dateOfBirth != null && customer.dateOfBirth.isValid() ? customer.dateOfBirth.format(DATE_FORMAT) : null,
-            resetDate: customer.resetDate != null && customer.resetDate.isValid() ? customer.resetDate.toJSON() : null
+            dateOfBirth: customer.dateOfBirth != null && customer.dateOfBirth.isValid() ? customer.dateOfBirth.format(DATE_FORMAT) : null
         });
         return copy;
     }
@@ -63,7 +62,6 @@ export class CustomerService {
         res.body.dateCreated = res.body.dateCreated != null ? moment(res.body.dateCreated) : null;
         res.body.dateUpdated = res.body.dateUpdated != null ? moment(res.body.dateUpdated) : null;
         res.body.dateOfBirth = res.body.dateOfBirth != null ? moment(res.body.dateOfBirth) : null;
-        res.body.resetDate = res.body.resetDate != null ? moment(res.body.resetDate) : null;
         return res;
     }
 
@@ -72,7 +70,6 @@ export class CustomerService {
             customer.dateCreated = customer.dateCreated != null ? moment(customer.dateCreated) : null;
             customer.dateUpdated = customer.dateUpdated != null ? moment(customer.dateUpdated) : null;
             customer.dateOfBirth = customer.dateOfBirth != null ? moment(customer.dateOfBirth) : null;
-            customer.resetDate = customer.resetDate != null ? moment(customer.resetDate) : null;
         });
         return res;
     }

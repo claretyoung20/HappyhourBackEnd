@@ -329,4 +329,11 @@ public class UserService {
         return userRepository.findOneByLogin(login)
             .map(userMapper::userToUserDTO);
     }
+
+    public Optional<UserDTO> findById(Long id) {
+        log.debug("Request to get User by login : {}", id);
+        return userRepository.findById(id)
+            .map(userMapper::userToUserDTO);
+    }
+
 }

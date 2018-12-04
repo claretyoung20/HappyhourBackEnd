@@ -6,16 +6,11 @@ export interface ICustomer {
     dateCreated?: Moment;
     dateUpdated?: Moment;
     dateOfBirth?: Moment;
-    email?: string;
-    firstName?: string;
-    imgUrl?: string;
-    lastName?: string;
-    password?: string;
     phoneNumber?: string;
-    resetDate?: Moment;
-    reset_Key?: string;
     status?: boolean;
     restaurantId?: number;
+    userLogin?: string;
+    userId?: number;
 }
 
 export class Customer implements ICustomer {
@@ -25,16 +20,11 @@ export class Customer implements ICustomer {
         public dateCreated?: Moment,
         public dateUpdated?: Moment,
         public dateOfBirth?: Moment,
-        public email?: string,
-        public firstName?: string,
-        public imgUrl?: string,
-        public lastName?: string,
-        public password?: string,
         public phoneNumber?: string,
-        public resetDate?: Moment,
-        public reset_Key?: string,
         public status?: boolean,
-        public restaurantId?: number
+        public restaurantId?: number,
+        public userLogin?: string,
+        public userId?: number
     ) {
         this.status = this.status || false;
     }

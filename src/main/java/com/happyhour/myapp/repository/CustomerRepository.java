@@ -13,5 +13,5 @@ import java.util.Optional;
 @SuppressWarnings("unused")
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    Optional<Customer> findByEmailAndPassword(String email, String password);
+    Optional<Customer> findByUserId(Long id);
 }

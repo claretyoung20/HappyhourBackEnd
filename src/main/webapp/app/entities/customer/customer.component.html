@@ -19,16 +19,10 @@
             <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.customer.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.customer.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="dateOfBirth"><span jhiTranslate="happybourBackEndApp.customer.dateOfBirth">Date Of Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="email"><span jhiTranslate="happybourBackEndApp.customer.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="firstName"><span jhiTranslate="happybourBackEndApp.customer.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="imgUrl"><span jhiTranslate="happybourBackEndApp.customer.imgUrl">Img Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="lastName"><span jhiTranslate="happybourBackEndApp.customer.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="password"><span jhiTranslate="happybourBackEndApp.customer.password">Password</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="phoneNumber"><span jhiTranslate="happybourBackEndApp.customer.phoneNumber">Phone Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="resetDate"><span jhiTranslate="happybourBackEndApp.customer.resetDate">Reset Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="reset_Key"><span jhiTranslate="happybourBackEndApp.customer.reset_Key">Reset Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="status"><span jhiTranslate="happybourBackEndApp.customer.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.customer.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userLogin"><span jhiTranslate="happybourBackEndApp.customer.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -39,19 +33,15 @@
                 <td>{{customer.dateCreated | date:'medium'}}</td>
                 <td>{{customer.dateUpdated | date:'medium'}}</td>
                 <td>{{customer.dateOfBirth | date:'mediumDate'}}</td>
-                <td>{{customer.email}}</td>
-                <td>{{customer.firstName}}</td>
-                <td>{{customer.imgUrl}}</td>
-                <td>{{customer.lastName}}</td>
-                <td>{{customer.password}}</td>
                 <td>{{customer.phoneNumber}}</td>
-                <td>{{customer.resetDate | date:'medium'}}</td>
-                <td>{{customer.reset_Key}}</td>
                 <td>{{customer.status}}</td>
                 <td>
                     <div *ngIf="customer.restaurantId">
                         <a [routerLink]="['../restaurant', customer.restaurantId , 'view' ]" >{{customer.restaurantId}}</a>
                     </div>
+                </td>
+                <td>
+                    {{customer.userLogin}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

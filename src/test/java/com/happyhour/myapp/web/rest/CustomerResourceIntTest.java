@@ -58,29 +58,8 @@ public class CustomerResourceIntTest {
     private static final LocalDate DEFAULT_DATE_OF_BIRTH = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_OF_BIRTH = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_FIRST_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_IMG_URL = "AAAAAAAAAA";
-    private static final String UPDATED_IMG_URL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_LAST_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_LAST_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PASSWORD = "AAAAAAAAAA";
-    private static final String UPDATED_PASSWORD = "BBBBBBBBBB";
-
     private static final String DEFAULT_PHONE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PHONE_NUMBER = "BBBBBBBBBB";
-
-    private static final Instant DEFAULT_RESET_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_RESET_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final String DEFAULT_RESET_KEY = "AAAAAAAAAA";
-    private static final String UPDATED_RESET_KEY = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_STATUS = false;
     private static final Boolean UPDATED_STATUS = true;
@@ -133,14 +112,7 @@ public class CustomerResourceIntTest {
             .dateCreated(DEFAULT_DATE_CREATED)
             .dateUpdated(DEFAULT_DATE_UPDATED)
             .dateOfBirth(DEFAULT_DATE_OF_BIRTH)
-            .email(DEFAULT_EMAIL)
-            .firstName(DEFAULT_FIRST_NAME)
-            .imgUrl(DEFAULT_IMG_URL)
-            .lastName(DEFAULT_LAST_NAME)
-            .password(DEFAULT_PASSWORD)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
-            .resetDate(DEFAULT_RESET_DATE)
-            .reset_Key(DEFAULT_RESET_KEY)
             .status(DEFAULT_STATUS);
         return customer;
     }
@@ -167,17 +139,10 @@ public class CustomerResourceIntTest {
         assertThat(customerList).hasSize(databaseSizeBeforeCreate + 1);
         Customer testCustomer = customerList.get(customerList.size() - 1);
         assertThat(testCustomer.getAddress()).isEqualTo(DEFAULT_ADDRESS);
-//        assertThat(testCustomer.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
-//        assertThat(testCustomer.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
+        assertThat(testCustomer.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
+        assertThat(testCustomer.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
         assertThat(testCustomer.getDateOfBirth()).isEqualTo(DEFAULT_DATE_OF_BIRTH);
-        assertThat(testCustomer.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testCustomer.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
-        assertThat(testCustomer.getImgUrl()).isEqualTo(DEFAULT_IMG_URL);
-        assertThat(testCustomer.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
-        assertThat(testCustomer.getPassword()).isEqualTo(DEFAULT_PASSWORD);
         assertThat(testCustomer.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
-        assertThat(testCustomer.getResetDate()).isEqualTo(DEFAULT_RESET_DATE);
-        assertThat(testCustomer.getReset_Key()).isEqualTo(DEFAULT_RESET_KEY);
         assertThat(testCustomer.isStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
@@ -203,44 +168,6 @@ public class CustomerResourceIntTest {
 
     @Test
     @Transactional
-    public void checkEmailIsRequired() throws Exception {
-        int databaseSizeBeforeTest = customerRepository.findAll().size();
-        // set the field null
-        customer.setEmail(null);
-
-        // Create the Customer, which fails.
-        CustomerDTO customerDTO = customerMapper.toDto(customer);
-
-        restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(customerDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Customer> customerList = customerRepository.findAll();
-        assertThat(customerList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkFirstNameIsRequired() throws Exception {
-        int databaseSizeBeforeTest = customerRepository.findAll().size();
-        // set the field null
-        customer.setFirstName(null);
-
-        // Create the Customer, which fails.
-        CustomerDTO customerDTO = customerMapper.toDto(customer);
-
-        restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(customerDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Customer> customerList = customerRepository.findAll();
-        assertThat(customerList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllCustomers() throws Exception {
         // Initialize the database
         customerRepository.saveAndFlush(customer);
@@ -254,14 +181,7 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
             .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())))
             .andExpect(jsonPath("$.[*].dateOfBirth").value(hasItem(DEFAULT_DATE_OF_BIRTH.toString())))
-            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-            .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME.toString())))
-            .andExpect(jsonPath("$.[*].imgUrl").value(hasItem(DEFAULT_IMG_URL.toString())))
-            .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
-            .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD.toString())))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].resetDate").value(hasItem(DEFAULT_RESET_DATE.toString())))
-            .andExpect(jsonPath("$.[*].reset_Key").value(hasItem(DEFAULT_RESET_KEY.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())));
     }
     
@@ -280,14 +200,7 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
             .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()))
             .andExpect(jsonPath("$.dateOfBirth").value(DEFAULT_DATE_OF_BIRTH.toString()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME.toString()))
-            .andExpect(jsonPath("$.imgUrl").value(DEFAULT_IMG_URL.toString()))
-            .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
-            .andExpect(jsonPath("$.password").value(DEFAULT_PASSWORD.toString()))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER.toString()))
-            .andExpect(jsonPath("$.resetDate").value(DEFAULT_RESET_DATE.toString()))
-            .andExpect(jsonPath("$.reset_Key").value(DEFAULT_RESET_KEY.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()));
     }
 
@@ -316,14 +229,7 @@ public class CustomerResourceIntTest {
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED)
             .dateOfBirth(UPDATED_DATE_OF_BIRTH)
-            .email(UPDATED_EMAIL)
-            .firstName(UPDATED_FIRST_NAME)
-            .imgUrl(UPDATED_IMG_URL)
-            .lastName(UPDATED_LAST_NAME)
-            .password(UPDATED_PASSWORD)
             .phoneNumber(UPDATED_PHONE_NUMBER)
-            .resetDate(UPDATED_RESET_DATE)
-            .reset_Key(UPDATED_RESET_KEY)
             .status(UPDATED_STATUS);
         CustomerDTO customerDTO = customerMapper.toDto(updatedCustomer);
 
@@ -337,17 +243,10 @@ public class CustomerResourceIntTest {
         assertThat(customerList).hasSize(databaseSizeBeforeUpdate);
         Customer testCustomer = customerList.get(customerList.size() - 1);
         assertThat(testCustomer.getAddress()).isEqualTo(UPDATED_ADDRESS);
-//        assertThat(testCustomer.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
-//        assertThat(testCustomer.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
+        assertThat(testCustomer.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
+        assertThat(testCustomer.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
         assertThat(testCustomer.getDateOfBirth()).isEqualTo(UPDATED_DATE_OF_BIRTH);
-        assertThat(testCustomer.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testCustomer.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
-        assertThat(testCustomer.getImgUrl()).isEqualTo(UPDATED_IMG_URL);
-        assertThat(testCustomer.getLastName()).isEqualTo(UPDATED_LAST_NAME);
-        assertThat(testCustomer.getPassword()).isEqualTo(UPDATED_PASSWORD);
         assertThat(testCustomer.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
-        assertThat(testCustomer.getResetDate()).isEqualTo(UPDATED_RESET_DATE);
-        assertThat(testCustomer.getReset_Key()).isEqualTo(UPDATED_RESET_KEY);
         assertThat(testCustomer.isStatus()).isEqualTo(UPDATED_STATUS);
     }
 

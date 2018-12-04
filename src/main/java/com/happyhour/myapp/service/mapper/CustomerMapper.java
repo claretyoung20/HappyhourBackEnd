@@ -8,13 +8,16 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Customer and its DTO CustomerDTO.
  */
-@Mapper(componentModel = "spring", uses = {RestaurantMapper.class})
+@Mapper(componentModel = "spring", uses = {RestaurantMapper.class, UserMapper.class})
 public interface CustomerMapper extends EntityMapper<CustomerDTO, Customer> {
 
     @Mapping(source = "restaurant.id", target = "restaurantId")
+    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "user.login", target = "userLogin")
     CustomerDTO toDto(Customer customer);
 
     @Mapping(source = "restaurantId", target = "restaurant")
+    @Mapping(source = "userId", target = "user")
     Customer toEntity(CustomerDTO customerDTO);
 
     default Customer fromId(Long id) {
