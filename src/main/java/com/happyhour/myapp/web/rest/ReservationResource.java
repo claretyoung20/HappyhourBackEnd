@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -129,6 +130,26 @@ public class ReservationResource {
     public ResponseEntity<List<ReservationDTO>> getAllByReservations( String searchPara, Pageable pageable) throws URISyntaxException{
         log.debug("REST request to get a page of Reservations");
         Page<ReservationDTO> page = reservationService.findAllReservation(searchPara, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/reservations/history")
+    @Timed
+    public ResponseEntity<List<ReservationDTO>> getAllReservationsHistory(Long id, Pageable pageable) {
+        log.debug("REST request to get a page of Reservations");
+        LocalDate localDate = LocalDate.now();
+        Page<ReservationDTO> page = reservationService.findHistory(id,localDate, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/reservations/active")
+    @Timed
+    public ResponseEntity<List<ReservationDTO>> getAllActiveReservations(Long id, Pageable pageable) {
+        log.debug("REST request to get a page of Reservations");
+        LocalDate localDate = LocalDate.now();
+        Page<ReservationDTO> page = reservationService.findAcitive(id,localDate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

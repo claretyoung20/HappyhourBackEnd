@@ -18,10 +18,9 @@
             },
             "comment": "Comment",
             "status": "Status",
-            "startTime": "Start Time",
-            "endTime": "End Time",
             "reserverDate": "Reserver Date",
             "updatedDate": "Updated Date",
+            "period": "Period",
             "staff": "Staff",
             "bookTable": "Book Table",
             "customer": "Customer"

@@ -30,19 +30,15 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="start_time" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="end_time" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="reserver_date" type="date">
                 <constraints nullable="true" />
             </column>
 
             <column name="updated_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="period" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

@@ -27,17 +27,14 @@ public class Reservation implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "start_time")
-    private String startTime;
-
-    @Column(name = "end_time")
-    private String endTime;
-
     @Column(name = "reserver_date")
     private LocalDate reserverDate;
 
     @Column(name = "updated_date")
     private LocalDate updatedDate;
+
+    @Column(name = "period")
+    private String period;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -86,32 +83,6 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public Reservation startTime(String startTime) {
-        this.startTime = startTime;
-        return this;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public Reservation endTime(String endTime) {
-        this.endTime = endTime;
-        return this;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
     public LocalDate getReserverDate() {
         return reserverDate;
     }
@@ -136,6 +107,19 @@ public class Reservation implements Serializable {
 
     public void setUpdatedDate(LocalDate updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public Reservation period(String period) {
+        this.period = period;
+        return this;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
     }
 
     public Staff getStaff() {
@@ -204,10 +188,9 @@ public class Reservation implements Serializable {
             "id=" + getId() +
             ", comment='" + getComment() + "'" +
             ", status='" + getStatus() + "'" +
-            ", startTime='" + getStartTime() + "'" +
-            ", endTime='" + getEndTime() + "'" +
             ", reserverDate='" + getReserverDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
+            ", period='" + getPeriod() + "'" +
             "}";
     }
 }

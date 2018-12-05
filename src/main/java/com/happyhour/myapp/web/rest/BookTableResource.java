@@ -1,7 +1,10 @@
 package com.happyhour.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.happyhour.myapp.domain.Reservation;
 import com.happyhour.myapp.service.BookTableService;
+import com.happyhour.myapp.service.ReservationService;
+import com.happyhour.myapp.service.dto.ReservationDTO;
 import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
@@ -9,6 +12,7 @@ import com.happyhour.myapp.service.dto.BookTableDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +39,9 @@ public class BookTableResource {
     private static final String ENTITY_NAME = "bookTable";
 
     private final BookTableService bookTableService;
+
+    @Autowired
+    private ReservationService reservationService;
 
     public BookTableResource(BookTableService bookTableService) {
         this.bookTableService = bookTableService;
@@ -122,5 +130,49 @@ public class BookTableResource {
         log.debug("REST request to delete BookTable : {}", id);
         bookTableService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/book-tables/avaliable")
+    @Timed
+    public ResponseEntity<List<BookTableDTO>> getBookTableAvailable(Integer persons, String period, String reserveDate, Pageable pageable) {
+
+//        Reservation reservation = new Reservation();
+//        reservation.setReserverDate(reserveDate);
+
+        LocalDate localDate = LocalDate.parse(reserveDate);
+        // table to return
+        Page<BookTableDTO> page = bookTableService.findAll(pageable);
+        // get all reservation with DATE and PERIOD
+        List<ReservationDTO> reservationDTOS = reservationService.findAllByPeriodAndReserverDate(period, localDate);
+
+        // if reservation is null, return all table === END
+        if(reservationDTOS.size() == 0){
+            page = bookTableService.findAllByPersons(persons, pageable);
+        }
+        // if reservation is not null, move to step 2
+        // step 2
+        BookTableDTO bookTableDTO = null;
+//        BookTableDTO bookTableDTO = new BookTableDTO();
+        if(!reservationDTOS.isEmpty()) {
+            for (ReservationDTO reservationDTO: reservationDTOS) {
+                bookTableDTO = bookTableService.findByIdAndPersons(reservationDTO.getBookTableId(), persons);
+                if(bookTableDTO != null) {
+                    if(bookTableDTO.getId() != 0){
+                        break;
+                    }
+                }
+            }
+        }
+        // get All table except ABLE TT and where person = PERSON
+        if(bookTableDTO != null ) {
+            page = bookTableService.findAllByIdIsNotAndPersons(bookTableDTO.getId(), persons, pageable);
+        }
+        else if(bookTableDTO == null){
+            page = bookTableService.findAllByPersons(persons, pageable);
+        }
+
+        log.debug("REST request to get a page of BookTables");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/book-tables");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

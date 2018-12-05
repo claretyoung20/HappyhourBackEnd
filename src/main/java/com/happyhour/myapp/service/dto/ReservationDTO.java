@@ -15,13 +15,11 @@ public class ReservationDTO implements Serializable {
 
     private String status;
 
-    private String startTime;
-
-    private String endTime;
-
     private LocalDate reserverDate;
 
     private LocalDate updatedDate;
+
+    private String period;
 
     private Long staffId;
 
@@ -53,22 +51,6 @@ public class ReservationDTO implements Serializable {
         this.status = status;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
     public LocalDate getReserverDate() {
         return reserverDate;
     }
@@ -83,6 +65,14 @@ public class ReservationDTO implements Serializable {
 
     public void setUpdatedDate(LocalDate updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
     }
 
     public Long getStaffId() {
@@ -136,10 +126,9 @@ public class ReservationDTO implements Serializable {
             "id=" + getId() +
             ", comment='" + getComment() + "'" +
             ", status='" + getStatus() + "'" +
-            ", startTime='" + getStartTime() + "'" +
-            ", endTime='" + getEndTime() + "'" +
             ", reserverDate='" + getReserverDate() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
+            ", period='" + getPeriod() + "'" +
             ", staff=" + getStaffId() +
             ", bookTable=" + getBookTableId() +
             ", customer=" + getCustomerId() +

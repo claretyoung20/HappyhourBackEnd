@@ -42,14 +42,12 @@ describe('Reservation e2e test', () => {
         expect(await reservationUpdatePage.getCommentInput()).to.eq('comment');
         await reservationUpdatePage.setStatusInput('status');
         expect(await reservationUpdatePage.getStatusInput()).to.eq('status');
-        await reservationUpdatePage.setStartTimeInput('startTime');
-        expect(await reservationUpdatePage.getStartTimeInput()).to.eq('startTime');
-        await reservationUpdatePage.setEndTimeInput('endTime');
-        expect(await reservationUpdatePage.getEndTimeInput()).to.eq('endTime');
         await reservationUpdatePage.setReserverDateInput('2000-12-31');
         expect(await reservationUpdatePage.getReserverDateInput()).to.eq('2000-12-31');
         await reservationUpdatePage.setUpdatedDateInput('2000-12-31');
         expect(await reservationUpdatePage.getUpdatedDateInput()).to.eq('2000-12-31');
+        await reservationUpdatePage.setPeriodInput('period');
+        expect(await reservationUpdatePage.getPeriodInput()).to.eq('period');
         await reservationUpdatePage.staffSelectLastOption();
         await reservationUpdatePage.bookTableSelectLastOption();
         await reservationUpdatePage.customerSelectLastOption();

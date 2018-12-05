@@ -20,16 +20,6 @@
                         [(ngModel)]="reservation.status" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.reservation.startTime" for="field_startTime">Start Time</label>
-                    <input type="text" class="form-control" name="startTime" id="field_startTime"
-                        [(ngModel)]="reservation.startTime" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.reservation.endTime" for="field_endTime">End Time</label>
-                    <input type="text" class="form-control" name="endTime" id="field_endTime"
-                        [(ngModel)]="reservation.endTime" />
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.reservation.reserverDate" for="field_reserverDate">Reserver Date</label>
                     <div class="input-group">
                         <input id="field_reserverDate" type="text" class="form-control" name="reserverDate" ngbDatepicker  #reserverDateDp="ngbDatepicker" [(ngModel)]="reservation.reserverDate"
@@ -48,6 +38,11 @@
                             <button type="button" class="btn btn-secondary" (click)="updatedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.reservation.period" for="field_period">Period</label>
+                    <input type="text" class="form-control" name="period" id="field_period"
+                        [(ngModel)]="reservation.period" />
                 </div>
 
                 <div class="form-group">

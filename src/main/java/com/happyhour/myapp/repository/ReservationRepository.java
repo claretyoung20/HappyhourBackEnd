@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the Reservation entity.
@@ -30,6 +33,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     )
     Page<Reservation> findAllReservation(String searchPara, Pageable pageable);
 
-    // Page<Reservation> findAllByTaAndBookTableId(Long id, Pageable pageable);
-
+    // SELECT * FROM reservation r WHERE r.period = 'm' AND r.reserver_date = '2018-12-05';
+    List<Reservation> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date);
+    Page<Reservation> findAllByCustomerIdAndReserverDateLessThan(Long id, LocalDate localDate, Pageable pageable);
+    Page<Reservation> findAllByCustomerIdAndReserverDateIsGreaterThanEqual(long id, LocalDate localDate, Pageable pageable);
 }

@@ -17,10 +17,9 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="comment"><span jhiTranslate="happybourBackEndApp.reservation.comment">Comment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="status"><span jhiTranslate="happybourBackEndApp.reservation.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="startTime"><span jhiTranslate="happybourBackEndApp.reservation.startTime">Start Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="endTime"><span jhiTranslate="happybourBackEndApp.reservation.endTime">End Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="reserverDate"><span jhiTranslate="happybourBackEndApp.reservation.reserverDate">Reserver Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="updatedDate"><span jhiTranslate="happybourBackEndApp.reservation.updatedDate">Updated Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="period"><span jhiTranslate="happybourBackEndApp.reservation.period">Period</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="staffId"><span jhiTranslate="happybourBackEndApp.reservation.staff">Staff</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="bookTableId"><span jhiTranslate="happybourBackEndApp.reservation.bookTable">Book Table</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="customerId"><span jhiTranslate="happybourBackEndApp.reservation.customer">Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -32,10 +31,9 @@
                 <td><a [routerLink]="['/reservation', reservation.id, 'view' ]">{{reservation.id}}</a></td>
                 <td>{{reservation.comment}}</td>
                 <td>{{reservation.status}}</td>
-                <td>{{reservation.startTime}}</td>
-                <td>{{reservation.endTime}}</td>
                 <td>{{reservation.reserverDate | date:'mediumDate'}}</td>
                 <td>{{reservation.updatedDate | date:'mediumDate'}}</td>
+                <td>{{reservation.period}}</td>
                 <td>
                     <div *ngIf="reservation.staffId">
                         <a [routerLink]="['../staff', reservation.staffId , 'view' ]" >{{reservation.staffId}}</a>

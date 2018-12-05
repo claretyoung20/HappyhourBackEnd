@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -91,6 +93,24 @@ public class ReservationServiceImpl implements ReservationService {
     public Page<ReservationDTO> findAllReservation(String searchPara, Pageable pageable) {
         log.debug("Request to get all Reservations");
         return reservationRepository.findAllReservation(searchPara, pageable)
+            .map(reservationMapper::toDto);
+    }
+
+    @Override
+    public List<ReservationDTO> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date) {
+        return reservationMapper.toDto(reservationRepository.findAllByPeriodAndReserverDate(period, reserve_Date));
+    }
+
+    @Override
+    public Page<ReservationDTO> findHistory(Long id, LocalDate localDate, Pageable pageable) {
+        log.debug("Request to get all Reservations");
+        return reservationRepository.findAllByCustomerIdAndReserverDateLessThan(id, localDate, pageable)
+            .map(reservationMapper::toDto);
+    }
+
+    @Override
+    public Page<ReservationDTO> findAcitive(Long id, LocalDate localDate, Pageable pageable) {
+        return reservationRepository.findAllByCustomerIdAndReserverDateIsGreaterThanEqual(id, localDate, pageable)
             .map(reservationMapper::toDto);
     }
 }

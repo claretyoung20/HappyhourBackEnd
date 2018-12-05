@@ -50,17 +50,14 @@ public class ReservationResourceIntTest {
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_START_TIME = "AAAAAAAAAA";
-    private static final String UPDATED_START_TIME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_END_TIME = "AAAAAAAAAA";
-    private static final String UPDATED_END_TIME = "BBBBBBBBBB";
-
     private static final LocalDate DEFAULT_RESERVER_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_RESERVER_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final LocalDate DEFAULT_UPDATED_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_PERIOD = "AAAAAAAAAA";
+    private static final String UPDATED_PERIOD = "BBBBBBBBBB";
 
     @Autowired
     private ReservationRepository reservationRepository;
@@ -108,10 +105,9 @@ public class ReservationResourceIntTest {
         Reservation reservation = new Reservation()
             .comment(DEFAULT_COMMENT)
             .status(DEFAULT_STATUS)
-            .startTime(DEFAULT_START_TIME)
-            .endTime(DEFAULT_END_TIME)
             .reserverDate(DEFAULT_RESERVER_DATE)
-            .updatedDate(DEFAULT_UPDATED_DATE);
+            .updatedDate(DEFAULT_UPDATED_DATE)
+            .period(DEFAULT_PERIOD);
         return reservation;
     }
 
@@ -138,10 +134,9 @@ public class ReservationResourceIntTest {
         Reservation testReservation = reservationList.get(reservationList.size() - 1);
         assertThat(testReservation.getComment()).isEqualTo(DEFAULT_COMMENT);
         assertThat(testReservation.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testReservation.getStartTime()).isEqualTo(DEFAULT_START_TIME);
-        assertThat(testReservation.getEndTime()).isEqualTo(DEFAULT_END_TIME);
         assertThat(testReservation.getReserverDate()).isEqualTo(DEFAULT_RESERVER_DATE);
         assertThat(testReservation.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
+        assertThat(testReservation.getPeriod()).isEqualTo(DEFAULT_PERIOD);
     }
 
     @Test
@@ -177,10 +172,9 @@ public class ReservationResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(reservation.getId().intValue())))
             .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-            .andExpect(jsonPath("$.[*].startTime").value(hasItem(DEFAULT_START_TIME.toString())))
-            .andExpect(jsonPath("$.[*].endTime").value(hasItem(DEFAULT_END_TIME.toString())))
             .andExpect(jsonPath("$.[*].reserverDate").value(hasItem(DEFAULT_RESERVER_DATE.toString())))
-            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].period").value(hasItem(DEFAULT_PERIOD.toString())));
     }
     
     @Test
@@ -196,10 +190,9 @@ public class ReservationResourceIntTest {
             .andExpect(jsonPath("$.id").value(reservation.getId().intValue()))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.startTime").value(DEFAULT_START_TIME.toString()))
-            .andExpect(jsonPath("$.endTime").value(DEFAULT_END_TIME.toString()))
             .andExpect(jsonPath("$.reserverDate").value(DEFAULT_RESERVER_DATE.toString()))
-            .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()));
+            .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()))
+            .andExpect(jsonPath("$.period").value(DEFAULT_PERIOD.toString()));
     }
 
     @Test
@@ -225,10 +218,9 @@ public class ReservationResourceIntTest {
         updatedReservation
             .comment(UPDATED_COMMENT)
             .status(UPDATED_STATUS)
-            .startTime(UPDATED_START_TIME)
-            .endTime(UPDATED_END_TIME)
             .reserverDate(UPDATED_RESERVER_DATE)
-            .updatedDate(UPDATED_UPDATED_DATE);
+            .updatedDate(UPDATED_UPDATED_DATE)
+            .period(UPDATED_PERIOD);
         ReservationDTO reservationDTO = reservationMapper.toDto(updatedReservation);
 
         restReservationMockMvc.perform(put("/api/reservations")
@@ -242,10 +234,9 @@ public class ReservationResourceIntTest {
         Reservation testReservation = reservationList.get(reservationList.size() - 1);
         assertThat(testReservation.getComment()).isEqualTo(UPDATED_COMMENT);
         assertThat(testReservation.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testReservation.getStartTime()).isEqualTo(UPDATED_START_TIME);
-        assertThat(testReservation.getEndTime()).isEqualTo(UPDATED_END_TIME);
         assertThat(testReservation.getReserverDate()).isEqualTo(UPDATED_RESERVER_DATE);
         assertThat(testReservation.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
+        assertThat(testReservation.getPeriod()).isEqualTo(UPDATED_PERIOD);
     }
 
     @Test

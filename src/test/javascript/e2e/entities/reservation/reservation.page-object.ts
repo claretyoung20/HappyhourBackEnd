@@ -28,10 +28,9 @@ export class ReservationUpdatePage {
     cancelButton = element(by.id('cancel-save'));
     commentInput = element(by.id('field_comment'));
     statusInput = element(by.id('field_status'));
-    startTimeInput = element(by.id('field_startTime'));
-    endTimeInput = element(by.id('field_endTime'));
     reserverDateInput = element(by.id('field_reserverDate'));
     updatedDateInput = element(by.id('field_updatedDate'));
+    periodInput = element(by.id('field_period'));
     staffSelect = element(by.id('field_staff'));
     bookTableSelect = element(by.id('field_bookTable'));
     customerSelect = element(by.id('field_customer'));
@@ -56,22 +55,6 @@ export class ReservationUpdatePage {
         return this.statusInput.getAttribute('value');
     }
 
-    async setStartTimeInput(startTime) {
-        await this.startTimeInput.sendKeys(startTime);
-    }
-
-    async getStartTimeInput() {
-        return this.startTimeInput.getAttribute('value');
-    }
-
-    async setEndTimeInput(endTime) {
-        await this.endTimeInput.sendKeys(endTime);
-    }
-
-    async getEndTimeInput() {
-        return this.endTimeInput.getAttribute('value');
-    }
-
     async setReserverDateInput(reserverDate) {
         await this.reserverDateInput.sendKeys(reserverDate);
     }
@@ -86,6 +69,14 @@ export class ReservationUpdatePage {
 
     async getUpdatedDateInput() {
         return this.updatedDateInput.getAttribute('value');
+    }
+
+    async setPeriodInput(period) {
+        await this.periodInput.sendKeys(period);
+    }
+
+    async getPeriodInput() {
+        return this.periodInput.getAttribute('value');
     }
 
     async staffSelectLastOption() {

@@ -31,20 +31,16 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "startTime",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "endTime",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "reserverDate",
             "fieldType": "LocalDate"
         },
         {
             "fieldName": "updatedDate",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "period",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20181113130514",

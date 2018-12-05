@@ -1,10 +1,13 @@
 package com.happyhour.myapp.service;
 
+import com.happyhour.myapp.domain.Reservation;
 import com.happyhour.myapp.service.dto.ReservationDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -45,4 +48,10 @@ public interface ReservationService {
     void delete(Long id);
 
     Page<ReservationDTO> findAllReservation(String searchPara, Pageable pageable);
+
+    List<ReservationDTO> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date);
+
+    Page<ReservationDTO> findHistory(Long id, LocalDate localDate, Pageable pageable);
+
+    Page<ReservationDTO> findAcitive(Long id, LocalDate localDate, Pageable pageable);
 }
