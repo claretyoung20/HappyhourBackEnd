@@ -44,6 +44,10 @@ describe('Cart e2e test', () => {
         expect(await cartUpdatePage.getDateUpdatedInput()).to.contain('2001-01-01T02:30');
         await cartUpdatePage.setTotalItemInput('5');
         expect(await cartUpdatePage.getTotalItemInput()).to.eq('5');
+        await cartUpdatePage.setProductNameInput('productName');
+        expect(await cartUpdatePage.getProductNameInput()).to.eq('productName');
+        await cartUpdatePage.setProductPriceInput('5');
+        expect(await cartUpdatePage.getProductPriceInput()).to.eq('5');
         await cartUpdatePage.productSelectLastOption();
         await cartUpdatePage.customerSelectLastOption();
         await cartUpdatePage.save();

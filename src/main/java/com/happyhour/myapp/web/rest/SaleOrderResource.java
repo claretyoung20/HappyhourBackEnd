@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +54,8 @@ public class SaleOrderResource {
         if (saleOrderDTO.getId() != null) {
             throw new BadRequestAlertException("A new saleOrder cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        saleOrderDTO.setDateUpdated(LocalDate.now());
+        saleOrderDTO.setDateCreated(LocalDate.now());
         SaleOrderDTO result = saleOrderService.save(saleOrderDTO);
         return ResponseEntity.created(new URI("/api/sale-orders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -75,6 +78,7 @@ public class SaleOrderResource {
         if (saleOrderDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        saleOrderDTO.setDateUpdated(LocalDate.now());
         SaleOrderDTO result = saleOrderService.save(saleOrderDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, saleOrderDTO.getId().toString()))

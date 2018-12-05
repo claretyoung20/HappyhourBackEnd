@@ -30,6 +30,12 @@ public class Cart implements Serializable {
     @Column(name = "total_item")
     private Integer totalItem;
 
+    @Column(name = "product_name")
+    private String productName;
+
+    @Column(name = "product_price")
+    private Double productPrice;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Product product;
@@ -86,6 +92,32 @@ public class Cart implements Serializable {
         this.totalItem = totalItem;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public Cart productName(String productName) {
+        this.productName = productName;
+        return this;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Double getProductPrice() {
+        return productPrice;
+    }
+
+    public Cart productPrice(Double productPrice) {
+        this.productPrice = productPrice;
+        return this;
+    }
+
+    public void setProductPrice(Double productPrice) {
+        this.productPrice = productPrice;
+    }
+
     public Product getProduct() {
         return product;
     }
@@ -140,6 +172,8 @@ public class Cart implements Serializable {
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", totalItem=" + getTotalItem() +
+            ", productName='" + getProductName() + "'" +
+            ", productPrice=" + getProductPrice() +
             "}";
     }
 }

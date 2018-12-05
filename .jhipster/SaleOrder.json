@@ -21,14 +21,6 @@
             "fieldType": "Double"
         },
         {
-            "fieldName": "discountAmount",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "originalPrice",
-            "fieldType": "Double"
-        },
-        {
             "fieldName": "dateCreated",
             "fieldType": "LocalDate"
         },

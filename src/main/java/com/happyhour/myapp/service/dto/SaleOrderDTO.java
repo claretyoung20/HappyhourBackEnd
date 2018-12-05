@@ -13,10 +13,6 @@ public class SaleOrderDTO implements Serializable {
 
     private Double basePrice;
 
-    private Double discountAmount;
-
-    private Double originalPrice;
-
     private LocalDate dateCreated;
 
     private LocalDate dateUpdated;
@@ -39,22 +35,6 @@ public class SaleOrderDTO implements Serializable {
 
     public void setBasePrice(Double basePrice) {
         this.basePrice = basePrice;
-    }
-
-    public Double getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(Double discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public Double getOriginalPrice() {
-        return originalPrice;
-    }
-
-    public void setOriginalPrice(Double originalPrice) {
-        this.originalPrice = originalPrice;
     }
 
     public LocalDate getDateCreated() {
@@ -115,8 +95,6 @@ public class SaleOrderDTO implements Serializable {
         return "SaleOrderDTO{" +
             "id=" + getId() +
             ", basePrice=" + getBasePrice() +
-            ", discountAmount=" + getDiscountAmount() +
-            ", originalPrice=" + getOriginalPrice() +
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", product=" + getProductId() +

@@ -53,6 +53,12 @@ public class CartResourceIntTest {
     private static final Integer DEFAULT_TOTAL_ITEM = 1;
     private static final Integer UPDATED_TOTAL_ITEM = 2;
 
+    private static final String DEFAULT_PRODUCT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_PRODUCT_NAME = "BBBBBBBBBB";
+
+    private static final Double DEFAULT_PRODUCT_PRICE = 1D;
+    private static final Double UPDATED_PRODUCT_PRICE = 2D;
+
     @Autowired
     private CartRepository cartRepository;
 
@@ -99,7 +105,9 @@ public class CartResourceIntTest {
         Cart cart = new Cart()
             .dateCreated(DEFAULT_DATE_CREATED)
             .dateUpdated(DEFAULT_DATE_UPDATED)
-            .totalItem(DEFAULT_TOTAL_ITEM);
+            .totalItem(DEFAULT_TOTAL_ITEM)
+            .productName(DEFAULT_PRODUCT_NAME)
+            .productPrice(DEFAULT_PRODUCT_PRICE);
         return cart;
     }
 
@@ -127,6 +135,8 @@ public class CartResourceIntTest {
         assertThat(testCart.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
         assertThat(testCart.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
         assertThat(testCart.getTotalItem()).isEqualTo(DEFAULT_TOTAL_ITEM);
+        assertThat(testCart.getProductName()).isEqualTo(DEFAULT_PRODUCT_NAME);
+        assertThat(testCart.getProductPrice()).isEqualTo(DEFAULT_PRODUCT_PRICE);
     }
 
     @Test
@@ -162,7 +172,9 @@ public class CartResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(cart.getId().intValue())))
             .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
             .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())))
-            .andExpect(jsonPath("$.[*].totalItem").value(hasItem(DEFAULT_TOTAL_ITEM)));
+            .andExpect(jsonPath("$.[*].totalItem").value(hasItem(DEFAULT_TOTAL_ITEM)))
+            .andExpect(jsonPath("$.[*].productName").value(hasItem(DEFAULT_PRODUCT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].productPrice").value(hasItem(DEFAULT_PRODUCT_PRICE.doubleValue())));
     }
     
     @Test
@@ -178,7 +190,9 @@ public class CartResourceIntTest {
             .andExpect(jsonPath("$.id").value(cart.getId().intValue()))
             .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
             .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()))
-            .andExpect(jsonPath("$.totalItem").value(DEFAULT_TOTAL_ITEM));
+            .andExpect(jsonPath("$.totalItem").value(DEFAULT_TOTAL_ITEM))
+            .andExpect(jsonPath("$.productName").value(DEFAULT_PRODUCT_NAME.toString()))
+            .andExpect(jsonPath("$.productPrice").value(DEFAULT_PRODUCT_PRICE.doubleValue()));
     }
 
     @Test
@@ -204,7 +218,9 @@ public class CartResourceIntTest {
         updatedCart
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED)
-            .totalItem(UPDATED_TOTAL_ITEM);
+            .totalItem(UPDATED_TOTAL_ITEM)
+            .productName(UPDATED_PRODUCT_NAME)
+            .productPrice(UPDATED_PRODUCT_PRICE);
         CartDTO cartDTO = cartMapper.toDto(updatedCart);
 
         restCartMockMvc.perform(put("/api/carts")
@@ -219,6 +235,8 @@ public class CartResourceIntTest {
         assertThat(testCart.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
         assertThat(testCart.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
         assertThat(testCart.getTotalItem()).isEqualTo(UPDATED_TOTAL_ITEM);
+        assertThat(testCart.getProductName()).isEqualTo(UPDATED_PRODUCT_NAME);
+        assertThat(testCart.getProductPrice()).isEqualTo(UPDATED_PRODUCT_PRICE);
     }
 
     @Test

@@ -17,6 +17,10 @@ public class CartDTO implements Serializable {
 
     private Integer totalItem;
 
+    private String productName;
+
+    private Double productPrice;
+
     private Long productId;
 
     private Long customerId;
@@ -51,6 +55,22 @@ public class CartDTO implements Serializable {
 
     public void setTotalItem(Integer totalItem) {
         this.totalItem = totalItem;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(Double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public Long getProductId() {
@@ -97,6 +117,8 @@ public class CartDTO implements Serializable {
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", totalItem=" + getTotalItem() +
+            ", productName='" + getProductName() + "'" +
+            ", productPrice=" + getProductPrice() +
             ", product=" + getProductId() +
             ", customer=" + getCustomerId() +
             "}";

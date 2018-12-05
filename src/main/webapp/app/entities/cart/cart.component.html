@@ -18,6 +18,8 @@
             <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.cart.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.cart.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="totalItem"><span jhiTranslate="happybourBackEndApp.cart.totalItem">Total Item</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="productName"><span jhiTranslate="happybourBackEndApp.cart.productName">Product Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="productPrice"><span jhiTranslate="happybourBackEndApp.cart.productPrice">Product Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="productId"><span jhiTranslate="happybourBackEndApp.cart.product">Product</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="customerId"><span jhiTranslate="happybourBackEndApp.cart.customer">Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -29,6 +31,8 @@
                 <td>{{cart.dateCreated | date:'medium'}}</td>
                 <td>{{cart.dateUpdated | date:'medium'}}</td>
                 <td>{{cart.totalItem}}</td>
+                <td>{{cart.productName}}</td>
+                <td>{{cart.productPrice}}</td>
                 <td>
                     <div *ngIf="cart.productId">
                         <a [routerLink]="['../product', cart.productId , 'view' ]" >{{cart.productId}}</a>

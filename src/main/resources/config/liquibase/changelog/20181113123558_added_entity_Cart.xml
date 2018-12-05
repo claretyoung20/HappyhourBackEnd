@@ -34,6 +34,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="product_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="product_price" type="double">
+                <constraints nullable="true" />
+            </column>
+
             <column name="product_id" type="bigint">
                 <constraints nullable="true" />
             </column>

@@ -5,6 +5,8 @@ export interface ICart {
     dateCreated?: Moment;
     dateUpdated?: Moment;
     totalItem?: number;
+    productName?: string;
+    productPrice?: number;
     productId?: number;
     customerId?: number;
 }
@@ -15,6 +17,8 @@ export class Cart implements ICart {
         public dateCreated?: Moment,
         public dateUpdated?: Moment,
         public totalItem?: number,
+        public productName?: string,
+        public productPrice?: number,
         public productId?: number,
         public customerId?: number
     ) {}

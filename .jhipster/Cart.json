@@ -27,6 +27,15 @@
         {
             "fieldName": "totalItem",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productPrice",
+            "fieldType": "Double",
+            "fieldValidateRules": []
         }
     ],
     "changelogDate": "20181113123558",

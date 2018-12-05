@@ -40,10 +40,6 @@ describe('SaleOrder e2e test', () => {
         await saleOrderComponentsPage.clickOnCreateButton();
         await saleOrderUpdatePage.setBasePriceInput('5');
         expect(await saleOrderUpdatePage.getBasePriceInput()).to.eq('5');
-        await saleOrderUpdatePage.setDiscountAmountInput('5');
-        expect(await saleOrderUpdatePage.getDiscountAmountInput()).to.eq('5');
-        await saleOrderUpdatePage.setOriginalPriceInput('5');
-        expect(await saleOrderUpdatePage.getOriginalPriceInput()).to.eq('5');
         await saleOrderUpdatePage.setDateCreatedInput('2000-12-31');
         expect(await saleOrderUpdatePage.getDateCreatedInput()).to.eq('2000-12-31');
         await saleOrderUpdatePage.setDateUpdatedInput('2000-12-31');

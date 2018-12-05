@@ -16,8 +16,6 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="basePrice"><span jhiTranslate="happybourBackEndApp.saleOrder.basePrice">Base Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="discountAmount"><span jhiTranslate="happybourBackEndApp.saleOrder.discountAmount">Discount Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="originalPrice"><span jhiTranslate="happybourBackEndApp.saleOrder.originalPrice">Original Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="dateCreated"><span jhiTranslate="happybourBackEndApp.saleOrder.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="dateUpdated"><span jhiTranslate="happybourBackEndApp.saleOrder.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="productId"><span jhiTranslate="happybourBackEndApp.saleOrder.product">Product</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -29,8 +27,6 @@
             <tr *ngFor="let saleOrder of saleOrders ;trackBy: trackId">
                 <td><a [routerLink]="['/sale-order', saleOrder.id, 'view' ]">{{saleOrder.id}}</a></td>
                 <td>{{saleOrder.basePrice}}</td>
-                <td>{{saleOrder.discountAmount}}</td>
-                <td>{{saleOrder.originalPrice}}</td>
                 <td>{{saleOrder.dateCreated | date:'mediumDate'}}</td>
                 <td>{{saleOrder.dateUpdated | date:'mediumDate'}}</td>
                 <td>

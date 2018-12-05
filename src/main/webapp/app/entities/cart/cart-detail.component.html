@@ -17,6 +17,14 @@
                 <dd>
                     <span>{{cart.totalItem}}</span>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.cart.productName">Product Name</span></dt>
+                <dd>
+                    <span>{{cart.productName}}</span>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.cart.productPrice">Product Price</span></dt>
+                <dd>
+                    <span>{{cart.productPrice}}</span>
+                </dd>
                 <dt><span jhiTranslate="happybourBackEndApp.cart.product">Product</span></dt>
                 <dd>
                     <div *ngIf="cart.productId">

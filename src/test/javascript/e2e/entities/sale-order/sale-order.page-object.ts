@@ -27,8 +27,6 @@ export class SaleOrderUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     basePriceInput = element(by.id('field_basePrice'));
-    discountAmountInput = element(by.id('field_discountAmount'));
-    originalPriceInput = element(by.id('field_originalPrice'));
     dateCreatedInput = element(by.id('field_dateCreated'));
     dateUpdatedInput = element(by.id('field_dateUpdated'));
     productSelect = element(by.id('field_product'));
@@ -44,22 +42,6 @@ export class SaleOrderUpdatePage {
 
     async getBasePriceInput() {
         return this.basePriceInput.getAttribute('value');
-    }
-
-    async setDiscountAmountInput(discountAmount) {
-        await this.discountAmountInput.sendKeys(discountAmount);
-    }
-
-    async getDiscountAmountInput() {
-        return this.discountAmountInput.getAttribute('value');
-    }
-
-    async setOriginalPriceInput(originalPrice) {
-        await this.originalPriceInput.sendKeys(originalPrice);
-    }
-
-    async getOriginalPriceInput() {
-        return this.originalPriceInput.getAttribute('value');
     }
 
     async setDateCreatedInput(dateCreated) {

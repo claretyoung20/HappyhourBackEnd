@@ -17,8 +17,6 @@
                 "title": "Sale Order"
             },
             "basePrice": "Base Price",
-            "discountAmount": "Discount Amount",
-            "originalPrice": "Original Price",
             "dateCreated": "Date Created",
             "dateUpdated": "Date Updated",
             "product": "Product",

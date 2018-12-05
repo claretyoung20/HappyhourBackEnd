@@ -29,6 +29,8 @@ export class CartUpdatePage {
     dateCreatedInput = element(by.id('field_dateCreated'));
     dateUpdatedInput = element(by.id('field_dateUpdated'));
     totalItemInput = element(by.id('field_totalItem'));
+    productNameInput = element(by.id('field_productName'));
+    productPriceInput = element(by.id('field_productPrice'));
     productSelect = element(by.id('field_product'));
     customerSelect = element(by.id('field_customer'));
 
@@ -58,6 +60,22 @@ export class CartUpdatePage {
 
     async getTotalItemInput() {
         return this.totalItemInput.getAttribute('value');
+    }
+
+    async setProductNameInput(productName) {
+        await this.productNameInput.sendKeys(productName);
+    }
+
+    async getProductNameInput() {
+        return this.productNameInput.getAttribute('value');
+    }
+
+    async setProductPriceInput(productPrice) {
+        await this.productPriceInput.sendKeys(productPrice);
+    }
+
+    async getProductPriceInput() {
+        return this.productPriceInput.getAttribute('value');
     }
 
     async productSelectLastOption() {

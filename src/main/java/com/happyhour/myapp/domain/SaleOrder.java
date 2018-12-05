@@ -24,12 +24,6 @@ public class SaleOrder implements Serializable {
     @Column(name = "base_price")
     private Double basePrice;
 
-    @Column(name = "discount_amount")
-    private Double discountAmount;
-
-    @Column(name = "original_price")
-    private Double originalPrice;
-
     @Column(name = "date_created")
     private LocalDate dateCreated;
 
@@ -64,32 +58,6 @@ public class SaleOrder implements Serializable {
 
     public void setBasePrice(Double basePrice) {
         this.basePrice = basePrice;
-    }
-
-    public Double getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public SaleOrder discountAmount(Double discountAmount) {
-        this.discountAmount = discountAmount;
-        return this;
-    }
-
-    public void setDiscountAmount(Double discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public Double getOriginalPrice() {
-        return originalPrice;
-    }
-
-    public SaleOrder originalPrice(Double originalPrice) {
-        this.originalPrice = originalPrice;
-        return this;
-    }
-
-    public void setOriginalPrice(Double originalPrice) {
-        this.originalPrice = originalPrice;
     }
 
     public LocalDate getDateCreated() {
@@ -170,8 +138,6 @@ public class SaleOrder implements Serializable {
         return "SaleOrder{" +
             "id=" + getId() +
             ", basePrice=" + getBasePrice() +
-            ", discountAmount=" + getDiscountAmount() +
-            ", originalPrice=" + getOriginalPrice() +
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             "}";

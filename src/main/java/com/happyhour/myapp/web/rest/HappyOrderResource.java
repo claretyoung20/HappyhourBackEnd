@@ -2,6 +2,7 @@ package com.happyhour.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.happyhour.myapp.service.HappyOrderService;
+import com.happyhour.myapp.service.dto.SaleOrderDTO;
 import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
