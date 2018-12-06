@@ -54,6 +54,7 @@ public class ReservationResource {
         if (reservationDTO.getId() != null) {
             throw new BadRequestAlertException("A new reservation cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        reservationDTO.setUpdatedDate(LocalDate.now());
         ReservationDTO result = reservationService.save(reservationDTO);
         return ResponseEntity.created(new URI("/api/reservations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -76,6 +77,7 @@ public class ReservationResource {
         if (reservationDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        reservationDTO.setUpdatedDate(LocalDate.now());
         ReservationDTO result = reservationService.save(reservationDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, reservationDTO.getId().toString()))
