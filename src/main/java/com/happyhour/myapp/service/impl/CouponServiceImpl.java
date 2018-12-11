@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -107,5 +108,10 @@ public class CouponServiceImpl implements CouponService {
         log.debug("Request to get all Coupons");
         return couponRepository.findAllByStartFromDateIsLessThanAndEndDateIsLessThan(pageable, startDate, endDate)
             .map(couponMapper::toDto);
+    }
+
+    @Override
+    public List<CouponDTO> cronJobCancel(LocalDate startDate, LocalDate endDate) {
+        return couponMapper.toDto(couponRepository.findAllByIsActiveTrueAndStartFromDateIsLessThanAndEndDateIsLessThan(startDate, endDate));
     }
 }

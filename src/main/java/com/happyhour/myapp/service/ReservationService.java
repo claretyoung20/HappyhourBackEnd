@@ -54,4 +54,6 @@ public interface ReservationService {
     Page<ReservationDTO> findHistory(Long id, LocalDate localDate, Pageable pageable);
 
     Page<ReservationDTO> findAcitive(Long id, LocalDate localDate, Pageable pageable);
+
+    List<ReservationDTO> cronJobCancel(LocalDate localDate, String status);
 }

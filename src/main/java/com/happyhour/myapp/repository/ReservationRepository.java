@@ -37,4 +37,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date);
     Page<Reservation> findAllByCustomerIdAndReserverDateLessThan(Long id, LocalDate localDate, Pageable pageable);
     Page<Reservation> findAllByCustomerIdAndReserverDateIsGreaterThanEqual(long id, LocalDate localDate, Pageable pageable);
+
+    List<Reservation> findAllByReserverDateLessThanAndStatusNotLike(LocalDate localDate, String status);
 }

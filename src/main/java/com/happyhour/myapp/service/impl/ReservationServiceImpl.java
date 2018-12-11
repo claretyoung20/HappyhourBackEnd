@@ -113,4 +113,9 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findAllByCustomerIdAndReserverDateIsGreaterThanEqual(id, localDate, pageable)
             .map(reservationMapper::toDto);
     }
+
+    @Override
+    public List<ReservationDTO> cronJobCancel(LocalDate localDate, String status) {
+        return reservationMapper.toDto(reservationRepository.findAllByReserverDateLessThanAndStatusNotLike(localDate, status));
+    }
 }
