@@ -50,4 +50,8 @@ public interface ProductService {
 
     Page<ProductDTO> findAllByShowOnHomepageTrue(Pageable pageable);
 
+    Page<ProductDTO> isAvailable(Pageable pageable);
+
+    Page<ProductDTO> isNotAvailable(Pageable pageable);
+
 }
