@@ -46,4 +46,8 @@ public interface CouponService {
     void delete(Long id);
 
     Page<CouponDTO> findAllValidCoupon(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
+    Page<CouponDTO> isActive(Pageable pageable, LocalDate startDate, LocalDate endDate);
+    Page<CouponDTO> history(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
 }

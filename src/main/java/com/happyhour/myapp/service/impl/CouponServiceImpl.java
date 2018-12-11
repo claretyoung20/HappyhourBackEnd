@@ -94,4 +94,18 @@ public class CouponServiceImpl implements CouponService {
         return couponRepository.findAllByIsActiveTrueAndStartFromDateIsLessThanEqualAndEndDateIsGreaterThanEqual(pageable, startDate, endDate)
             .map(couponMapper::toDto);
     }
+
+    @Override
+    public Page<CouponDTO> isActive(Pageable pageable, LocalDate startDate, LocalDate endDate) {
+        log.debug("Request to get all Coupons");
+        return couponRepository.findAllByStartFromDateIsLessThanEqualAndEndDateIsGreaterThanEqual(pageable, startDate, endDate)
+            .map(couponMapper::toDto);
+    }
+
+    @Override
+    public Page<CouponDTO> history(Pageable pageable, LocalDate startDate, LocalDate endDate) {
+        log.debug("Request to get all Coupons");
+        return couponRepository.findAllByStartFromDateIsLessThanAndEndDateIsLessThan(pageable, startDate, endDate)
+            .map(couponMapper::toDto);
+    }
 }
