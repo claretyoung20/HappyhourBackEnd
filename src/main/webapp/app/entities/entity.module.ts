@@ -20,6 +20,7 @@ import { HappybourBackEndContactUsModule } from './contact-us/contact-us.module'
 import { HappybourBackEndBookTableModule } from './book-table/book-table.module';
 import { HappybourBackEndReservationModule } from './reservation/reservation.module';
 import { HappybourBackEndRatingModule } from './rating/rating.module';
+import { HappybourBackEndTableTypeModule } from './table-type/table-type.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -45,6 +46,7 @@ import { HappybourBackEndRatingModule } from './rating/rating.module';
         HappybourBackEndBookTableModule,
         HappybourBackEndReservationModule,
         HappybourBackEndRatingModule,
+        HappybourBackEndTableTypeModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
