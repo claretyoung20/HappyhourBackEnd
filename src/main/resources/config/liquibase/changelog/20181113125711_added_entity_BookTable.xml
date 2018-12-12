@@ -26,10 +26,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="persons" type="integer">
-                <constraints nullable="true" />
-            </column>
-
             <column name="price" type="double">
                 <constraints nullable="true" />
             </column>
@@ -40,6 +36,10 @@
 
             <column name="restaurant_id" type="bigint">
                 <constraints nullable="true" />
+            </column>
+
+            <column name="table_type_id" type="bigint">
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

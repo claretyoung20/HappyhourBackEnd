@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -34,7 +35,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     Page<Reservation> findAllReservation(String searchPara, Pageable pageable);
 
     // SELECT * FROM reservation r WHERE r.period = 'm' AND r.reserver_date = '2018-12-05';
-    List<Reservation> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date);
+    List<Reservation> findAllByPeriodAndReserverDateAndStatusNotLike(String period, LocalDate reserve_Date, String status);
     Page<Reservation> findAllByCustomerIdAndReserverDateLessThan(Long id, LocalDate localDate, Pageable pageable);
     Page<Reservation> findAllByCustomerIdAndReserverDateIsGreaterThanEqual(long id, LocalDate localDate, Pageable pageable);
+
+    List<Reservation> findAllByReserverDateLessThanAndStatusNotLike(LocalDate localDate, String status);
+
+    Page<Reservation> findAllByStatus(String status, Pageable pageable);
 }

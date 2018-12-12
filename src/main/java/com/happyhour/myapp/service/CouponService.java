@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -46,4 +47,10 @@ public interface CouponService {
     void delete(Long id);
 
     Page<CouponDTO> findAllValidCoupon(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
+    Page<CouponDTO> isActive(Pageable pageable, LocalDate startDate, LocalDate endDate);
+    Page<CouponDTO> history(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
+    List<CouponDTO> cronJobCancel(LocalDate startDate, LocalDate endDate);
+
 }

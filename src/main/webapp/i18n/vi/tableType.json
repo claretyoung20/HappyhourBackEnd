@@ -1,0 +1,23 @@
+
+{
+    "happybourBackEndApp": {
+        "tableType" : {
+            "home": {
+                "title": "Table Types",
+                "createLabel": "Thêm mới một Table Type",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Table Type"
+            },
+            "created": "Một Table Type mới được tạo với định danh {{ param }}",
+            "updated": "Một Table Type cập nhật với định danh {{ param }}",
+            "deleted": "Một Table Type đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Table Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Table Type"
+            },
+            "code": "Code",
+            "description": "Description"
+        }
+    }
+}

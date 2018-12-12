@@ -107,5 +107,19 @@ public class ProductServiceImpl implements ProductService {
             .map(productMapper::toDto);
     }
 
+    @Override
+    public Page<ProductDTO> isAvailable(Pageable pageable) {
+        log.debug("Request to get all Products show on homepage {} ");
+        return productRepository.findAllByIsAvailableTrue(pageable)
+            .map(productMapper::toDto);
+    }
+
+    @Override
+    public Page<ProductDTO> isNotAvailable(Pageable pageable) {
+        log.debug("Request to get all Products show on homepage {} ");
+        return productRepository.findAllByIsAvailableFalse(pageable)
+            .map(productMapper::toDto);
+    }
+
 
 }

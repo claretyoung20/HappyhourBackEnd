@@ -1,5 +1,6 @@
 package com.happyhour.myapp.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,13 +13,13 @@ public class BookTableDTO implements Serializable {
 
     private Boolean isAvaliable;
 
-    private Integer persons;
-
     private Double price;
 
     private String imageUrl;
 
     private Long restaurantId;
+
+    private Long tableTypeId;
 
     public Long getId() {
         return id;
@@ -34,14 +35,6 @@ public class BookTableDTO implements Serializable {
 
     public void setIsAvaliable(Boolean isAvaliable) {
         this.isAvaliable = isAvaliable;
-    }
-
-    public Integer getPersons() {
-        return persons;
-    }
-
-    public void setPersons(Integer persons) {
-        this.persons = persons;
     }
 
     public Double getPrice() {
@@ -66,6 +59,14 @@ public class BookTableDTO implements Serializable {
 
     public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public Long getTableTypeId() {
+        return tableTypeId;
+    }
+
+    public void setTableTypeId(Long tableTypeId) {
+        this.tableTypeId = tableTypeId;
     }
 
     @Override
@@ -94,10 +95,10 @@ public class BookTableDTO implements Serializable {
         return "BookTableDTO{" +
             "id=" + getId() +
             ", isAvaliable='" + isIsAvaliable() + "'" +
-            ", persons=" + getPersons() +
             ", price=" + getPrice() +
             ", imageUrl='" + getImageUrl() + "'" +
             ", restaurant=" + getRestaurantId() +
+            ", tableType=" + getTableTypeId() +
             "}";
     }
 }

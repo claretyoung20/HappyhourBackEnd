@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 /**
@@ -20,4 +21,10 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 //    @Query (value = "select * from coupon c where c.start_from_date<=:checkDate and c.end_date >=:checkDate",
 //    nativeQuery = true)
     Page<Coupon> findAllByIsActiveTrueAndStartFromDateIsLessThanEqualAndEndDateIsGreaterThanEqual(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
+    Page<Coupon> findAllByStartFromDateIsLessThanEqualAndEndDateIsGreaterThanEqual(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
+    Page<Coupon> findAllByStartFromDateIsLessThanAndEndDateIsLessThan(Pageable pageable, LocalDate startDate, LocalDate endDate);
+
+    List<Coupon> findAllByIsActiveTrueAndStartFromDateIsLessThanAndEndDateIsLessThan(LocalDate startDate, LocalDate endDate);
 }

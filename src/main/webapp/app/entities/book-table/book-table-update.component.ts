@@ -8,6 +8,8 @@ import { IBookTable } from 'app/shared/model/book-table.model';
 import { BookTableService } from './book-table.service';
 import { IRestaurant } from 'app/shared/model/restaurant.model';
 import { RestaurantService } from 'app/entities/restaurant';
+import { ITableType } from 'app/shared/model/table-type.model';
+import { TableTypeService } from 'app/entities/table-type';
 
 @Component({
     selector: 'jhi-book-table-update',
@@ -19,10 +21,13 @@ export class BookTableUpdateComponent implements OnInit {
 
     restaurants: IRestaurant[];
 
+    tabletypes: ITableType[];
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private bookTableService: BookTableService,
         private restaurantService: RestaurantService,
+        private tableTypeService: TableTypeService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -34,6 +39,12 @@ export class BookTableUpdateComponent implements OnInit {
         this.restaurantService.query().subscribe(
             (res: HttpResponse<IRestaurant[]>) => {
                 this.restaurants = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.tableTypeService.query().subscribe(
+            (res: HttpResponse<ITableType[]>) => {
+                this.tabletypes = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -70,6 +81,10 @@ export class BookTableUpdateComponent implements OnInit {
     }
 
     trackRestaurantById(index: number, item: IRestaurant) {
+        return item.id;
+    }
+
+    trackTableTypeById(index: number, item: ITableType) {
         return item.id;
     }
     get bookTable() {

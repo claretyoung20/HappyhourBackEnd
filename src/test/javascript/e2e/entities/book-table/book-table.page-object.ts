@@ -27,10 +27,10 @@ export class BookTableUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     isAvaliableInput = element(by.id('field_isAvaliable'));
-    personsInput = element(by.id('field_persons'));
     priceInput = element(by.id('field_price'));
     imageUrlInput = element(by.id('field_imageUrl'));
     restaurantSelect = element(by.id('field_restaurant'));
+    tableTypeSelect = element(by.id('field_tableType'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -39,14 +39,6 @@ export class BookTableUpdatePage {
     getIsAvaliableInput() {
         return this.isAvaliableInput;
     }
-    async setPersonsInput(persons) {
-        await this.personsInput.sendKeys(persons);
-    }
-
-    async getPersonsInput() {
-        return this.personsInput.getAttribute('value');
-    }
-
     async setPriceInput(price) {
         await this.priceInput.sendKeys(price);
     }
@@ -80,6 +72,25 @@ export class BookTableUpdatePage {
 
     async getRestaurantSelectedOption() {
         return this.restaurantSelect.element(by.css('option:checked')).getText();
+    }
+
+    async tableTypeSelectLastOption() {
+        await this.tableTypeSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async tableTypeSelectOption(option) {
+        await this.tableTypeSelect.sendKeys(option);
+    }
+
+    getTableTypeSelect(): ElementFinder {
+        return this.tableTypeSelect;
+    }
+
+    async getTableTypeSelectedOption() {
+        return this.tableTypeSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

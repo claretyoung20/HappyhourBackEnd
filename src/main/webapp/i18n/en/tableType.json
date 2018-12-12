@@ -1,0 +1,23 @@
+
+{
+    "happybourBackEndApp": {
+        "tableType" : {
+            "home": {
+                "title": "Table Types",
+                "createLabel": "Create a new Table Type",
+                "createOrEditLabel": "Create or edit a Table Type"
+            },
+            "created": "A new Table Type is created with identifier {{ param }}",
+            "updated": "A Table Type is updated with identifier {{ param }}",
+            "deleted": "A Table Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Table Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Table Type"
+            },
+            "code": "Code",
+            "description": "Description"
+        }
+    }
+}

@@ -5,7 +5,6 @@ import com.happyhour.myapp.service.dto.BookTableDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -45,9 +44,9 @@ public interface BookTableService {
      */
     void delete(Long id);
 
-    BookTableDTO findByIdAndPersons(Long id, Integer persons);
+    BookTableDTO findByIdAndPersons(Long id, Long typeId);
 
-    Page<BookTableDTO> findAllByIdIsNotAndPersons(Long id, Integer persons, Pageable pageable);
+    Page<BookTableDTO> findAllByIdIsNotAndPersons(Long id, Long typeId, Pageable pageable);
 
-    Page<BookTableDTO> findAllByPersons(Integer persons, Pageable pageable);
+    Page<BookTableDTO> findAllByPersons(Long typeId, Pageable pageable);
 }

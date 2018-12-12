@@ -7,16 +7,21 @@
             "otherEntityName": "restaurant",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tableType",
+            "otherEntityName": "tableType",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldName": "isAvaliable",
             "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "persons",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "price",

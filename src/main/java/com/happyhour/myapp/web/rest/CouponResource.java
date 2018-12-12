@@ -135,4 +135,24 @@ public class CouponResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/coupons/valid");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/coupons/active")
+    @Timed
+    public ResponseEntity<List<CouponDTO>> getAllActiveCoupon(Pageable pageable) {
+        log.debug("REST request to get a page of Coupons");
+        LocalDate checkDate = LocalDate.now();
+        Page<CouponDTO> page = couponService.isActive(pageable, checkDate, checkDate);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/coupons/valid");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/coupons/history")
+    @Timed
+    public ResponseEntity<List<CouponDTO>> getAllHistoryCoupon(Pageable pageable) {
+        log.debug("REST request to get a page of Coupons");
+        LocalDate checkDate = LocalDate.now();
+        Page<CouponDTO> page = couponService.history(pageable, checkDate, checkDate);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/coupons/valid");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

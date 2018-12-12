@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,8 @@ public class ProductResource {
         if (productDTO.getId() != null) {
             throw new BadRequestAlertException("A new product cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        productDTO.setCreatedDate(Instant.now());
+        productDTO.setUpdatedDate(Instant.now());
         ProductDTO result = productService.save(productDTO);
         return ResponseEntity.created(new URI("/api/products/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -76,6 +79,7 @@ public class ProductResource {
         if (productDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        productDTO.setUpdatedDate(Instant.now());
         ProductDTO result = productService.save(productDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, productDTO.getId().toString()))
@@ -138,6 +142,24 @@ public class ProductResource {
     public ResponseEntity<List<ProductDTO>> getAllProductsBywShowhomepage(Pageable pageable) {
         log.debug("REST request to get a page of Products by show on hoepage");
         Page<ProductDTO> page = productService.findAllByShowOnHomepageTrue(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    // display show on home page products
+    @GetMapping("/products/isAvailable")
+    public ResponseEntity<List<ProductDTO>> getAllAvailableProducts(Pageable pageable) {
+        log.debug("REST request to get a page of Products by show on hoepage");
+        Page<ProductDTO> page = productService.isAvailable(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    // display show on home page products
+    @GetMapping("/products/isNotAvailable")
+    public ResponseEntity<List<ProductDTO>> getAllNotAvailableProducts(Pageable pageable) {
+        log.debug("REST request to get a page of Products by show on hoepage");
+        Page<ProductDTO> page = productService.isNotAvailable(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

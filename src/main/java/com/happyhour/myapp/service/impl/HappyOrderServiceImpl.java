@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -107,5 +108,10 @@ public class HappyOrderServiceImpl implements HappyOrderService {
         log.debug("Request to get all HappyOrders by status id");
         return happyOrderRepository.findAllByCustomerIdAndDateCreatedIsGreaterThanEqual(id, localDate, pageable)
             .map(happyOrderMapper::toDto);
+    }
+
+    @Override
+    public List<HappyOrderDTO> cronJobCacel(LocalDate localDate, Long id) {
+        return happyOrderMapper.toDto(happyOrderRepository.findAllByDateCreatedIsLessThanAndOrderStatusId(localDate));
     }
 }

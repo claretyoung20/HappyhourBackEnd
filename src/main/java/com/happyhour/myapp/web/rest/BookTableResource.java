@@ -1,7 +1,6 @@
 package com.happyhour.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.happyhour.myapp.domain.Reservation;
 import com.happyhour.myapp.service.BookTableService;
 import com.happyhour.myapp.service.ReservationService;
 import com.happyhour.myapp.service.dto.ReservationDTO;
@@ -20,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -34,14 +34,13 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class BookTableResource {
 
+    @Autowired
+    private ReservationService reservationService;
     private final Logger log = LoggerFactory.getLogger(BookTableResource.class);
 
     private static final String ENTITY_NAME = "bookTable";
 
     private final BookTableService bookTableService;
-
-    @Autowired
-    private ReservationService reservationService;
 
     public BookTableResource(BookTableService bookTableService) {
         this.bookTableService = bookTableService;
@@ -56,7 +55,7 @@ public class BookTableResource {
      */
     @PostMapping("/book-tables")
     @Timed
-    public ResponseEntity<BookTableDTO> createBookTable(@RequestBody BookTableDTO bookTableDTO) throws URISyntaxException {
+    public ResponseEntity<BookTableDTO> createBookTable(@Valid @RequestBody BookTableDTO bookTableDTO) throws URISyntaxException {
         log.debug("REST request to save BookTable : {}", bookTableDTO);
         if (bookTableDTO.getId() != null) {
             throw new BadRequestAlertException("A new bookTable cannot already have an ID", ENTITY_NAME, "idexists");
@@ -78,7 +77,7 @@ public class BookTableResource {
      */
     @PutMapping("/book-tables")
     @Timed
-    public ResponseEntity<BookTableDTO> updateBookTable(@RequestBody BookTableDTO bookTableDTO) throws URISyntaxException {
+    public ResponseEntity<BookTableDTO> updateBookTable(@Valid @RequestBody BookTableDTO bookTableDTO) throws URISyntaxException {
         log.debug("REST request to update BookTable : {}", bookTableDTO);
         if (bookTableDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -134,7 +133,7 @@ public class BookTableResource {
 
     @GetMapping("/book-tables/avaliable")
     @Timed
-    public ResponseEntity<List<BookTableDTO>> getBookTableAvailable(Integer persons, String period, String reserveDate, Pageable pageable) {
+    public ResponseEntity<List<BookTableDTO>> getBookTableAvailable(Long persons, String period, String reserveDate, Pageable pageable) {
 
 //        Reservation reservation = new Reservation();
 //        reservation.setReserverDate(reserveDate);

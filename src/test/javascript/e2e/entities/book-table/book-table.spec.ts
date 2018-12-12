@@ -11,7 +11,7 @@ describe('BookTable e2e test', () => {
     let signInPage: SignInPage;
     let bookTableUpdatePage: BookTableUpdatePage;
     let bookTableComponentsPage: BookTableComponentsPage;
-    let bookTableDeleteDialog: BookTableDeleteDialog;
+    /*let bookTableDeleteDialog: BookTableDeleteDialog;*/
 
     before(async () => {
         await browser.get('/');
@@ -34,7 +34,7 @@ describe('BookTable e2e test', () => {
         await bookTableUpdatePage.cancel();
     });
 
-    it('should create and save BookTables', async () => {
+    /* it('should create and save BookTables', async () => {
         const nbButtonsBeforeCreate = await bookTableComponentsPage.countDeleteButtons();
 
         await bookTableComponentsPage.clickOnCreateButton();
@@ -46,29 +46,29 @@ describe('BookTable e2e test', () => {
             await bookTableUpdatePage.getIsAvaliableInput().click();
             expect(await bookTableUpdatePage.getIsAvaliableInput().isSelected()).to.be.true;
         }
-        await bookTableUpdatePage.setPersonsInput('5');
-        expect(await bookTableUpdatePage.getPersonsInput()).to.eq('5');
         await bookTableUpdatePage.setPriceInput('5');
         expect(await bookTableUpdatePage.getPriceInput()).to.eq('5');
         await bookTableUpdatePage.setImageUrlInput('imageUrl');
         expect(await bookTableUpdatePage.getImageUrlInput()).to.eq('imageUrl');
         await bookTableUpdatePage.restaurantSelectLastOption();
+        await bookTableUpdatePage.tableTypeSelectLastOption();
         await bookTableUpdatePage.save();
         expect(await bookTableUpdatePage.getSaveButton().isPresent()).to.be.false;
 
         expect(await bookTableComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeCreate + 1);
-    });
+    });*/
 
-    it('should delete last BookTable', async () => {
+    /* it('should delete last BookTable', async () => {
         const nbButtonsBeforeDelete = await bookTableComponentsPage.countDeleteButtons();
         await bookTableComponentsPage.clickOnLastDeleteButton();
 
         bookTableDeleteDialog = new BookTableDeleteDialog();
-        expect(await bookTableDeleteDialog.getDialogTitle()).to.eq('happybourBackEndApp.bookTable.delete.question');
+        expect(await bookTableDeleteDialog.getDialogTitle())
+            .to.eq('happybourBackEndApp.bookTable.delete.question');
         await bookTableDeleteDialog.clickOnConfirmButton();
 
         expect(await bookTableComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeDelete - 1);
-    });
+    });*/
 
     after(async () => {
         await navBarPage.autoSignOut();
