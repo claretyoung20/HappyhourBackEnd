@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -86,24 +85,5 @@ public class BookTableServiceImpl implements BookTableService {
     public void delete(Long id) {
         log.debug("Request to delete BookTable : {}", id);
         bookTableRepository.deleteById(id);
-    }
-
-    @Override
-    public BookTableDTO findByIdAndPersons(Long id, Integer persons) {
-        return bookTableMapper.toDto(bookTableRepository.findByIdAndPersons(id, persons));
-    }
-
-    @Override
-    public Page<BookTableDTO> findAllByIdIsNotAndPersons(Long id, Integer persons, Pageable pageable) {
-        log.debug("Request to get all BookTables");
-        return bookTableRepository.findAllByIdIsNotAndPersons(id, persons, pageable)
-            .map(bookTableMapper::toDto);
-    }
-
-    @Override
-    public Page<BookTableDTO> findAllByPersons(Integer persons, Pageable pageable) {
-        log.debug("Request to get all BookTables");
-        return bookTableRepository.findAllByPersons(persons, pageable)
-            .map(bookTableMapper::toDto);
     }
 }

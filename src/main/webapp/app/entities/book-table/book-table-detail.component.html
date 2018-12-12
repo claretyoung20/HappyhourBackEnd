@@ -9,10 +9,6 @@
                 <dd>
                     <span>{{bookTable.isAvaliable}}</span>
                 </dd>
-                <dt><span jhiTranslate="happybourBackEndApp.bookTable.persons">Persons</span></dt>
-                <dd>
-                    <span>{{bookTable.persons}}</span>
-                </dd>
                 <dt><span jhiTranslate="happybourBackEndApp.bookTable.price">Price</span></dt>
                 <dd>
                     <span>{{bookTable.price}}</span>
@@ -25,6 +21,12 @@
                 <dd>
                     <div *ngIf="bookTable.restaurantId">
                         <a [routerLink]="['/restaurant', bookTable.restaurantId, 'view']">{{bookTable.restaurantId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.bookTable.tableType">Table Type</span></dt>
+                <dd>
+                    <div *ngIf="bookTable.tableTypeId">
+                        <a [routerLink]="['/table-type', bookTable.tableTypeId, 'view']">{{bookTable.tableTypeId}}</a>
                     </div>
                 </dd>
             </dl>

@@ -17,10 +17,10 @@
                 "title": "Book Table"
             },
             "isAvaliable": "Is Avaliable",
-            "persons": "Persons",
             "price": "Price",
             "imageUrl": "Image Url",
-            "restaurant": "Restaurant"
+            "restaurant": "Restaurant",
+            "tableType": "Table Type"
         }
     }
 }

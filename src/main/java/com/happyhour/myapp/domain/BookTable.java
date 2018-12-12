@@ -3,6 +3,7 @@ package com.happyhour.myapp.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -23,9 +24,6 @@ public class BookTable implements Serializable {
     @Column(name = "is_avaliable")
     private Boolean isAvaliable;
 
-    @Column(name = "persons")
-    private Integer persons;
-
     @Column(name = "price")
     private Double price;
 
@@ -35,6 +33,11 @@ public class BookTable implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("")
     private Restaurant restaurant;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("")
+    private TableType tableType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -56,19 +59,6 @@ public class BookTable implements Serializable {
 
     public void setIsAvaliable(Boolean isAvaliable) {
         this.isAvaliable = isAvaliable;
-    }
-
-    public Integer getPersons() {
-        return persons;
-    }
-
-    public BookTable persons(Integer persons) {
-        this.persons = persons;
-        return this;
-    }
-
-    public void setPersons(Integer persons) {
-        this.persons = persons;
     }
 
     public Double getPrice() {
@@ -109,6 +99,19 @@ public class BookTable implements Serializable {
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
+
+    public TableType getTableType() {
+        return tableType;
+    }
+
+    public BookTable tableType(TableType tableType) {
+        this.tableType = tableType;
+        return this;
+    }
+
+    public void setTableType(TableType tableType) {
+        this.tableType = tableType;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -136,7 +139,6 @@ public class BookTable implements Serializable {
         return "BookTable{" +
             "id=" + getId() +
             ", isAvaliable='" + isIsAvaliable() + "'" +
-            ", persons=" + getPersons() +
             ", price=" + getPrice() +
             ", imageUrl='" + getImageUrl() + "'" +
             "}";

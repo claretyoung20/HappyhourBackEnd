@@ -3,6 +3,7 @@ package com.happyhour.myapp.web.rest;
 import com.happyhour.myapp.HappybourBackEndApp;
 
 import com.happyhour.myapp.domain.BookTable;
+import com.happyhour.myapp.domain.TableType;
 import com.happyhour.myapp.repository.BookTableRepository;
 import com.happyhour.myapp.service.BookTableService;
 import com.happyhour.myapp.service.dto.BookTableDTO;
@@ -44,9 +45,6 @@ public class BookTableResourceIntTest {
 
     private static final Boolean DEFAULT_IS_AVALIABLE = false;
     private static final Boolean UPDATED_IS_AVALIABLE = true;
-
-    private static final Integer DEFAULT_PERSONS = 1;
-    private static final Integer UPDATED_PERSONS = 2;
 
     private static final Double DEFAULT_PRICE = 1D;
     private static final Double UPDATED_PRICE = 2D;
@@ -99,9 +97,13 @@ public class BookTableResourceIntTest {
     public static BookTable createEntity(EntityManager em) {
         BookTable bookTable = new BookTable()
             .isAvaliable(DEFAULT_IS_AVALIABLE)
-            .persons(DEFAULT_PERSONS)
             .price(DEFAULT_PRICE)
             .imageUrl(DEFAULT_IMAGE_URL);
+        // Add required entity
+        TableType tableType = TableTypeResourceIntTest.createEntity(em);
+        em.persist(tableType);
+        em.flush();
+        bookTable.setTableType(tableType);
         return bookTable;
     }
 
@@ -127,7 +129,6 @@ public class BookTableResourceIntTest {
         assertThat(bookTableList).hasSize(databaseSizeBeforeCreate + 1);
         BookTable testBookTable = bookTableList.get(bookTableList.size() - 1);
         assertThat(testBookTable.isIsAvaliable()).isEqualTo(DEFAULT_IS_AVALIABLE);
-        assertThat(testBookTable.getPersons()).isEqualTo(DEFAULT_PERSONS);
         assertThat(testBookTable.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testBookTable.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
     }
@@ -164,7 +165,6 @@ public class BookTableResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bookTable.getId().intValue())))
             .andExpect(jsonPath("$.[*].isAvaliable").value(hasItem(DEFAULT_IS_AVALIABLE.booleanValue())))
-            .andExpect(jsonPath("$.[*].persons").value(hasItem(DEFAULT_PERSONS)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())));
     }
@@ -181,7 +181,6 @@ public class BookTableResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(bookTable.getId().intValue()))
             .andExpect(jsonPath("$.isAvaliable").value(DEFAULT_IS_AVALIABLE.booleanValue()))
-            .andExpect(jsonPath("$.persons").value(DEFAULT_PERSONS))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()));
     }
@@ -208,7 +207,6 @@ public class BookTableResourceIntTest {
         em.detach(updatedBookTable);
         updatedBookTable
             .isAvaliable(UPDATED_IS_AVALIABLE)
-            .persons(UPDATED_PERSONS)
             .price(UPDATED_PRICE)
             .imageUrl(UPDATED_IMAGE_URL);
         BookTableDTO bookTableDTO = bookTableMapper.toDto(updatedBookTable);
@@ -223,7 +221,6 @@ public class BookTableResourceIntTest {
         assertThat(bookTableList).hasSize(databaseSizeBeforeUpdate);
         BookTable testBookTable = bookTableList.get(bookTableList.size() - 1);
         assertThat(testBookTable.isIsAvaliable()).isEqualTo(UPDATED_IS_AVALIABLE);
-        assertThat(testBookTable.getPersons()).isEqualTo(UPDATED_PERSONS);
         assertThat(testBookTable.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testBookTable.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
     }

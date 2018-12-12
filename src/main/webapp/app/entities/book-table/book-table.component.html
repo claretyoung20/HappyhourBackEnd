@@ -16,10 +16,10 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="isAvaliable"><span jhiTranslate="happybourBackEndApp.bookTable.isAvaliable">Is Avaliable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="persons"><span jhiTranslate="happybourBackEndApp.bookTable.persons">Persons</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="price"><span jhiTranslate="happybourBackEndApp.bookTable.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="imageUrl"><span jhiTranslate="happybourBackEndApp.bookTable.imageUrl">Image Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.bookTable.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tableTypeId"><span jhiTranslate="happybourBackEndApp.bookTable.tableType">Table Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -27,12 +27,16 @@
             <tr *ngFor="let bookTable of bookTables ;trackBy: trackId">
                 <td><a [routerLink]="['/book-table', bookTable.id, 'view' ]">{{bookTable.id}}</a></td>
                 <td>{{bookTable.isAvaliable}}</td>
-                <td>{{bookTable.persons}}</td>
                 <td>{{bookTable.price}}</td>
                 <td>{{bookTable.imageUrl}}</td>
                 <td>
                     <div *ngIf="bookTable.restaurantId">
                         <a [routerLink]="['../restaurant', bookTable.restaurantId , 'view' ]" >{{bookTable.restaurantId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="bookTable.tableTypeId">
+                        <a [routerLink]="['../table-type', bookTable.tableTypeId , 'view' ]" >{{bookTable.tableTypeId}}</a>
                     </div>
                 </td>
                 <td class="text-right">
