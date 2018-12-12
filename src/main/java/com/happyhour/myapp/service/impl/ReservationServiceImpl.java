@@ -98,7 +98,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<ReservationDTO> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date) {
-        return reservationMapper.toDto(reservationRepository.findAllByPeriodAndReserverDate(period, reserve_Date));
+        String status = "cancel";
+        return reservationMapper.toDto(reservationRepository.findAllByPeriodAndReserverDateAndStatusNotLike(period, reserve_Date, status));
     }
 
     @Override
@@ -117,5 +118,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<ReservationDTO> cronJobCancel(LocalDate localDate, String status) {
         return reservationMapper.toDto(reservationRepository.findAllByReserverDateLessThanAndStatusNotLike(localDate, status));
+    }
+
+    @Override
+    public Page<ReservationDTO> findByStatus(String status, Pageable pageable) {
+        log.debug("Request to get all Reservations by status");
+        return reservationRepository.findAllByStatus(status, pageable)
+            .map(reservationMapper::toDto);
     }
 }

@@ -155,4 +155,13 @@ public class ReservationResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/reservations/status")
+    @Timed
+    public ResponseEntity<List<ReservationDTO>> getAllActiveReservations(String status, Pageable pageable) {
+        log.debug("REST request to get a page of Reservations by status");
+        Page<ReservationDTO> page = reservationService.findByStatus(status, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

@@ -86,4 +86,24 @@ public class BookTableServiceImpl implements BookTableService {
         log.debug("Request to delete BookTable : {}", id);
         bookTableRepository.deleteById(id);
     }
+
+
+    @Override
+    public BookTableDTO findByIdAndPersons(Long id, Long typeId) {
+        return bookTableMapper.toDto(bookTableRepository.findByIdAndTableTypeId(id, typeId));
+    }
+
+    @Override
+    public Page<BookTableDTO> findAllByIdIsNotAndPersons(Long id, Long typeId, Pageable pageable) {
+        log.debug("Request to get all BookTables");
+        return bookTableRepository.findAllByIdAndTableTypeIdNot(id, typeId, pageable)
+            .map(bookTableMapper::toDto);
+    }
+
+    @Override
+    public Page<BookTableDTO> findAllByPersons(Long typeId, Pageable pageable) {
+        log.debug("Request to get all BookTables");
+        return bookTableRepository.findAllByTableTypeId(typeId, pageable)
+            .map(bookTableMapper::toDto);
+    }
 }

@@ -43,4 +43,10 @@ public interface BookTableService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    BookTableDTO findByIdAndPersons(Long id, Long typeId);
+
+    Page<BookTableDTO> findAllByIdIsNotAndPersons(Long id, Long typeId, Pageable pageable);
+
+    Page<BookTableDTO> findAllByPersons(Long typeId, Pageable pageable);
 }
