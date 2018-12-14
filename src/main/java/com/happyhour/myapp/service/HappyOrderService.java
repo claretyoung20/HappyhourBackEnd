@@ -53,4 +53,9 @@ public interface HappyOrderService {
     Page<HappyOrderDTO> findAllActiveOrder(long id, LocalDate localDate, Pageable pageable);
 
     List<HappyOrderDTO> cronJobCacel(LocalDate localDate, Long id);
+
+
+    Page<HappyOrderDTO> todayOrder(LocalDate localDate, Pageable pageable);
+
+    Page<HappyOrderDTO> orderHistory(LocalDate localDate, Pageable pageable);
 }

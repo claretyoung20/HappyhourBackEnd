@@ -126,4 +126,16 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findAllByStatus(status, pageable)
             .map(reservationMapper::toDto);
     }
+
+    @Override
+    public Page<ReservationDTO> historyReservation(LocalDate localDate, Pageable pageable) {
+        return reservationRepository.findAllByReserverDateLessThan(localDate, pageable)
+            .map(reservationMapper::toDto);
+    }
+
+    @Override
+    public Page<ReservationDTO> activeReservation(LocalDate localDate, Pageable pageable) {
+        return reservationRepository.findAllByReserverDateGreaterThanEqual(localDate, pageable)
+            .map(reservationMapper::toDto);
+    }
 }

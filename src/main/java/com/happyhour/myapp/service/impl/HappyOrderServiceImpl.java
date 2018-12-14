@@ -114,4 +114,18 @@ public class HappyOrderServiceImpl implements HappyOrderService {
     public List<HappyOrderDTO> cronJobCacel(LocalDate localDate, Long id) {
         return happyOrderMapper.toDto(happyOrderRepository.findAllByDateCreatedIsLessThanAndOrderStatusId(localDate));
     }
+
+    @Override
+    public Page<HappyOrderDTO> todayOrder(LocalDate localDate, Pageable pageable) {
+        log.debug("Request to get all HappyOrders");
+        return happyOrderRepository.findAllByDateCreated(localDate, pageable)
+            .map(happyOrderMapper::toDto);
+    }
+
+    @Override
+    public Page<HappyOrderDTO> orderHistory(LocalDate localDate, Pageable pageable) {
+        log.debug("Request to get all HappyOrders");
+        return happyOrderRepository.findAllByDateCreatedIsLessThan(localDate, pageable)
+            .map(happyOrderMapper::toDto);
+    }
 }

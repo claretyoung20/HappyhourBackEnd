@@ -106,4 +106,11 @@ public class BookTableServiceImpl implements BookTableService {
         return bookTableRepository.findAllByTableTypeId(typeId, pageable)
             .map(bookTableMapper::toDto);
     }
+
+    @Override
+    public Page<BookTableDTO> availableTable(Pageable pageable) {
+        log.debug("Request to get all available BookTables ");
+        return bookTableRepository.findAllByIsAvaliableIsTrue(pageable)
+            .map(bookTableMapper::toDto);
+    }
 }

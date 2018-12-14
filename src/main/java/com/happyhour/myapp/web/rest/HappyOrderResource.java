@@ -158,4 +158,24 @@ public class HappyOrderResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/happy-orders/todayOrder")
+    @Timed
+    public ResponseEntity<List<HappyOrderDTO>> getAllActiveHappyOrders(Pageable pageable) {
+        log.debug("REST request to get a page of HappyOrders");
+        LocalDate checkDate = LocalDate.now();
+        Page<HappyOrderDTO> page = happyOrderService.todayOrder(checkDate, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/currentHistory")
+    @Timed
+    public ResponseEntity<List<HappyOrderDTO>> getAllHistoryHappyOrders(Pageable pageable) {
+        log.debug("REST request to get a page of HappyOrders");
+        LocalDate checkDate = LocalDate.now();
+        Page<HappyOrderDTO> page = happyOrderService.orderHistory(checkDate, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

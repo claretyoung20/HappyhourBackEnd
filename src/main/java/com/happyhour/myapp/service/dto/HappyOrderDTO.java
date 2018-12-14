@@ -1,6 +1,7 @@
 package com.happyhour.myapp.service.dto;
 
 import java.time.LocalDate;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -30,6 +31,8 @@ public class HappyOrderDTO implements Serializable {
     private Long staffId;
 
     private String staffStaffCode;
+
+    private Long bookTableId;
 
     public Long getId() {
         return id;
@@ -119,6 +122,14 @@ public class HappyOrderDTO implements Serializable {
         this.staffStaffCode = staffStaffCode;
     }
 
+    public Long getBookTableId() {
+        return bookTableId;
+    }
+
+    public void setBookTableId(Long bookTableId) {
+        this.bookTableId = bookTableId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -154,6 +165,7 @@ public class HappyOrderDTO implements Serializable {
             ", restaurant=" + getRestaurantId() +
             ", staff=" + getStaffId() +
             ", staff='" + getStaffStaffCode() + "'" +
+            ", bookTable=" + getBookTableId() +
             "}";
     }
 }

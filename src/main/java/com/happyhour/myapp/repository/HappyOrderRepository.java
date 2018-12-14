@@ -25,4 +25,7 @@ public interface HappyOrderRepository extends JpaRepository<HappyOrder, Long> {
     @Query (value = "select * from happy_order o where o.date_created<:checkDate and (o.order_status_id = 1 or o.order_status_id = 2) ",
     nativeQuery = true)
     List<HappyOrder> findAllByDateCreatedIsLessThanAndOrderStatusId(@Param("checkDate") LocalDate checkDate);
+
+    Page<HappyOrder> findAllByDateCreated(LocalDate localDate, Pageable pageable);
+    Page<HappyOrder> findAllByDateCreatedIsLessThan(LocalDate localDate, Pageable pageable);
 }

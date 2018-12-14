@@ -58,4 +58,8 @@ public interface ReservationService {
     Page<ReservationDTO> findByStatus(String status, Pageable pageable);
 
     List<ReservationDTO> cronJobCancel(LocalDate localDate, String status);
+
+    Page<ReservationDTO> historyReservation(LocalDate localDate, Pageable pageable);
+
+    Page<ReservationDTO> activeReservation(LocalDate localDate, Pageable pageable);
 }

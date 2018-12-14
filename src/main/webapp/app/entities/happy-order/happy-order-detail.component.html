@@ -51,6 +51,12 @@
                         <a [routerLink]="['/staff', happyOrder.staffId, 'view']">{{happyOrder.staffStaffCode}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.happyOrder.bookTable">Book Table</span></dt>
+                <dd>
+                    <div *ngIf="happyOrder.bookTableId">
+                        <a [routerLink]="['/book-table', happyOrder.bookTableId, 'view']">{{happyOrder.bookTableId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
