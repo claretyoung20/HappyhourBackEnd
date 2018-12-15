@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public interface HappyOrderRepository extends JpaRepository<HappyOrder, Long> {
 
-    Page<HappyOrder> findAllByOrderStatusId(long id, Pageable pageable);
+    Page<HappyOrder> findAllByOrderStatusIdAndDateCreated(long id,LocalDate localDate, Pageable pageable);
     Page<HappyOrder> findAllByCustomerIdAndDateCreatedLessThan(long id, LocalDate localDate, Pageable pageable);
     Page<HappyOrder> findAllByCustomerIdAndDateCreatedIsGreaterThanEqual(long id, LocalDate localDate, Pageable pageable);
 

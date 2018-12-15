@@ -90,9 +90,9 @@ public class HappyOrderServiceImpl implements HappyOrderService {
     }
 
     @Override
-    public Page<HappyOrderDTO> findAllByOrderStatusId(long id, Pageable pageable) {
+    public Page<HappyOrderDTO> findAllByOrderStatusId(long id, LocalDate localDate, Pageable pageable) {
         log.debug("Request to get all HappyOrders by status id");
-        return happyOrderRepository.findAllByOrderStatusId(id, pageable)
+        return happyOrderRepository.findAllByOrderStatusIdAndDateCreated(id,localDate, pageable)
             .map(happyOrderMapper::toDto);
     }
 

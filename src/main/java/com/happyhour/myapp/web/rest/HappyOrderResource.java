@@ -134,7 +134,8 @@ public class HappyOrderResource {
     @Timed
     public ResponseEntity<List<HappyOrderDTO>> getAllHappyOrdersByStatusId(@PathVariable Long id, Pageable pageable) {
         log.debug("REST request to get a page of HappyOrders by status id");
-        Page<HappyOrderDTO> page = happyOrderService.findAllByOrderStatusId(id, pageable);
+        LocalDate now = LocalDate.now();
+        Page<HappyOrderDTO> page = happyOrderService.findAllByOrderStatusId(id, now, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

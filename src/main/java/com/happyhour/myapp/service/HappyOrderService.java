@@ -46,7 +46,7 @@ public interface HappyOrderService {
      */
     void delete(Long id);
 
-    Page<HappyOrderDTO> findAllByOrderStatusId(long id, Pageable pageable);
+    Page<HappyOrderDTO> findAllByOrderStatusId(long id, LocalDate localDate, Pageable pageable);
 
     Page<HappyOrderDTO> findAllByCustomerIdAAndDateCreatedLessThan(long id, LocalDate localDate, Pageable pageable);
 

@@ -121,9 +121,9 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Page<ReservationDTO> findByStatus(String status, Pageable pageable) {
+    public Page<ReservationDTO> findByStatus(String status,LocalDate localDate, Pageable pageable) {
         log.debug("Request to get all Reservations by status");
-        return reservationRepository.findAllByStatus(status, pageable)
+        return reservationRepository.findAllByStatusAndReserverDateGreaterThanEqual(status, localDate, pageable)
             .map(reservationMapper::toDto);
     }
 
