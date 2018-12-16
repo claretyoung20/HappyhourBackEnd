@@ -3,6 +3,7 @@ package com.happyhour.myapp.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -52,6 +53,11 @@ public class HappyOrder implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("")
     private Staff staff;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("")
+    private BookTable bookTable;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -177,6 +183,19 @@ public class HappyOrder implements Serializable {
 
     public void setStaff(Staff staff) {
         this.staff = staff;
+    }
+
+    public BookTable getBookTable() {
+        return bookTable;
+    }
+
+    public HappyOrder bookTable(BookTable bookTable) {
+        this.bookTable = bookTable;
+        return this;
+    }
+
+    public void setBookTable(BookTable bookTable) {
+        this.bookTable = bookTable;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

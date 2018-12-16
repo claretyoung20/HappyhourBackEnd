@@ -12,6 +12,7 @@ export interface IHappyOrder {
     restaurantId?: number;
     staffStaffCode?: string;
     staffId?: number;
+    bookTableId?: number;
 }
 
 export class HappyOrder implements IHappyOrder {
@@ -26,6 +27,7 @@ export class HappyOrder implements IHappyOrder {
         public couponId?: number,
         public restaurantId?: number,
         public staffStaffCode?: string,
-        public staffId?: number
+        public staffId?: number,
+        public bookTableId?: number
     ) {}
 }

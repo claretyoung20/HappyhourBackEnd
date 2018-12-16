@@ -46,11 +46,16 @@ public interface HappyOrderService {
      */
     void delete(Long id);
 
-    Page<HappyOrderDTO> findAllByOrderStatusId(long id, Pageable pageable);
+    Page<HappyOrderDTO> findAllByOrderStatusId(long id, LocalDate localDate, Pageable pageable);
 
     Page<HappyOrderDTO> findAllByCustomerIdAAndDateCreatedLessThan(long id, LocalDate localDate, Pageable pageable);
 
     Page<HappyOrderDTO> findAllActiveOrder(long id, LocalDate localDate, Pageable pageable);
 
     List<HappyOrderDTO> cronJobCacel(LocalDate localDate, Long id);
+
+
+    Page<HappyOrderDTO> todayOrder(LocalDate localDate, Pageable pageable);
+
+    Page<HappyOrderDTO> orderHistory(LocalDate localDate, Pageable pageable);
 }

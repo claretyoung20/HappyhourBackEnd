@@ -2,9 +2,11 @@ package com.happyhour.myapp.service;
 
 import com.happyhour.myapp.service.dto.CustomerDTO;
 
+import com.happyhour.myapp.service.dto.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -54,4 +56,6 @@ public interface CustomerService {
     void delete(Long id);
 
     Optional<CustomerDTO> findByUserId(Long id);
+
+    List<UserDTO> findAllCustomerUser(Pageable pageable);
 }

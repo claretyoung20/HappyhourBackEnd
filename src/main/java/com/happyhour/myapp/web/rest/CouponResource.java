@@ -141,7 +141,7 @@ public class CouponResource {
     public ResponseEntity<List<CouponDTO>> getAllActiveCoupon(Pageable pageable) {
         log.debug("REST request to get a page of Coupons");
         LocalDate checkDate = LocalDate.now();
-        Page<CouponDTO> page = couponService.isActive(pageable, checkDate, checkDate);
+        Page<CouponDTO> page = couponService.isActive(pageable, checkDate);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/coupons/valid");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

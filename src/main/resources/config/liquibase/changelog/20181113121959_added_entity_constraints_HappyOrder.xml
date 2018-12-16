@@ -38,5 +38,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="staff"/>
 
+        <addForeignKeyConstraint baseColumnNames="book_table_id"
+                                 baseTableName="happy_order"
+                                 constraintName="fk_happy_order_book_table_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="book_table"/>
+
     </changeSet>
 </databaseChangeLog>

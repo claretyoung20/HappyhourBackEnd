@@ -49,4 +49,6 @@ public interface BookTableService {
     Page<BookTableDTO> findAllByIdIsNotAndPersons(Long id, Long typeId, Pageable pageable);
 
     Page<BookTableDTO> findAllByPersons(Long typeId, Pageable pageable);
+
+    Page<BookTableDTO> availableTable(Pageable pageable);
 }

@@ -75,6 +75,19 @@
                         <option [ngValue]="staffOption.id" *ngFor="let staffOption of staff; trackBy: trackStaffById">{{staffOption.staffCode}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.happyOrder.bookTable" for="field_bookTable">Book Table</label>
+                    <select class="form-control" id="field_bookTable" name="bookTable" [(ngModel)]="happyOrder.bookTableId"  required>
+                        <option *ngIf="!editForm.value.bookTable" [ngValue]="null" selected></option>
+                        <option [ngValue]="bookTableOption.id" *ngFor="let bookTableOption of booktables; trackBy: trackBookTableById">{{bookTableOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.bookTable?.dirty && editForm.controls.bookTable?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.bookTable?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

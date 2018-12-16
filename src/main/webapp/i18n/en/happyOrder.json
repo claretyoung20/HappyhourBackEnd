@@ -24,7 +24,8 @@
             "customer": "Customer",
             "coupon": "Coupon",
             "restaurant": "Restaurant",
-            "staff": "Staff"
+            "staff": "Staff",
+            "bookTable": "Book Table"
         }
     }
 }

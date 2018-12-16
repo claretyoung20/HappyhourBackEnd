@@ -76,6 +76,7 @@ public class CustomerResource {
         }
         customerDTO.setDateCreated(Instant.now());
         customerDTO.setDateUpdated(Instant.now());
+        customerDTO.setStatus(true);
         CustomerDTO result = customerService.save(customerDTO);
         return ResponseEntity.created(new URI("/api/customers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -193,5 +194,14 @@ public class CustomerResource {
 
         return ResponseUtil.wrapOrNotFound(updatedUser,
             HeaderUtil.createAlert("userManagement.updated", userDTO.getLogin()));
+    }
+
+    @GetMapping("/customers/allUser")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllCustomerUser(Pageable pageable) {
+        log.debug("REST request to get a page of Staff");
+        List<UserDTO> page = customerService.findAllCustomerUser(pageable);
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 }

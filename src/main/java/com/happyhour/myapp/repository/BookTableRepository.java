@@ -22,4 +22,6 @@ public interface BookTableRepository extends JpaRepository<BookTable, Long> {
     Page<BookTable> findAllByIdAndTableTypeIdNot(@Param("id") Long id, @Param("tableTypeId") Long tableTypeId, Pageable pageable);
 
     Page<BookTable> findAllByTableTypeId(Long tableTypeId, Pageable pageable);
+
+    Page<BookTable> findAllByIsAvaliableIsTrue(Pageable pageable);
 }

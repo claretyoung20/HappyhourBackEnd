@@ -48,7 +48,7 @@ public interface CouponService {
 
     Page<CouponDTO> findAllValidCoupon(Pageable pageable, LocalDate startDate, LocalDate endDate);
 
-    Page<CouponDTO> isActive(Pageable pageable, LocalDate startDate, LocalDate endDate);
+    Page<CouponDTO> isActive(Pageable pageable, LocalDate startDate);
     Page<CouponDTO> history(Pageable pageable, LocalDate startDate, LocalDate endDate);
 
     List<CouponDTO> cronJobCancel(LocalDate startDate, LocalDate endDate);

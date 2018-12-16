@@ -24,6 +24,7 @@
             <th jhiSortBy="couponId"><span jhiTranslate="happybourBackEndApp.happyOrder.coupon">Coupon</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.happyOrder.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="staffStaffCode"><span jhiTranslate="happybourBackEndApp.happyOrder.staff">Staff</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="bookTableId"><span jhiTranslate="happybourBackEndApp.happyOrder.bookTable">Book Table</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -57,6 +58,11 @@
                 <td>
                     <div *ngIf="happyOrder.staffId">
                         <a [routerLink]="['../staff', happyOrder.staffId , 'view' ]" >{{happyOrder.staffStaffCode}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="happyOrder.bookTableId">
+                        <a [routerLink]="['../book-table', happyOrder.bookTableId , 'view' ]" >{{happyOrder.bookTableId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

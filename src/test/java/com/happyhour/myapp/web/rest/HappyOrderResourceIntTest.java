@@ -3,6 +3,7 @@ package com.happyhour.myapp.web.rest;
 import com.happyhour.myapp.HappybourBackEndApp;
 
 import com.happyhour.myapp.domain.HappyOrder;
+import com.happyhour.myapp.domain.BookTable;
 import com.happyhour.myapp.repository.HappyOrderRepository;
 import com.happyhour.myapp.service.HappyOrderService;
 import com.happyhour.myapp.service.dto.HappyOrderDTO;
@@ -104,6 +105,11 @@ public class HappyOrderResourceIntTest {
             .totalPrice(DEFAULT_TOTAL_PRICE)
             .dateUpdated(DEFAULT_DATE_UPDATED)
             .dateCreated(DEFAULT_DATE_CREATED);
+        // Add required entity
+        BookTable bookTable = BookTableResourceIntTest.createEntity(em);
+        em.persist(bookTable);
+        em.flush();
+        happyOrder.setBookTable(bookTable);
         return happyOrder;
     }
 

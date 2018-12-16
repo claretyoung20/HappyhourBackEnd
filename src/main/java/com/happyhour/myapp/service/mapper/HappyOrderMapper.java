@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity HappyOrder and its DTO HappyOrderDTO.
  */
-@Mapper(componentModel = "spring", uses = {OrderStatusMapper.class, CustomerMapper.class, CouponMapper.class, RestaurantMapper.class, StaffMapper.class})
+@Mapper(componentModel = "spring", uses = {OrderStatusMapper.class, CustomerMapper.class, CouponMapper.class, RestaurantMapper.class, StaffMapper.class, BookTableMapper.class})
 public interface HappyOrderMapper extends EntityMapper<HappyOrderDTO, HappyOrder> {
 
     @Mapping(source = "orderStatus.id", target = "orderStatusId")
@@ -17,6 +17,7 @@ public interface HappyOrderMapper extends EntityMapper<HappyOrderDTO, HappyOrder
     @Mapping(source = "restaurant.id", target = "restaurantId")
     @Mapping(source = "staff.id", target = "staffId")
     @Mapping(source = "staff.staffCode", target = "staffStaffCode")
+    @Mapping(source = "bookTable.id", target = "bookTableId")
     HappyOrderDTO toDto(HappyOrder happyOrder);
 
     @Mapping(source = "orderStatusId", target = "orderStatus")
@@ -24,6 +25,7 @@ public interface HappyOrderMapper extends EntityMapper<HappyOrderDTO, HappyOrder
     @Mapping(source = "couponId", target = "coupon")
     @Mapping(source = "restaurantId", target = "restaurant")
     @Mapping(source = "staffId", target = "staff")
+    @Mapping(source = "bookTableId", target = "bookTable")
     HappyOrder toEntity(HappyOrderDTO happyOrderDTO);
 
     default HappyOrder fromId(Long id) {

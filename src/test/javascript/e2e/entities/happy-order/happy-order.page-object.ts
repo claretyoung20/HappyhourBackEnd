@@ -35,6 +35,7 @@ export class HappyOrderUpdatePage {
     couponSelect = element(by.id('field_coupon'));
     restaurantSelect = element(by.id('field_restaurant'));
     staffSelect = element(by.id('field_staff'));
+    bookTableSelect = element(by.id('field_bookTable'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -165,6 +166,25 @@ export class HappyOrderUpdatePage {
 
     async getStaffSelectedOption() {
         return this.staffSelect.element(by.css('option:checked')).getText();
+    }
+
+    async bookTableSelectLastOption() {
+        await this.bookTableSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async bookTableSelectOption(option) {
+        await this.bookTableSelect.sendKeys(option);
+    }
+
+    getBookTableSelect(): ElementFinder {
+        return this.bookTableSelect;
+    }
+
+    async getBookTableSelectedOption() {
+        return this.bookTableSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

@@ -174,4 +174,14 @@ public class BookTableResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/book-tables");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/book-tables/isAvailable")
+    @Timed
+    public ResponseEntity<List<BookTableDTO>> getAllAvailableBookTables(Pageable pageable) {
+        log.debug("REST request to get a page of available BookTables");
+        Page<BookTableDTO> page = bookTableService.availableTable(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/book-tables");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 }

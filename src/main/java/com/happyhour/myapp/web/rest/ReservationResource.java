@@ -160,8 +160,29 @@ public class ReservationResource {
     @Timed
     public ResponseEntity<List<ReservationDTO>> getAllActiveReservations(String status, Pageable pageable) {
         log.debug("REST request to get a page of Reservations by status");
-        Page<ReservationDTO> page = reservationService.findByStatus(status, pageable);
+        LocalDate now = LocalDate.now();
+        Page<ReservationDTO> page = reservationService.findByStatus(status, now, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/reservations/activeReservation")
+    @Timed
+    public ResponseEntity<List<ReservationDTO>> getAllHappyActiveReservations(Pageable pageable) {
+        log.debug("REST request to get a page of Reservations");
+        LocalDate checkDate = LocalDate.now();
+        Page<ReservationDTO> page = reservationService.activeReservation(checkDate, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    @GetMapping("/reservations/historyReservation")
+    @Timed
+    public ResponseEntity<List<ReservationDTO>> getAllReservationsHistory(Pageable pageable) {
+        log.debug("REST request to get a page of Reservations");
+        LocalDate checkDate = LocalDate.now();
+        Page<ReservationDTO> page = reservationService.historyReservation(checkDate, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 }

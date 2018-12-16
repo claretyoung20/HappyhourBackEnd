@@ -16,6 +16,8 @@ import { IRestaurant } from 'app/shared/model/restaurant.model';
 import { RestaurantService } from 'app/entities/restaurant';
 import { IStaff } from 'app/shared/model/staff.model';
 import { StaffService } from 'app/entities/staff';
+import { IBookTable } from 'app/shared/model/book-table.model';
+import { BookTableService } from 'app/entities/book-table';
 
 @Component({
     selector: 'jhi-happy-order-update',
@@ -34,6 +36,8 @@ export class HappyOrderUpdateComponent implements OnInit {
     restaurants: IRestaurant[];
 
     staff: IStaff[];
+
+    booktables: IBookTable[];
     dateUpdatedDp: any;
     dateCreatedDp: any;
 
@@ -45,6 +49,7 @@ export class HappyOrderUpdateComponent implements OnInit {
         private couponService: CouponService,
         private restaurantService: RestaurantService,
         private staffService: StaffService,
+        private bookTableService: BookTableService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -80,6 +85,12 @@ export class HappyOrderUpdateComponent implements OnInit {
         this.staffService.query().subscribe(
             (res: HttpResponse<IStaff[]>) => {
                 this.staff = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.bookTableService.query().subscribe(
+            (res: HttpResponse<IBookTable[]>) => {
+                this.booktables = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -132,6 +143,10 @@ export class HappyOrderUpdateComponent implements OnInit {
     }
 
     trackStaffById(index: number, item: IStaff) {
+        return item.id;
+    }
+
+    trackBookTableById(index: number, item: IBookTable) {
         return item.id;
     }
     get happyOrder() {
