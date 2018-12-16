@@ -3,16 +3,21 @@ package com.happyhour.myapp.service.impl;
 import com.happyhour.myapp.service.CustomerService;
 import com.happyhour.myapp.domain.Customer;
 import com.happyhour.myapp.repository.CustomerRepository;
+import com.happyhour.myapp.service.UserService;
 import com.happyhour.myapp.service.dto.CustomerDTO;
+import com.happyhour.myapp.service.dto.UserDTO;
 import com.happyhour.myapp.service.mapper.CustomerMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,6 +32,9 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     private final CustomerMapper customerMapper;
+
+    @Autowired
+    private UserService userService;
 
     public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper) {
         this.customerRepository = customerRepository;
@@ -100,5 +108,21 @@ public class CustomerServiceImpl implements CustomerService {
         log.debug("Request to get Customer by user id : {}", id);
         return customerRepository.findByUserId(id)
             .map(customerMapper::toDto);
+    }
+
+    @Override
+    public List<UserDTO> findAllCustomerUser(Pageable pageable) {
+        log.debug("Request to get all Staff");
+
+
+        List<CustomerDTO> customerDTOS = customerMapper.toDto(customerRepository.findAll());
+        List<UserDTO> userList = new ArrayList<>();
+
+
+        for ( CustomerDTO customerDTO: customerDTOS) {
+            Optional<UserDTO> user = userService.findById(customerDTO.getUserId());
+            user.ifPresent(userList::add);
+        }
+        return userList;
     }
 }

@@ -1,18 +1,25 @@
 package com.happyhour.myapp.service.impl;
 
+import com.happyhour.myapp.domain.User;
 import com.happyhour.myapp.service.StaffService;
 import com.happyhour.myapp.domain.Staff;
 import com.happyhour.myapp.repository.StaffRepository;
+import com.happyhour.myapp.service.UserService;
 import com.happyhour.myapp.service.dto.StaffDTO;
+import com.happyhour.myapp.service.dto.UserDTO;
 import com.happyhour.myapp.service.mapper.StaffMapper;
+import com.happyhour.myapp.service.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,6 +34,12 @@ public class StaffServiceImpl implements StaffService {
     private final StaffRepository staffRepository;
 
     private final StaffMapper staffMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private UserService userService;
 
     public StaffServiceImpl(StaffRepository staffRepository, StaffMapper staffMapper) {
         this.staffRepository = staffRepository;
@@ -61,6 +74,22 @@ public class StaffServiceImpl implements StaffService {
             .map(staffMapper::toDto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserDTO> findAllStaffUser(Pageable pageable) {
+        log.debug("Request to get all Staff");
+
+
+        List<StaffDTO> staffDTOList = staffMapper.toDto(staffRepository.findAll());
+        List<UserDTO> userList = new ArrayList<>();
+
+        for ( StaffDTO staffDTO: staffDTOList) {
+            Optional<UserDTO> user = userService.findById(staffDTO.getUserId());
+
+            user.ifPresent(userList::add);
+        }
+        return userList;
+    }
 
     /**
      * Get one staff by id.
@@ -92,5 +121,11 @@ public class StaffServiceImpl implements StaffService {
     public void delete(Long id) {
         log.debug("Request to delete Staff : {}", id);
         staffRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByUserId(Long id) {
+        log.debug("Request to delete Staff : {}", id);
+        staffRepository.deleteByUserId(id);
     }
 }

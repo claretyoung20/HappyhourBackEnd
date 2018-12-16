@@ -160,6 +160,15 @@ public class StaffResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    @GetMapping("/staff/allUser")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllStaffUser(Pageable pageable) {
+        log.debug("REST request to get a page of Staff");
+        List<UserDTO> page = staffService.findAllStaffUser(pageable);
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
+    }
+
     @GetMapping("staff/account")
     @Timed
     public ResponseEntity<List<UserDTO>> getAllUsers(Pageable pageable) {

@@ -2,9 +2,11 @@ package com.happyhour.myapp.service;
 
 import com.happyhour.myapp.service.dto.StaffDTO;
 
+import com.happyhour.myapp.service.dto.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,6 +30,7 @@ public interface StaffService {
      */
     Page<StaffDTO> findAll(Pageable pageable);
 
+    List<UserDTO> findAllStaffUser(Pageable pageable);
 
     /**
      * Get the "id" staff.
@@ -45,4 +48,6 @@ public interface StaffService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    void deleteByUserId(Long id);
 }
