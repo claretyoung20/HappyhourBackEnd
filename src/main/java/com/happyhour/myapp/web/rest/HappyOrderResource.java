@@ -179,4 +179,25 @@ public class HappyOrderResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/happy-orders/currentCustomerOrders/{id}")
+    @Timed
+    public ResponseEntity<List<HappyOrderDTO>> getAllCurrentCustomerActiveOrder(@PathVariable Long id) {
+        log.debug("REST request to get a page of HappyOrders by customer id and date");
+        LocalDate checkDate = LocalDate.now();
+        List<HappyOrderDTO> happyOrderDTOS = happyOrderService.findAllByCustomerIdAndDateCreated(id,checkDate);
+
+        if(!happyOrderDTOS.isEmpty()) {
+            for (HappyOrderDTO happyOrderDTO: happyOrderDTOS) {
+                if(happyOrderDTO.getOrderStatusId() == 4 ||
+                    happyOrderDTO.getOrderStatusId() == 5)
+                {
+                    happyOrderDTOS.remove(happyOrderDTO);
+                }
+            }
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(happyOrderDTOS, headers, HttpStatus.OK);
+    }
 }

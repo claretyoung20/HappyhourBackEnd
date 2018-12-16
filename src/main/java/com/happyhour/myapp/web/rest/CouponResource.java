@@ -2,6 +2,8 @@ package com.happyhour.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.happyhour.myapp.service.CouponService;
+import com.happyhour.myapp.service.HappyOrderService;
+import com.happyhour.myapp.service.dto.HappyOrderDTO;
 import com.happyhour.myapp.web.rest.errors.BadRequestAlertException;
 import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
@@ -9,6 +11,7 @@ import com.happyhour.myapp.service.dto.CouponDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,6 +40,9 @@ public class CouponResource {
     private static final String ENTITY_NAME = "coupon";
 
     private final CouponService couponService;
+
+    @Autowired
+    private HappyOrderService happyOrderService;
 
     public CouponResource(CouponService couponService) {
         this.couponService = couponService;
@@ -155,4 +161,35 @@ public class CouponResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/coupons/valid");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/coupons/applyCoupon")
+    @Timed
+    public ResponseEntity<CouponDTO> getApplyCoupon(Long id, String code, String amount) {
+        log.debug("REST request to get a page of Coupons");
+
+        double amount1 = Double.parseDouble(amount);
+        LocalDate checkDate = LocalDate.now();
+        CouponDTO couponDTO = couponService.findByCode(code, checkDate);
+        if(couponDTO != null) {
+            List<HappyOrderDTO> happyOrderDTOS =
+                happyOrderService.findByCouponIdAndCustomer(couponDTO.getId(), id);
+
+            if(amount1 < couponDTO.getMaxAmountToApply()) {
+                couponDTO = null;
+            }
+
+            if(couponDTO != null) {
+                if(amount1 < couponDTO.getMaxAmountToApply() &&
+                    couponDTO.getNoPerUser() < happyOrderDTOS.size()){
+
+                    couponDTO = null;
+                }
+            }
+
+        }
+
+        Optional<CouponDTO> couponDTO1 = Optional.ofNullable(couponDTO);
+        return ResponseUtil.wrapOrNotFound(couponDTO1);
+    }
+
 }

@@ -128,4 +128,16 @@ public class HappyOrderServiceImpl implements HappyOrderService {
         return happyOrderRepository.findAllByDateCreatedIsLessThan(localDate, pageable)
             .map(happyOrderMapper::toDto);
     }
+
+    @Override
+    public List<HappyOrderDTO> findAllByCustomerIdAndDateCreated(Long id, LocalDate localDate) {
+        return happyOrderMapper.toDto(happyOrderRepository.findAllByCustomerIdAndDateCreated(id, localDate));
+    }
+
+
+    @Override
+    public List<HappyOrderDTO> findByCouponIdAndCustomer(Long id, Long customerId) {
+        return happyOrderMapper.toDto(
+            happyOrderRepository.findAllByCouponIdAndCustomerId(id, customerId));
+    }
 }

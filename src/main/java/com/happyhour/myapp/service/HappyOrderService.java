@@ -1,5 +1,6 @@
 package com.happyhour.myapp.service;
 
+import com.happyhour.myapp.domain.HappyOrder;
 import com.happyhour.myapp.service.dto.HappyOrderDTO;
 
 import org.springframework.data.domain.Page;
@@ -58,4 +59,8 @@ public interface HappyOrderService {
     Page<HappyOrderDTO> todayOrder(LocalDate localDate, Pageable pageable);
 
     Page<HappyOrderDTO> orderHistory(LocalDate localDate, Pageable pageable);
+
+    List<HappyOrderDTO> findAllByCustomerIdAndDateCreated(Long id, LocalDate localDate);
+
+    List<HappyOrderDTO> findByCouponIdAndCustomer(Long id, Long customerId);
 }

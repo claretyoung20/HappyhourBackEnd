@@ -53,4 +53,6 @@ public interface CouponService {
 
     List<CouponDTO> cronJobCancel(LocalDate startDate, LocalDate endDate);
 
+    CouponDTO findByCode(String code, LocalDate startDate);
+
 }

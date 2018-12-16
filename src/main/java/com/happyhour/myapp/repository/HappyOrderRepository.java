@@ -28,4 +28,8 @@ public interface HappyOrderRepository extends JpaRepository<HappyOrder, Long> {
 
     Page<HappyOrder> findAllByDateCreated(LocalDate localDate, Pageable pageable);
     Page<HappyOrder> findAllByDateCreatedIsLessThan(LocalDate localDate, Pageable pageable);
+
+    List<HappyOrder> findAllByCustomerIdAndDateCreated(Long id, LocalDate localDate);
+
+    List<HappyOrder> findAllByCouponIdAndCustomerId(Long id, Long customerId);
 }
