@@ -8,6 +8,7 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.HappyOrderDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -132,12 +133,12 @@ public class HappyOrderResource {
 
     @GetMapping("/happy-orders/status/{id}")
     @Timed
-    public ResponseEntity<List<HappyOrderDTO>> getAllHappyOrdersByStatusId(@PathVariable Long id, Pageable pageable) {
+    public ResponseEntity<Page<HappyOrderDTO>> getAllHappyOrdersByStatusId(@PathVariable Long id,@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of HappyOrders by status id");
         LocalDate now = LocalDate.now();
         Page<HappyOrderDTO> page = happyOrderService.findAllByOrderStatusId(id, now, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     @GetMapping("/happy-orders/history/{id}")
@@ -162,22 +163,22 @@ public class HappyOrderResource {
 
     @GetMapping("/happy-orders/todayOrder")
     @Timed
-    public ResponseEntity<List<HappyOrderDTO>> getAllActiveHappyOrders(Pageable pageable) {
+    public ResponseEntity<Page<HappyOrderDTO>> getAllActiveHappyOrders(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of HappyOrders");
         LocalDate checkDate = LocalDate.now();
         Page<HappyOrderDTO> page = happyOrderService.todayOrder(checkDate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     @GetMapping("/happy-orders/currentHistory")
     @Timed
-    public ResponseEntity<List<HappyOrderDTO>> getAllHistoryHappyOrders(Pageable pageable) {
+    public ResponseEntity<Page<HappyOrderDTO>> getAllHistoryHappyOrders(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of HappyOrders");
         LocalDate checkDate = LocalDate.now();
         Page<HappyOrderDTO> page = happyOrderService.orderHistory(checkDate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     @GetMapping("/happy-orders/currentCustomerOrders/{id}")

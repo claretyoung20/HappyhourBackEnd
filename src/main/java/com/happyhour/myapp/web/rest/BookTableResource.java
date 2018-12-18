@@ -9,6 +9,7 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.BookTableDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,11 +97,11 @@ public class BookTableResource {
      */
     @GetMapping("/book-tables")
     @Timed
-    public ResponseEntity<List<BookTableDTO>> getAllBookTables(Pageable pageable) {
+    public ResponseEntity<Page<BookTableDTO>> getAllBookTables(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of BookTables");
         Page<BookTableDTO> page = bookTableService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/book-tables");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     /**

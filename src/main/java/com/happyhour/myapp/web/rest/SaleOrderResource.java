@@ -7,6 +7,7 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.SaleOrderDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -93,11 +94,11 @@ public class SaleOrderResource {
      */
     @GetMapping("/sale-orders")
     @Timed
-    public ResponseEntity<List<SaleOrderDTO>> getAllSaleOrders(Pageable pageable) {
+    public ResponseEntity<Page<SaleOrderDTO>> getAllSaleOrders(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of SaleOrders");
         Page<SaleOrderDTO> page = saleOrderService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sale-orders");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     /**

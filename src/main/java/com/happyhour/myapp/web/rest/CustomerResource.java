@@ -15,10 +15,12 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.CustomerDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -198,9 +200,12 @@ public class CustomerResource {
 
     @GetMapping("/customers/allUser")
     @Timed
-    public ResponseEntity<List<UserDTO>> getAllCustomerUser(Pageable pageable) {
+    public ResponseEntity<Page<UserDTO>> getAllCustomerUser(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Staff");
-        List<UserDTO> page = customerService.findAllCustomerUser(pageable);
+        List<UserDTO> userDTOS = customerService.findAllCustomerUser(pageable);
+
+        Page<UserDTO> page = new PageImpl<>(userDTOS);
+
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }

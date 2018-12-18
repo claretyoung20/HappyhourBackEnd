@@ -7,6 +7,7 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.ProductDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -94,11 +95,11 @@ public class ProductResource {
      */
     @GetMapping("/products")
     @Timed
-    public ResponseEntity<List<ProductDTO>> getAllProducts(Pageable pageable) {
+    public ResponseEntity<Page<ProductDTO>> getAllProducts(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Products");
         Page<ProductDTO> page = productService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     /**
@@ -139,28 +140,28 @@ public class ProductResource {
 
     // display show on home page products
     @GetMapping("/products/showOnHomepage")
-    public ResponseEntity<List<ProductDTO>> getAllProductsBywShowhomepage(Pageable pageable) {
+    public ResponseEntity<Page<ProductDTO>> getAllProductsBywShowhomepage(@ApiParam  Pageable pageable) {
         log.debug("REST request to get a page of Products by show on hoepage");
         Page<ProductDTO> page = productService.findAllByShowOnHomepageTrue(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     // display show on home page products
     @GetMapping("/products/isAvailable")
-    public ResponseEntity<List<ProductDTO>> getAllAvailableProducts(Pageable pageable) {
+    public ResponseEntity<Page<ProductDTO>> getAllAvailableProducts(@ApiParam  Pageable pageable) {
         log.debug("REST request to get a page of Products by show on hoepage");
         Page<ProductDTO> page = productService.isAvailable(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     // display show on home page products
     @GetMapping("/products/isNotAvailable")
-    public ResponseEntity<List<ProductDTO>> getAllNotAvailableProducts(Pageable pageable) {
+    public ResponseEntity<Page<ProductDTO>> getAllNotAvailableProducts(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Products by show on hoepage");
         Page<ProductDTO> page = productService.isNotAvailable(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 }

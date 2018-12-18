@@ -34,8 +34,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     )
     Page<Reservation> findAllReservation(String searchPara, Pageable pageable);
 
-    // SELECT * FROM reservation r WHERE r.period = 'm' AND r.reserver_date = '2018-12-05';
-    List<Reservation> findAllByPeriodAndReserverDateAndStatusNotLike(String period, LocalDate reserve_Date, String status);
+    // SELECT * FROM reservation r WHERE r.period=?1 AND r.reserver_date = '2018-12-05';
+    @Query(value = "SELECT * FROM reservation where period=?1 and reserver_date=?2 and (status not like ?3 and status not like ?4);",
+    nativeQuery = true)
+    List<Reservation> findAllByPeriodAndReserverDateAndStatusNotLikeOrStatusNotLike(String period, LocalDate reserve_Date, String status, String status1);
+
     Page<Reservation> findAllByCustomerIdAndReserverDateLessThan(Long id, LocalDate localDate, Pageable pageable);
     Page<Reservation> findAllByCustomerIdAndReserverDateIsGreaterThanEqual(long id, LocalDate localDate, Pageable pageable);
 

@@ -99,7 +99,8 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<ReservationDTO> findAllByPeriodAndReserverDate(String period, LocalDate reserve_Date) {
         String status = "cancel";
-        return reservationMapper.toDto(reservationRepository.findAllByPeriodAndReserverDateAndStatusNotLike(period, reserve_Date, status));
+        String status2 = "complete";
+        return reservationMapper.toDto(reservationRepository.findAllByPeriodAndReserverDateAndStatusNotLikeOrStatusNotLike(period, reserve_Date, status, status2));
     }
 
     @Override
