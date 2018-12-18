@@ -114,4 +114,9 @@ public class CouponServiceImpl implements CouponService {
     public List<CouponDTO> cronJobCancel(LocalDate startDate, LocalDate endDate) {
         return couponMapper.toDto(couponRepository.findAllByIsActiveTrueAndStartFromDateIsLessThanAndEndDateIsLessThan(startDate, endDate));
     }
+
+    @Override
+    public CouponDTO findByCode(String code, LocalDate startDate) {
+        return couponMapper.toDto(couponRepository.findByCodeAndStartFromDateGreaterThanEqual(code, startDate));
+    }
 }
