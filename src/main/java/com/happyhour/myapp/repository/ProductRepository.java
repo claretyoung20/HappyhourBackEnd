@@ -15,7 +15,7 @@ import org.springframework.data.domain.Pageable;
 @SuppressWarnings("unused")
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Page<Product> findAllByCategoryId(long id, Pageable pageable);
+    Page<Product> findAllByCategoryIdAndIsAvailableTrue(long id, Pageable pageable);
 
     Product findById(long id);
 

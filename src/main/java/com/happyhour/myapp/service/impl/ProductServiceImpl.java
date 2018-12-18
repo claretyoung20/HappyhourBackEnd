@@ -91,7 +91,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<ProductDTO> getAllByCategoryId(long id, Pageable pageable) {
         log.debug("Request to get all Products by Category Id {} ", id);
-        return productRepository.findAllByCategoryId(id, pageable)
+        return productRepository.findAllByCategoryIdAndIsAvailableTrue(id, pageable)
             .map(productMapper::toDto);
     }
 
