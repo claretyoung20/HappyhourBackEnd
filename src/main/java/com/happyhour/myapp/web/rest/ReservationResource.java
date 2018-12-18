@@ -7,6 +7,7 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.ReservationDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -158,31 +159,31 @@ public class ReservationResource {
 
     @GetMapping("/reservations/status")
     @Timed
-    public ResponseEntity<List<ReservationDTO>> getAllActiveReservations(String status, Pageable pageable) {
+    public ResponseEntity<Page<ReservationDTO>> getAllActiveReservations(String status, @ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Reservations by status");
         LocalDate now = LocalDate.now();
         Page<ReservationDTO> page = reservationService.findByStatus(status, now, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
     @GetMapping("/reservations/activeReservation")
     @Timed
-    public ResponseEntity<List<ReservationDTO>> getAllHappyActiveReservations(Pageable pageable) {
+    public ResponseEntity<Page<ReservationDTO>> getAllHappyActiveReservations(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Reservations");
         LocalDate checkDate = LocalDate.now();
         Page<ReservationDTO> page = reservationService.activeReservation(checkDate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
     @GetMapping("/reservations/historyReservation")
     @Timed
-    public ResponseEntity<List<ReservationDTO>> getAllReservationsHistory(Pageable pageable) {
+    public ResponseEntity<Page<ReservationDTO>> getAllReservationsHistory(@ApiParam  Pageable pageable) {
         log.debug("REST request to get a page of Reservations");
         LocalDate checkDate = LocalDate.now();
         Page<ReservationDTO> page = reservationService.historyReservation(checkDate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/reservations");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
 }

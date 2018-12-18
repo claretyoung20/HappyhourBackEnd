@@ -99,7 +99,7 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public Page<CouponDTO> isActive(Pageable pageable, LocalDate startDate) {
         log.debug("Request to get all Coupons");
-        return couponRepository.findAllByStartFromDateGreaterThanEqual(pageable, startDate)
+        return couponRepository.findAllByEndDateGreaterThanEqual(pageable, startDate)
             .map(couponMapper::toDto);
     }
 

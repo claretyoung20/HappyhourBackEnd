@@ -30,7 +30,7 @@ public interface StaffService {
      */
     Page<StaffDTO> findAll(Pageable pageable);
 
-    List<UserDTO> findAllStaffUser(Pageable pageable);
+    Page<UserDTO> findAllStaffUser(Pageable pageable);
 
     /**
      * Get the "id" staff.

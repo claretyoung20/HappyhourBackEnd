@@ -22,7 +22,7 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 //    nativeQuery = true)
     Page<Coupon> findAllByIsActiveTrueAndStartFromDateIsLessThanEqualAndEndDateIsGreaterThanEqual(Pageable pageable, LocalDate startDate, LocalDate endDate);
 
-    Page<Coupon> findAllByStartFromDateGreaterThanEqual(Pageable pageable, LocalDate startDate);
+    Page<Coupon> findAllByEndDateGreaterThanEqual(Pageable pageable, LocalDate startDate);
 
     Page<Coupon> findAllByStartFromDateIsLessThanAndEndDateIsLessThan(Pageable pageable, LocalDate startDate, LocalDate endDate);
 

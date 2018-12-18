@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,7 +77,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<UserDTO> findAllStaffUser(Pageable pageable) {
+    public Page<UserDTO> findAllStaffUser(Pageable pageable) {
         log.debug("Request to get all Staff");
 
 
@@ -88,7 +89,8 @@ public class StaffServiceImpl implements StaffService {
 
             user.ifPresent(userList::add);
         }
-        return userList;
+        Page<UserDTO> page = new PageImpl<>(userList);
+        return page;
     }
 
     /**

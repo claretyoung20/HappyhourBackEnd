@@ -15,6 +15,7 @@ import com.happyhour.myapp.web.rest.util.HeaderUtil;
 import com.happyhour.myapp.web.rest.util.PaginationUtil;
 import com.happyhour.myapp.service.dto.StaffDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -162,9 +163,9 @@ public class StaffResource {
 
     @GetMapping("/staff/allUser")
     @Timed
-    public ResponseEntity<List<UserDTO>> getAllStaffUser(Pageable pageable) {
+    public ResponseEntity<Page<UserDTO>> getAllStaffUser(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Staff");
-        List<UserDTO> page = staffService.findAllStaffUser(pageable);
+        Page<UserDTO> page = staffService.findAllStaffUser(pageable);
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
