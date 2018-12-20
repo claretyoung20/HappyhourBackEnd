@@ -22,6 +22,7 @@
             <th jhiSortBy="updatedDate"><span jhiTranslate="happybourBackEndApp.product.updatedDate">Updated Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="isAvailable"><span jhiTranslate="happybourBackEndApp.product.isAvailable">Is Available</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="showOnHomepage"><span jhiTranslate="happybourBackEndApp.product.showOnHomepage">Show On Homepage</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prodct_image"><span jhiTranslate="happybourBackEndApp.product.prodct_image">Prodct Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.product.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="categoryId"><span jhiTranslate="happybourBackEndApp.product.category">Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -37,6 +38,12 @@
                 <td>{{product.updatedDate | date:'medium'}}</td>
                 <td>{{product.isAvailable}}</td>
                 <td>{{product.showOnHomepage}}</td>
+                <td>
+                    <a *ngIf="product.prodct_image" (click)="openFile(product.prodct_imageContentType, product.prodct_image)">
+                        <img [src]="'data:' + product.prodct_imageContentType + ';base64,' + product.prodct_image" style="max-height: 30px;" alt="product image"/>
+                    </a>
+                    <span *ngIf="product.prodct_image">{{product.prodct_imageContentType}}, {{byteSize(product.prodct_image)}}</span>
+                </td>
                 <td>
                     <div *ngIf="product.restaurantId">
                         <a [routerLink]="['../restaurant', product.restaurantId , 'view' ]" >{{product.restaurantId}}</a>

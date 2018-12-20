@@ -9,6 +9,8 @@ export interface IProduct {
     updatedDate?: Moment;
     isAvailable?: boolean;
     showOnHomepage?: boolean;
+    prodct_imageContentType?: string;
+    prodct_image?: any;
     restaurantId?: number;
     categoryId?: number;
 }
@@ -23,6 +25,8 @@ export class Product implements IProduct {
         public updatedDate?: Moment,
         public isAvailable?: boolean,
         public showOnHomepage?: boolean,
+        public prodct_imageContentType?: string,
+        public prodct_image?: any,
         public restaurantId?: number,
         public categoryId?: number
     ) {

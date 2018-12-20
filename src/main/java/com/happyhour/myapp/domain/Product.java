@@ -45,6 +45,13 @@ public class Product implements Serializable {
     @Column(name = "show_on_homepage")
     private Boolean showOnHomepage;
 
+    @Lob
+    @Column(name = "prodct_image")
+    private byte[] prodct_image;
+
+    @Column(name = "prodct_image_content_type")
+    private String prodct_imageContentType;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Restaurant restaurant;
@@ -153,6 +160,32 @@ public class Product implements Serializable {
         this.showOnHomepage = showOnHomepage;
     }
 
+    public byte[] getProdct_image() {
+        return prodct_image;
+    }
+
+    public Product prodct_image(byte[] prodct_image) {
+        this.prodct_image = prodct_image;
+        return this;
+    }
+
+    public void setProdct_image(byte[] prodct_image) {
+        this.prodct_image = prodct_image;
+    }
+
+    public String getProdct_imageContentType() {
+        return prodct_imageContentType;
+    }
+
+    public Product prodct_imageContentType(String prodct_imageContentType) {
+        this.prodct_imageContentType = prodct_imageContentType;
+        return this;
+    }
+
+    public void setProdct_imageContentType(String prodct_imageContentType) {
+        this.prodct_imageContentType = prodct_imageContentType;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -211,6 +244,8 @@ public class Product implements Serializable {
             ", updatedDate='" + getUpdatedDate() + "'" +
             ", isAvailable='" + isIsAvailable() + "'" +
             ", showOnHomepage='" + isShowOnHomepage() + "'" +
+            ", prodct_image='" + getProdct_image() + "'" +
+            ", prodct_imageContentType='" + getProdct_imageContentType() + "'" +
             "}";
     }
 }

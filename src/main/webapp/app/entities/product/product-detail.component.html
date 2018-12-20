@@ -33,6 +33,15 @@
                 <dd>
                     <span>{{product.showOnHomepage}}</span>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.product.prodct_image">Prodct Image</span></dt>
+                <dd>
+                    <div *ngIf="product.prodct_image">
+                        <a (click)="openFile(product.prodct_imageContentType, product.prodct_image)">
+                            <img [src]="'data:' + product.prodct_imageContentType + ';base64,' + product.prodct_image" style="max-width: 100%;" alt="product image"/>
+                        </a>
+                        {{product.prodct_imageContentType}}, {{byteSize(product.prodct_image)}}
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="happybourBackEndApp.product.restaurant">Restaurant</span></dt>
                 <dd>
                     <div *ngIf="product.restaurantId">

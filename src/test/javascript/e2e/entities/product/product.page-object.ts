@@ -33,6 +33,7 @@ export class ProductUpdatePage {
     updatedDateInput = element(by.id('field_updatedDate'));
     isAvailableInput = element(by.id('field_isAvailable'));
     showOnHomepageInput = element(by.id('field_showOnHomepage'));
+    prodct_imageInput = element(by.id('file_prodct_image'));
     restaurantSelect = element(by.id('field_restaurant'));
     categorySelect = element(by.id('field_category'));
 
@@ -85,6 +86,13 @@ export class ProductUpdatePage {
     }
     getShowOnHomepageInput() {
         return this.showOnHomepageInput;
+    }
+    async setProdct_imageInput(prodct_image) {
+        await this.prodct_imageInput.sendKeys(prodct_image);
+    }
+
+    async getProdct_imageInput() {
+        return this.prodct_imageInput.getAttribute('value');
     }
 
     async restaurantSelectLastOption() {

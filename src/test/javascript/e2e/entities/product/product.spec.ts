@@ -3,6 +3,7 @@ import { browser, ExpectedConditions as ec, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { ProductComponentsPage, ProductDeleteDialog, ProductUpdatePage } from './product.page-object';
+import * as path from 'path';
 
 const expect = chai.expect;
 
@@ -12,6 +13,8 @@ describe('Product e2e test', () => {
     let productUpdatePage: ProductUpdatePage;
     let productComponentsPage: ProductComponentsPage;
     let productDeleteDialog: ProductDeleteDialog;
+    const fileToUpload = '../../../../../main/webapp/content/images/logo-jhipster.png';
+    const absolutePath = path.resolve(__dirname, fileToUpload);
 
     before(async () => {
         await browser.get('/');
@@ -64,6 +67,7 @@ describe('Product e2e test', () => {
             await productUpdatePage.getShowOnHomepageInput().click();
             expect(await productUpdatePage.getShowOnHomepageInput().isSelected()).to.be.true;
         }
+        await productUpdatePage.setProdct_imageInput(absolutePath);
         await productUpdatePage.restaurantSelectLastOption();
         await productUpdatePage.categorySelectLastOption();
         await productUpdatePage.save();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { JhiDataUtils } from 'ng-jhipster';
 
 import { IProduct } from 'app/shared/model/product.model';
 
@@ -10,7 +11,7 @@ import { IProduct } from 'app/shared/model/product.model';
 export class ProductDetailComponent implements OnInit {
     product: IProduct;
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+    constructor(private dataUtils: JhiDataUtils, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ product }) => {
@@ -18,6 +19,13 @@ export class ProductDetailComponent implements OnInit {
         });
     }
 
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
     previousState() {
         window.history.back();
     }
