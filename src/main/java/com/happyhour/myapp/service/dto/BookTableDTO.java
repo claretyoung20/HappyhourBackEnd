@@ -3,6 +3,7 @@ package com.happyhour.myapp.service.dto;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the BookTable entity.
@@ -16,6 +17,11 @@ public class BookTableDTO implements Serializable {
     private Double price;
 
     private String imageUrl;
+
+    
+    @Lob
+    private byte[] table_image;
+    private String table_imageContentType;
 
     private Long restaurantId;
 
@@ -51,6 +57,22 @@ public class BookTableDTO implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public byte[] getTable_image() {
+        return table_image;
+    }
+
+    public void setTable_image(byte[] table_image) {
+        this.table_image = table_image;
+    }
+
+    public String getTable_imageContentType() {
+        return table_imageContentType;
+    }
+
+    public void setTable_imageContentType(String table_imageContentType) {
+        this.table_imageContentType = table_imageContentType;
     }
 
     public Long getRestaurantId() {
@@ -97,6 +119,7 @@ public class BookTableDTO implements Serializable {
             ", isAvaliable='" + isIsAvaliable() + "'" +
             ", price=" + getPrice() +
             ", imageUrl='" + getImageUrl() + "'" +
+            ", table_image='" + getTable_image() + "'" +
             ", restaurant=" + getRestaurantId() +
             ", tableType=" + getTableTypeId() +
             "}";

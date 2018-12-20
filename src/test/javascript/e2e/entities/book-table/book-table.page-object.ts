@@ -29,6 +29,7 @@ export class BookTableUpdatePage {
     isAvaliableInput = element(by.id('field_isAvaliable'));
     priceInput = element(by.id('field_price'));
     imageUrlInput = element(by.id('field_imageUrl'));
+    table_imageInput = element(by.id('file_table_image'));
     restaurantSelect = element(by.id('field_restaurant'));
     tableTypeSelect = element(by.id('field_tableType'));
 
@@ -53,6 +54,14 @@ export class BookTableUpdatePage {
 
     async getImageUrlInput() {
         return this.imageUrlInput.getAttribute('value');
+    }
+
+    async setTable_imageInput(table_image) {
+        await this.table_imageInput.sendKeys(table_image);
+    }
+
+    async getTable_imageInput() {
+        return this.table_imageInput.getAttribute('value');
     }
 
     async restaurantSelectLastOption() {

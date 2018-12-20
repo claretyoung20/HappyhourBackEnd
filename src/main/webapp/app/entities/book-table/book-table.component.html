@@ -18,6 +18,7 @@
             <th jhiSortBy="isAvaliable"><span jhiTranslate="happybourBackEndApp.bookTable.isAvaliable">Is Avaliable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="price"><span jhiTranslate="happybourBackEndApp.bookTable.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="imageUrl"><span jhiTranslate="happybourBackEndApp.bookTable.imageUrl">Image Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="table_image"><span jhiTranslate="happybourBackEndApp.bookTable.table_image">Table Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="restaurantId"><span jhiTranslate="happybourBackEndApp.bookTable.restaurant">Restaurant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="tableTypeId"><span jhiTranslate="happybourBackEndApp.bookTable.tableType">Table Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -29,6 +30,12 @@
                 <td>{{bookTable.isAvaliable}}</td>
                 <td>{{bookTable.price}}</td>
                 <td>{{bookTable.imageUrl}}</td>
+                <td>
+                    <a *ngIf="bookTable.table_image" (click)="openFile(bookTable.table_imageContentType, bookTable.table_image)">
+                        <img [src]="'data:' + bookTable.table_imageContentType + ';base64,' + bookTable.table_image" style="max-height: 30px;" alt="bookTable image"/>
+                    </a>
+                    <span *ngIf="bookTable.table_image">{{bookTable.table_imageContentType}}, {{byteSize(bookTable.table_image)}}</span>
+                </td>
                 <td>
                     <div *ngIf="bookTable.restaurantId">
                         <a [routerLink]="['../restaurant', bookTable.restaurantId , 'view' ]" >{{bookTable.restaurantId}}</a>

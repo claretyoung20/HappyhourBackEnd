@@ -30,6 +30,14 @@
         {
             "fieldName": "imageUrl",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "table_image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20181113125711",
