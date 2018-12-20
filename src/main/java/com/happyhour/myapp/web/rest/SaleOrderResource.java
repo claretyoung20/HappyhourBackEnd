@@ -137,4 +137,36 @@ public class SaleOrderResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sale-orders");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/sale-orders/charts")
+    @Timed
+    public ResponseEntity<List<SaleOrderDTO>> getAllSaleOrdersByOrderId() {
+        log.debug("REST request to get a page of SaleOrders");
+        List<SaleOrderDTO> page = saleOrderService.sumAllSales();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/sale-orders/filter-one")
+    @Timed
+    public ResponseEntity<List<SaleOrderDTO>> getAllByDateAndPrice(String checkDate, String minValue, String maxValue, Pageable pageable) {
+        log.debug("REST request to get a page of sale-orders");
+        double iMax = Double.parseDouble(maxValue);
+        double iMin = Double.parseDouble(minValue);
+        LocalDate iCheckDate = LocalDate.parse(checkDate);
+        Page<SaleOrderDTO> page = saleOrderService.filterByDateAndPrice(iCheckDate, iMin, iMax, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sale-orders");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/sale-orders/filter-two")
+    @Timed
+    public ResponseEntity<Page<SaleOrderDTO>> getAllPrice(String minValue, String maxValue, Pageable pageable) {
+        log.debug("REST request to get a page of sale-orders");
+        double iMax = Double.parseDouble(maxValue);
+        double iMin = Double.parseDouble(minValue);
+        Page<SaleOrderDTO> page = saleOrderService.filterBasePrice(iMin,iMax, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sale-orders");
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
+    }
 }

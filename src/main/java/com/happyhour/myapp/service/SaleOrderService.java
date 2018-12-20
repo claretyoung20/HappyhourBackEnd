@@ -5,6 +5,8 @@ import com.happyhour.myapp.service.dto.SaleOrderDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -45,4 +47,8 @@ public interface SaleOrderService {
     void delete(Long id);
 
     Page<SaleOrderDTO> findAllByOrderId(Long id, Pageable pageable);
+
+    List<SaleOrderDTO> sumAllSales();
+    Page<SaleOrderDTO> filterByDateAndPrice(LocalDate localDate, Double minValue, Double maxValue, Pageable pageable);
+    Page<SaleOrderDTO> filterBasePrice(Double minValue, Double maxValue, Pageable pageable);
 }

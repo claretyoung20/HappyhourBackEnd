@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -91,6 +93,23 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     public Page<SaleOrderDTO> findAllByOrderId(Long id, Pageable pageable) {
         log.debug("Request to get all SaleOrders");
         return saleOrderRepository.findAllByHappyOrderId(id, pageable)
+            .map(saleOrderMapper::toDto);
+    }
+
+    @Override
+    public List<SaleOrderDTO> sumAllSales() {
+        return saleOrderMapper.toDto(saleOrderRepository.sumAllSale());
+    }
+
+    @Override
+    public Page<SaleOrderDTO> filterByDateAndPrice(LocalDate localDate, Double minValue, Double maxValue, Pageable pageable) {
+        return saleOrderRepository.findAllByDateCreatedAndBasePriceGreaterThanEqualAndBasePriceLessThanEqual(localDate, minValue, maxValue, pageable)
+            .map(saleOrderMapper::toDto);
+    }
+
+    @Override
+    public Page<SaleOrderDTO> filterBasePrice(Double minValue, Double maxValue, Pageable pageable) {
+        return saleOrderRepository.findAllByBasePriceGreaterThanEqualAndBasePriceLessThanEqual(minValue, maxValue, pageable)
             .map(saleOrderMapper::toDto);
     }
 }
