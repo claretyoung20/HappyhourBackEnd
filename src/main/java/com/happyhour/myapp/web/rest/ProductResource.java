@@ -102,6 +102,15 @@ public class ProductResource {
         return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
 
+    @GetMapping("/products/noPage")
+    @Timed
+    public ResponseEntity<List<ProductDTO>> getAllProductsNoPage(Pageable pageable) {
+        log.debug("REST request to get a page of Products");
+        Page<ProductDTO> page = productService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     /**
      * GET  /products/:id : get the "id" product.
      *
