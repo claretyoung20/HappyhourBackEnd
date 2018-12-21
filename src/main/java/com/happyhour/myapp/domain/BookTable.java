@@ -30,6 +30,14 @@ public class BookTable implements Serializable {
     @Column(name = "image_url")
     private String imageUrl;
 
+    
+    @Lob
+    @Column(name = "table_image", nullable = false)
+    private byte[] table_image;
+
+    @Column(name = "table_image_content_type", nullable = false)
+    private String table_imageContentType;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Restaurant restaurant;
@@ -87,6 +95,32 @@ public class BookTable implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    public byte[] getTable_image() {
+        return table_image;
+    }
+
+    public BookTable table_image(byte[] table_image) {
+        this.table_image = table_image;
+        return this;
+    }
+
+    public void setTable_image(byte[] table_image) {
+        this.table_image = table_image;
+    }
+
+    public String getTable_imageContentType() {
+        return table_imageContentType;
+    }
+
+    public BookTable table_imageContentType(String table_imageContentType) {
+        this.table_imageContentType = table_imageContentType;
+        return this;
+    }
+
+    public void setTable_imageContentType(String table_imageContentType) {
+        this.table_imageContentType = table_imageContentType;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -141,6 +175,8 @@ public class BookTable implements Serializable {
             ", isAvaliable='" + isIsAvaliable() + "'" +
             ", price=" + getPrice() +
             ", imageUrl='" + getImageUrl() + "'" +
+            ", table_image='" + getTable_image() + "'" +
+            ", table_imageContentType='" + getTable_imageContentType() + "'" +
             "}";
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="User (generated)" id="1545326738599-1">
+        <addColumn tableName="product">
+            <column name="prodct_image_content_type" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="User (generated)" id="1545326738599-2">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_CUSTOMERUSER_ID_COL" tableName="customer"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1545326738599-3">
+        <dropColumn columnName="prodct_imageContentType" tableName="product"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1545326738599-4">
+        <addNotNullConstraint columnDataType="bigint" columnName="book_table_id" tableName="happy_order"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1545326738599-5">
+        <addNotNullConstraint columnDataType="bigint" columnName="table_type_id" tableName="book_table"/>
+    </changeSet>
+    <changeSet author="User (generated)" id="1545326738599-6">
+        <dropUniqueConstraint constraintName="UC_CUSTOMERUSER_ID_COL" tableName="customer"/>
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_CUSTOMERUSER_ID_COL" tableName="customer"/>
+    </changeSet>
+</databaseChangeLog>

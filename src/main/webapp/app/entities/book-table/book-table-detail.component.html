@@ -17,6 +17,15 @@
                 <dd>
                     <span>{{bookTable.imageUrl}}</span>
                 </dd>
+                <dt><span jhiTranslate="happybourBackEndApp.bookTable.table_image">Table Image</span></dt>
+                <dd>
+                    <div *ngIf="bookTable.table_image">
+                        <a (click)="openFile(bookTable.table_imageContentType, bookTable.table_image)">
+                            <img [src]="'data:' + bookTable.table_imageContentType + ';base64,' + bookTable.table_image" style="max-width: 100%;" alt="bookTable image"/>
+                        </a>
+                        {{bookTable.table_imageContentType}}, {{byteSize(bookTable.table_image)}}
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="happybourBackEndApp.bookTable.restaurant">Restaurant</span></dt>
                 <dd>
                     <div *ngIf="bookTable.restaurantId">

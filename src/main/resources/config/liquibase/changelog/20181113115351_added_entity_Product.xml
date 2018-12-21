@@ -50,6 +50,13 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="prodct_image" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="prodct_image_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="restaurant_id" type="bigint">
                 <constraints nullable="true" />
             </column>

@@ -64,6 +64,23 @@
                     <input type="checkbox" class="form-control" name="showOnHomepage" id="field_showOnHomepage"
                         [(ngModel)]="product.showOnHomepage" />
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="happybourBackEndApp.product.prodct_image" for="field_prodct_image">Prodct Image</label>
+                    <div>
+                        <img [src]="'data:' + product.prodct_imageContentType + ';base64,' + product.prodct_image" style="max-height: 100px;" *ngIf="product.prodct_image" alt="product image"/>
+                        <div *ngIf="product.prodct_image" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{product.prodct_imageContentType}}, {{byteSize(product.prodct_image)}}</span>
+                            <button type="button" (click)="clearInputImage('prodct_image', 'prodct_imageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_prodct_image" (change)="setFileData($event, product, 'prodct_image', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="prodct_image" id="field_prodct_image"
+                        [(ngModel)]="product.prodct_image" />
+                    <input type="hidden" class="form-control" name="prodct_imageContentType" id="field_prodct_imageContentType"
+                        [(ngModel)]="product.prodct_imageContentType" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="happybourBackEndApp.product.restaurant" for="field_restaurant">Restaurant</label>

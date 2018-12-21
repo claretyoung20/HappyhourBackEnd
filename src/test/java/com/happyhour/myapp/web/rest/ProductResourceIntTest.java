@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -64,6 +65,11 @@ public class ProductResourceIntTest {
 
     private static final Boolean DEFAULT_SHOW_ON_HOMEPAGE = false;
     private static final Boolean UPDATED_SHOW_ON_HOMEPAGE = true;
+
+    private static final byte[] DEFAULT_PRODCT_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_PRODCT_IMAGE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_PRODCT_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_PRODCT_IMAGE_CONTENT_TYPE = "image/png";
 
     @Autowired
     private ProductRepository productRepository;
@@ -115,7 +121,9 @@ public class ProductResourceIntTest {
             .price(DEFAULT_PRICE)
             .updatedDate(DEFAULT_UPDATED_DATE)
             .isAvailable(DEFAULT_IS_AVAILABLE)
-            .showOnHomepage(DEFAULT_SHOW_ON_HOMEPAGE);
+            .showOnHomepage(DEFAULT_SHOW_ON_HOMEPAGE)
+            .prodct_image(DEFAULT_PRODCT_IMAGE)
+            .prodct_imageContentType(DEFAULT_PRODCT_IMAGE_CONTENT_TYPE);
         return product;
     }
 
@@ -140,13 +148,15 @@ public class ProductResourceIntTest {
         List<Product> productList = productRepository.findAll();
         assertThat(productList).hasSize(databaseSizeBeforeCreate + 1);
         Product testProduct = productList.get(productList.size() - 1);
-//        assertThat(testProduct.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testProduct.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testProduct.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testProduct.getPrice()).isEqualTo(DEFAULT_PRICE);
-//        assertThat(testProduct.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
+        assertThat(testProduct.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
         assertThat(testProduct.isIsAvailable()).isEqualTo(DEFAULT_IS_AVAILABLE);
         assertThat(testProduct.isShowOnHomepage()).isEqualTo(DEFAULT_SHOW_ON_HOMEPAGE);
+        assertThat(testProduct.getProdct_image()).isEqualTo(DEFAULT_PRODCT_IMAGE);
+        assertThat(testProduct.getProdct_imageContentType()).isEqualTo(DEFAULT_PRODCT_IMAGE_CONTENT_TYPE);
     }
 
     @Test
@@ -224,7 +234,9 @@ public class ProductResourceIntTest {
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())))
             .andExpect(jsonPath("$.[*].isAvailable").value(hasItem(DEFAULT_IS_AVAILABLE.booleanValue())))
-            .andExpect(jsonPath("$.[*].showOnHomepage").value(hasItem(DEFAULT_SHOW_ON_HOMEPAGE.booleanValue())));
+            .andExpect(jsonPath("$.[*].showOnHomepage").value(hasItem(DEFAULT_SHOW_ON_HOMEPAGE.booleanValue())))
+            .andExpect(jsonPath("$.[*].prodct_imageContentType").value(hasItem(DEFAULT_PRODCT_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].prodct_image").value(hasItem(Base64Utils.encodeToString(DEFAULT_PRODCT_IMAGE))));
     }
     
     @Test
@@ -244,7 +256,9 @@ public class ProductResourceIntTest {
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()))
             .andExpect(jsonPath("$.isAvailable").value(DEFAULT_IS_AVAILABLE.booleanValue()))
-            .andExpect(jsonPath("$.showOnHomepage").value(DEFAULT_SHOW_ON_HOMEPAGE.booleanValue()));
+            .andExpect(jsonPath("$.showOnHomepage").value(DEFAULT_SHOW_ON_HOMEPAGE.booleanValue()))
+            .andExpect(jsonPath("$.prodct_imageContentType").value(DEFAULT_PRODCT_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.prodct_image").value(Base64Utils.encodeToString(DEFAULT_PRODCT_IMAGE)));
     }
 
     @Test
@@ -274,7 +288,9 @@ public class ProductResourceIntTest {
             .price(UPDATED_PRICE)
             .updatedDate(UPDATED_UPDATED_DATE)
             .isAvailable(UPDATED_IS_AVAILABLE)
-            .showOnHomepage(UPDATED_SHOW_ON_HOMEPAGE);
+            .showOnHomepage(UPDATED_SHOW_ON_HOMEPAGE)
+            .prodct_image(UPDATED_PRODCT_IMAGE)
+            .prodct_imageContentType(UPDATED_PRODCT_IMAGE_CONTENT_TYPE);
         ProductDTO productDTO = productMapper.toDto(updatedProduct);
 
         restProductMockMvc.perform(put("/api/products")
@@ -290,9 +306,11 @@ public class ProductResourceIntTest {
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testProduct.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testProduct.getPrice()).isEqualTo(UPDATED_PRICE);
-//        assertThat(testProduct.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
+        assertThat(testProduct.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
         assertThat(testProduct.isIsAvailable()).isEqualTo(UPDATED_IS_AVAILABLE);
         assertThat(testProduct.isShowOnHomepage()).isEqualTo(UPDATED_SHOW_ON_HOMEPAGE);
+        assertThat(testProduct.getProdct_image()).isEqualTo(UPDATED_PRODCT_IMAGE);
+        assertThat(testProduct.getProdct_imageContentType()).isEqualTo(UPDATED_PRODCT_IMAGE_CONTENT_TYPE);
     }
 
     @Test

@@ -3,6 +3,7 @@ import { browser, ExpectedConditions as ec } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { BookTableComponentsPage, BookTableDeleteDialog, BookTableUpdatePage } from './book-table.page-object';
+import * as path from 'path';
 
 const expect = chai.expect;
 
@@ -12,6 +13,8 @@ describe('BookTable e2e test', () => {
     let bookTableUpdatePage: BookTableUpdatePage;
     let bookTableComponentsPage: BookTableComponentsPage;
     /*let bookTableDeleteDialog: BookTableDeleteDialog;*/
+    const fileToUpload = '../../../../../main/webapp/content/images/logo-jhipster.png';
+    const absolutePath = path.resolve(__dirname, fileToUpload);
 
     before(async () => {
         await browser.get('/');
@@ -50,6 +53,7 @@ describe('BookTable e2e test', () => {
         expect(await bookTableUpdatePage.getPriceInput()).to.eq('5');
         await bookTableUpdatePage.setImageUrlInput('imageUrl');
         expect(await bookTableUpdatePage.getImageUrlInput()).to.eq('imageUrl');
+        await bookTableUpdatePage.setTable_imageInput(absolutePath);
         await bookTableUpdatePage.restaurantSelectLastOption();
         await bookTableUpdatePage.tableTypeSelectLastOption();
         await bookTableUpdatePage.save();

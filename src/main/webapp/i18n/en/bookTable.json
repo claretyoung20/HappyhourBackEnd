@@ -19,6 +19,7 @@
             "isAvaliable": "Is Avaliable",
             "price": "Price",
             "imageUrl": "Image Url",
+            "table_image": "Table Image",
             "restaurant": "Restaurant",
             "tableType": "Table Type"
         }

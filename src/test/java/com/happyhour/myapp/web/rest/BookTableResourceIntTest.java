@@ -23,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -51,6 +52,11 @@ public class BookTableResourceIntTest {
 
     private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
     private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_TABLE_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_TABLE_IMAGE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_TABLE_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_TABLE_IMAGE_CONTENT_TYPE = "image/png";
 
     @Autowired
     private BookTableRepository bookTableRepository;
@@ -98,7 +104,9 @@ public class BookTableResourceIntTest {
         BookTable bookTable = new BookTable()
             .isAvaliable(DEFAULT_IS_AVALIABLE)
             .price(DEFAULT_PRICE)
-            .imageUrl(DEFAULT_IMAGE_URL);
+            .imageUrl(DEFAULT_IMAGE_URL)
+            .table_image(DEFAULT_TABLE_IMAGE)
+            .table_imageContentType(DEFAULT_TABLE_IMAGE_CONTENT_TYPE);
         // Add required entity
         TableType tableType = TableTypeResourceIntTest.createEntity(em);
         em.persist(tableType);
@@ -131,6 +139,8 @@ public class BookTableResourceIntTest {
         assertThat(testBookTable.isIsAvaliable()).isEqualTo(DEFAULT_IS_AVALIABLE);
         assertThat(testBookTable.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testBookTable.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testBookTable.getTable_image()).isEqualTo(DEFAULT_TABLE_IMAGE);
+        assertThat(testBookTable.getTable_imageContentType()).isEqualTo(DEFAULT_TABLE_IMAGE_CONTENT_TYPE);
     }
 
     @Test
@@ -166,7 +176,9 @@ public class BookTableResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(bookTable.getId().intValue())))
             .andExpect(jsonPath("$.[*].isAvaliable").value(hasItem(DEFAULT_IS_AVALIABLE.booleanValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())));
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
+            .andExpect(jsonPath("$.[*].table_imageContentType").value(hasItem(DEFAULT_TABLE_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].table_image").value(hasItem(Base64Utils.encodeToString(DEFAULT_TABLE_IMAGE))));
     }
     
     @Test
@@ -182,7 +194,9 @@ public class BookTableResourceIntTest {
             .andExpect(jsonPath("$.id").value(bookTable.getId().intValue()))
             .andExpect(jsonPath("$.isAvaliable").value(DEFAULT_IS_AVALIABLE.booleanValue()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()));
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()))
+            .andExpect(jsonPath("$.table_imageContentType").value(DEFAULT_TABLE_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.table_image").value(Base64Utils.encodeToString(DEFAULT_TABLE_IMAGE)));
     }
 
     @Test
@@ -208,7 +222,9 @@ public class BookTableResourceIntTest {
         updatedBookTable
             .isAvaliable(UPDATED_IS_AVALIABLE)
             .price(UPDATED_PRICE)
-            .imageUrl(UPDATED_IMAGE_URL);
+            .imageUrl(UPDATED_IMAGE_URL)
+            .table_image(UPDATED_TABLE_IMAGE)
+            .table_imageContentType(UPDATED_TABLE_IMAGE_CONTENT_TYPE);
         BookTableDTO bookTableDTO = bookTableMapper.toDto(updatedBookTable);
 
         restBookTableMockMvc.perform(put("/api/book-tables")
@@ -223,6 +239,8 @@ public class BookTableResourceIntTest {
         assertThat(testBookTable.isIsAvaliable()).isEqualTo(UPDATED_IS_AVALIABLE);
         assertThat(testBookTable.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testBookTable.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testBookTable.getTable_image()).isEqualTo(UPDATED_TABLE_IMAGE);
+        assertThat(testBookTable.getTable_imageContentType()).isEqualTo(UPDATED_TABLE_IMAGE_CONTENT_TYPE);
     }
 
     @Test

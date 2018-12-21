@@ -49,6 +49,11 @@
         {
             "fieldName": "showOnHomepage",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "prodct_image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
         }
     ],
     "changelogDate": "20181113115351",

@@ -4,6 +4,7 @@ import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the Product entity.
@@ -27,6 +28,10 @@ public class ProductDTO implements Serializable {
     private Boolean isAvailable;
 
     private Boolean showOnHomepage;
+
+    @Lob
+    private byte[] prodct_image;
+    private String prodct_imageContentType;
 
     private Long restaurantId;
 
@@ -96,6 +101,22 @@ public class ProductDTO implements Serializable {
         this.showOnHomepage = showOnHomepage;
     }
 
+    public byte[] getProdct_image() {
+        return prodct_image;
+    }
+
+    public void setProdct_image(byte[] prodct_image) {
+        this.prodct_image = prodct_image;
+    }
+
+    public String getProdct_imageContentType() {
+        return prodct_imageContentType;
+    }
+
+    public void setProdct_imageContentType(String prodct_imageContentType) {
+        this.prodct_imageContentType = prodct_imageContentType;
+    }
+
     public Long getRestaurantId() {
         return restaurantId;
     }
@@ -144,6 +165,7 @@ public class ProductDTO implements Serializable {
             ", updatedDate='" + getUpdatedDate() + "'" +
             ", isAvailable='" + isIsAvailable() + "'" +
             ", showOnHomepage='" + isShowOnHomepage() + "'" +
+            ", prodct_image='" + getProdct_image() + "'" +
             ", restaurant=" + getRestaurantId() +
             ", category=" + getCategoryId() +
             "}";
