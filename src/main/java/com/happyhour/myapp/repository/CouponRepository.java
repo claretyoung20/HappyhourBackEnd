@@ -28,5 +28,5 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 
     List<Coupon> findAllByIsActiveTrueAndStartFromDateIsLessThanAndEndDateIsLessThan(LocalDate startDate, LocalDate endDate);
 
-    Coupon findByCodeAndStartFromDateGreaterThanEqualAndIsActiveTrue(String code, LocalDate localDate);
+    Coupon findByCodeAndEndDateGreaterThanEqualAndIsActiveTrue(String code, LocalDate localDate);
 }

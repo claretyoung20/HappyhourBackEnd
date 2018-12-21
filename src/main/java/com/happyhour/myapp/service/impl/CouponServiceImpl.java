@@ -117,6 +117,6 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public CouponDTO findByCode(String code, LocalDate startDate) {
-        return couponMapper.toDto(couponRepository.findByCodeAndStartFromDateGreaterThanEqualAndIsActiveTrue(code, startDate));
+        return couponMapper.toDto(couponRepository.findByCodeAndEndDateGreaterThanEqualAndIsActiveTrue(code, startDate));
     }
 }
