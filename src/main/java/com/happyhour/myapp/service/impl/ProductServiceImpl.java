@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<ProductDTO> findAllByShowOnHomepageTrue(Pageable pageable) {
         log.debug("Request to get all Products show on homepage {} ");
-        return productRepository.findAllByShowOnHomepageTrue(pageable)
+        return productRepository.findAllByShowOnHomepageTrueAndIsAvailableTrue(pageable)
             .map(productMapper::toDto);
     }
 
