@@ -32,4 +32,22 @@ public interface HappyOrderRepository extends JpaRepository<HappyOrder, Long> {
     List<HappyOrder> findAllByCustomerIdAndDateCreated(Long id, LocalDate localDate);
 
     List<HappyOrder> findAllByCouponIdAndCustomerId(Long id, Long customerId);
+
+    @Query(value = "SELECT sum(total_price) FROM happy_order WHERE order_status_id = 4",
+    nativeQuery = true)
+    Integer sumCompleteOrder();
+
+    @Query(value = "SELECT count(total_price) FROM happy_order WHERE order_status_id = 4",
+    nativeQuery = true)
+    Integer totalCompleteOrder();
+
+    @Query(value = "SELECT sum(total_price) FROM happy_order WHERE order_status_id = 5",
+        nativeQuery = true)
+    Integer sumCancelOrder();
+
+    @Query(value = "SELECT count(total_price) FROM happy_order WHERE order_status_id = 5",
+        nativeQuery = true)
+    Integer totalCancelOrder();
+
+    Page<HappyOrder> findAllByOrderStatusIdOrOrderStatusId(Long id, Long Idd, Pageable pageable);
 }

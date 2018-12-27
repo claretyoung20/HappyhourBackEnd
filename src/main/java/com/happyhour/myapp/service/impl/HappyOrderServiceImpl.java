@@ -140,4 +140,30 @@ public class HappyOrderServiceImpl implements HappyOrderService {
         return happyOrderMapper.toDto(
             happyOrderRepository.findAllByCouponIdAndCustomerId(id, customerId));
     }
+
+    @Override
+    public Integer sumCompleteOrder() {
+        return happyOrderRepository.sumCompleteOrder();
+    }
+
+    @Override
+    public Integer totalCompleteOrder() {
+        return happyOrderRepository.totalCompleteOrder();
+    }
+
+    @Override
+    public Integer sumCancelOrder() {
+        return happyOrderRepository.sumCancelOrder();
+    }
+
+    @Override
+    public Integer totalCancelOrder() {
+        return happyOrderRepository.totalCancelOrder();
+    }
+
+    @Override
+    public Page<HappyOrderDTO> orderReport(Long id, Long idd, Pageable pageable) {
+        return happyOrderRepository.findAllByOrderStatusIdOrOrderStatusId(id, idd, pageable)
+            .map(happyOrderMapper::toDto);
+    }
 }

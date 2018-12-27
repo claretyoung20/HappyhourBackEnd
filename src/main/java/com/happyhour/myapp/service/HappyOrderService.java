@@ -63,4 +63,14 @@ public interface HappyOrderService {
     List<HappyOrderDTO> findAllByCustomerIdAndDateCreated(Long id, LocalDate localDate);
 
     List<HappyOrderDTO> findByCouponIdAndCustomer(Long id, Long customerId);
+
+    Integer sumCompleteOrder();
+
+    Integer totalCompleteOrder();
+
+    Integer sumCancelOrder();
+
+    Integer totalCancelOrder();
+
+    Page<HappyOrderDTO> orderReport(Long id, Long idd, Pageable pageable);
 }

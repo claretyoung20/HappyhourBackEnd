@@ -201,4 +201,46 @@ public class HappyOrderResource {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(happyOrderDTOS, headers, HttpStatus.OK);
     }
+
+    @GetMapping("/happy-orders/sumCancel")
+    @Timed
+    public ResponseEntity<Integer> sumCancelOrder() {
+       Integer sunCancel = happyOrderService.sumCancelOrder();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(sunCancel, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/countCancel")
+    @Timed
+    public ResponseEntity<Integer> totalCancelOrder() {
+        Integer sunCancel = happyOrderService.totalCancelOrder();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(sunCancel, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/sumComplete")
+    @Timed
+    public ResponseEntity<Integer> sumCompleteOrder() {
+        Integer sunCancel = happyOrderService.sumCompleteOrder();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(sunCancel, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/countComplete")
+    @Timed
+    public ResponseEntity<Integer> totalCompleteOrder() {
+        Integer sunCancel = happyOrderService.totalCompleteOrder();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(sunCancel, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/happy-orders/order-report")
+    @Timed
+    public ResponseEntity<Page<HappyOrderDTO>> getOrderReport(@ApiParam Pageable pageable) {
+        Long id = Long.parseLong("4");
+        Long idd = Long.parseLong("5");
+        Page<HappyOrderDTO> page = happyOrderService.orderReport(id, idd, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/happy-orders");
+        return new ResponseEntity<>(page, headers, HttpStatus.OK);
+    }
 }
